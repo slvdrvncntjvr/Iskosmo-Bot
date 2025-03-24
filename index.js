@@ -1,74 +1,79 @@
 require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
+const config = require('./config');
+const logger = require('./utils/logger');
 
+// Initialize client with required intents
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMembers,
     ]
 });
 
-
+// Initialize collections
 client.commands = new Collection();
-const prefix = '!'; 
+client.slashCommands = new Collection();
 
-
-const commands = {
-    ping: {
-        name: 'ping',
-        description: 'Replies with Pong!',
-        execute(message) {
-            message.reply('Pong! 🏓');
-        }
-    },
-    help: {
-        name: 'help',
-        description: 'Shows available commands',
-        execute(message) {
-            const commandList = Array.from(client.commands.values())
-                .map(cmd => `**${prefix}${cmd.name}** - ${cmd.description}`)
-                .join('\n');
+// Load commands
+const loadCommands = (dir) => {
+    const commandFolders = fs.readdirSync(path.join(__dirname, dir));
+    
+    for (const folder of commandFolders) {
+        const commandFiles = fs.readdirSync(path.join(__dirname, dir, folder))
+            .filter(file => file.endsWith('.js'));
+        
+        for (const file of commandFiles) {
+            const command = require(path.join(__dirname, dir, folder, file));
+            logger.info(`Loading command: ${command.name}`);
+            client.commands.set(command.name, command);
             
-            message.reply(`**Available Commands:**\n${commandList}`);
+            // Register slash command if available
+            if (command.slashCommand) {
+                client.slashCommands.set(command.name, command);
+            }
         }
     }
 };
 
-for (const command of Object.values(commands)) {
-    client.commands.set(command.name, command);
-}
-
-client.once('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
-    console.log(`Serving in ${client.guilds.cache.size} servers`);
-});
-
-client.on('messageCreate', message => {
-    if (message.author.bot) return;
+// Load events
+const loadEvents = () => {
+    const eventFiles = fs.readdirSync(path.join(__dirname, 'events'))
+        .filter(file => file.endsWith('.js'));
     
-    if (message.content.startsWith(prefix)) {
-        const args = message.content.slice(prefix.length).trim().split(/ +/);
-        const commandName = args.shift().toLowerCase();
+    for (const file of eventFiles) {
+        const event = require(path.join(__dirname, 'events', file));
+        const eventName = file.split('.')[0];
         
-        if (!client.commands.has(commandName)) return;
+        logger.info(`Loading event: ${eventName}`);
         
-        try {
-            client.commands.get(commandName).execute(message, args);
-        } catch (error) {
-            console.error(error);
-            message.reply('There was an error trying to execute that command!');
+        if (event.once) {
+            client.once(eventName, (...args) => event.execute(...args, client));
+        } else {
+            client.on(eventName, (...args) => event.execute(...args, client));
         }
     }
-});
+};
 
-const token = process.env.DISCORD_BOT_TOKEN;
-if (!token) {
-    console.error('DISCORD_BOT_TOKEN is not defined in your .env file!');
-    process.exit(1);
-}
+// Load commands and events
+loadCommands('commands');
+loadEvents();
 
-client.login(token).catch(error => {
-    console.error('Failed to login:', error);
-    process.exit(1);
+// Login to Discord
+client.login(process.env.DISCORD_BOT_TOKEN)
+    .then(() => {
+        logger.info('Bot successfully logged in');
+    })
+    .catch(error => {
+        logger.error('Failed to login:', error);
+        process.exit(1);
+    });
+
+// Handle process errors
+process.on('unhandledRejection', error => {
+    logger.error('Unhandled promise rejection:', error);
 });
