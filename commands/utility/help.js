@@ -7,8 +7,7 @@ module.exports = {
     description: 'Display available commands or info about a specific command',
     usage: '[command name]',
     category: 'utility',
-    
-    // Slash command definition
+
     slashCommand: new SlashCommandBuilder()
         .setName('help')
         .setDescription('Display available commands or info about a specific command')
@@ -19,12 +18,9 @@ module.exports = {
     
     async execute(message, args, client) {
         const { commands } = client;
-        
-        // If no args, show all commands grouped by category
+ 
         if (!args.length) {
-            // Group commands by category
             const categories = {};
-            
             commands.forEach(command => {
                 const category = command.category || 'Uncategorized';
                 
@@ -40,8 +36,7 @@ module.exports = {
                 description: `Use \`${config.prefix}help [command name]\` to get info on a specific command.`,
                 type: 'info'
             });
-            
-            // Add fields for each category
+
             for (const [category, cmds] of Object.entries(categories)) {
                 helpEmbed.addFields({
                     name: `📁 ${category.charAt(0).toUpperCase() + category.slice(1)}`,
@@ -52,7 +47,6 @@ module.exports = {
             return message.reply({ embeds: [helpEmbed] });
         }
         
-        // Show info about specific command
         const commandName = args[0].toLowerCase();
         const command = commands.get(commandName);
         
@@ -86,10 +80,8 @@ module.exports = {
     async executeSlash(interaction, client) {
         const commandName = interaction.options.getString('command');
         const { commands } = client;
-        
-        // If no command specified, show all commands grouped by category
+
         if (!commandName) {
-            // Group commands by category
             const categories = {};
             
             commands.forEach(command => {
@@ -107,8 +99,7 @@ module.exports = {
                 description: `Use \`/help command:[command name]\` to get info on a specific command.`,
                 type: 'info'
             });
-            
-            // Add fields for each category
+
             for (const [category, cmds] of Object.entries(categories)) {
                 helpEmbed.addFields({
                     name: `📁 ${category.charAt(0).toUpperCase() + category.slice(1)}`,
@@ -119,7 +110,6 @@ module.exports = {
             return interaction.reply({ embeds: [helpEmbed] });
         }
         
-        // Show info about specific command
         const command = commands.get(commandName.toLowerCase());
         
         if (!command) {

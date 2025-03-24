@@ -6,7 +6,6 @@ module.exports = {
     description: 'Check bot latency and API response time',
     category: 'utility',
     
-    // Slash command definition
     slashCommand: new SlashCommandBuilder()
         .setName('ping')
         .setDescription('Check bot latency and API response time'),

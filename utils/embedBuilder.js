@@ -2,7 +2,7 @@ const { EmbedBuilder } = require('discord.js');
 const config = require('../config');
 
 /**
- * Creates a standardized embed for the bot
+ * Standardized embed for the bot
  * @param {Object} options - Embed options
  * @param {String} options.title - Embed title
  * @param {String} options.description - Embed description

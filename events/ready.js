@@ -6,11 +6,9 @@ module.exports = {
     async execute(client) {
         logger.info(`Logged in as ${client.user.tag}`);
         logger.info(`Serving ${client.guilds.cache.size} guilds`);
-        
-        // Set bot activity
+       
         client.user.setActivity('!help | Serving the community', { type: 'PLAYING' });
-        
-        // Register slash commands
+       
         try {
             const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN);
             

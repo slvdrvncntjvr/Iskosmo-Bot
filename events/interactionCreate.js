@@ -4,7 +4,6 @@ const { createEmbed } = require('../utils/embedBuilder');
 module.exports = {
     once: false,
     async execute(interaction, client) {
-        // Handle slash commands
         if (interaction.isCommand()) {
             const command = client.slashCommands.get(interaction.commandName);
             

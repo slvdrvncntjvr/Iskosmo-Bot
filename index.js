@@ -5,7 +5,6 @@ const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const config = require('./config');
 const logger = require('./utils/logger');
 
-// Initialize client with required intents
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -15,11 +14,9 @@ const client = new Client({
     ]
 });
 
-// Initialize collections
 client.commands = new Collection();
 client.slashCommands = new Collection();
 
-// Load commands
 const loadCommands = (dir) => {
     const commandFolders = fs.readdirSync(path.join(__dirname, dir));
     
@@ -31,8 +28,7 @@ const loadCommands = (dir) => {
             const command = require(path.join(__dirname, dir, folder, file));
             logger.info(`Loading command: ${command.name}`);
             client.commands.set(command.name, command);
-            
-            // Register slash command if available
+    
             if (command.slashCommand) {
                 client.slashCommands.set(command.name, command);
             }
@@ -40,7 +36,6 @@ const loadCommands = (dir) => {
     }
 };
 
-// Load events
 const loadEvents = () => {
     const eventFiles = fs.readdirSync(path.join(__dirname, 'events'))
         .filter(file => file.endsWith('.js'));
@@ -59,11 +54,9 @@ const loadEvents = () => {
     }
 };
 
-// Load commands and events
 loadCommands('commands');
 loadEvents();
 
-// Login to Discord
 client.login(process.env.DISCORD_BOT_TOKEN)
     .then(() => {
         logger.info('Bot successfully logged in');
@@ -73,7 +66,6 @@ client.login(process.env.DISCORD_BOT_TOKEN)
         process.exit(1);
     });
 
-// Handle process errors
 process.on('unhandledRejection', error => {
     logger.error('Unhandled promise rejection:', error);
 });

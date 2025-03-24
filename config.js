@@ -11,5 +11,5 @@ module.exports = {
         error: '❌',
         loading: '⏳'
     },
-    // Add other configuration properties as needed
+    // to add
 };
