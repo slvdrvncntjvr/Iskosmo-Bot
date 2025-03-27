@@ -9,10 +9,8 @@ class StatusManager {
     }
     
     startRotation() {
-        // Clear any existing interval
-        if (this.interval) {
-            clearInterval(this.interval);
-        }
+        // clear any existing interval
+        this.stopRotation();
 
         this.updateStatus();
 
