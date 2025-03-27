@@ -12,6 +12,7 @@ module.exports = {
             try {
                 await command.executeSlash(interaction, client);
                 logger.info(`${interaction.user.tag} used slash command: ${interaction.commandName}`);
+                logger.logToDiscord(client, `${interaction.user.tag} used slash command: ${interaction.commandName} in ${interaction.guild.name}`);
             } catch (error) {
                 logger.error(`Error executing slash command ${interaction.commandName}:`, error);
                 

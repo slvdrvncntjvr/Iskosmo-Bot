@@ -56,6 +56,7 @@ module.exports = {
         try {
             await command.execute(message, args, client);
             logger.info(`${message.author.tag} used command: ${commandName}`);
+            logger.logToDiscord(client, `${message.author.tag} used command: ${commandName} in ${message.guild.name}`);
         } catch (error) {
             logger.error(`Error executing ${commandName} command:`, error);
             message.reply({ 
