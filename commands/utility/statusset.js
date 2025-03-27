@@ -95,28 +95,33 @@ module.exports = {
 
     async setTemporaryStatus(client, statusText, duration, activityType) {
         if (client.statusManager) {
-            client.statusManager.stopRotation();
-        }
+            client.statusManager.setTemporaryStatus(statusText, duration, activityType);
+        } else {
+            client.user.setPresence({
+                activities: [{
+                    name: statusText,
+                    type: activityType
+                }],
+                status: 'online'
+            });
+            
+            logger.info(`Temporary status set: "${ActivityType[activityType]} ${statusText}" for ${duration} seconds`);
 
-        client.user.setPresence({
-            activities: [{
-                name: statusText,
-                type: activityType
-            }],
-            status: 'online'
-        });
-        
-        logger.info(`Temporary status set: "${ActivityType[activityType]} ${statusText}" for ${duration} seconds`);
-
-        if (client.statusTimeout) {
-            clearTimeout(client.statusTimeout);
-        }
-
-        client.statusTimeout = setTimeout(() => {
-            if (client.statusManager) {
-                client.statusManager.startRotation();
-                logger.info('Status rotation resumed after temporary status');
+            if (client.statusTimeout) {
+                clearTimeout(client.statusTimeout);
             }
-        }, duration * 1000);
+
+            client.statusTimeout = setTimeout(() => {
+                const guildCount = client.guilds.cache.size;
+                client.user.setPresence({
+                    activities: [{
+                        name: `in ${guildCount} guilds`,
+                        type: ActivityType.Playing
+                    }],
+                    status: 'online'
+                });
+                logger.info('Default status restored after temporary status');
+            }, duration * 1000);
+        }
     }
 };

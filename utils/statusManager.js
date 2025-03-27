@@ -4,66 +4,49 @@ const logger = require('./logger');
 class StatusManager {
     constructor(client) {
         this.client = client;
-        this.statusIndex = 0;
-        this.interval = null;
-    }
-    
-    startRotation() {
-        // clear any existing interval
-        this.stopRotation();
-
-        this.updateStatus();
-
-        this.interval = setInterval(() => {
-            this.statusIndex = (this.statusIndex + 1) % this.getStatusOptions().length;
-            this.updateStatus();
-        }, 5 * 60 * 1000); 
-        
-        logger.info('Status rotation started');
+        this.defaultStatus = true;
     }
 
-    stopRotation() {
-        if (this.interval) {
-            clearInterval(this.interval);
-            this.interval = null;
-            logger.info('Status rotation stopped');
-        }
-    }
-
-    getStatusOptions() {
+    setDefaultStatus() {
         const guildCount = this.client.guilds.cache.size;
-        const userCount = this.client.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0);
-        
-        return [
-            {
-                name: `in ${guildCount} guilds`,
-                type: ActivityType.Playing
-            },
-            {
-                name: `with ${userCount} users`,
-                type: ActivityType.Playing
-            },
-            {
-                name: `!help for commands`,
-                type: ActivityType.Listening
-            },
-            {
-                name: `${this.client.guilds.cache.size} servers`,
-                type: ActivityType.Watching
-            }
-        ];
-    }
-
-    updateStatus() {
-        const statusOptions = this.getStatusOptions();
-        const currentStatus = statusOptions[this.statusIndex];
         
         this.client.user.setPresence({
-            activities: [currentStatus],
+            activities: [{
+                name: `in ${guildCount} guilds`,
+                type: ActivityType.Playing
+            }],
             status: 'online'
         });
         
-        logger.info(`Updated status to: ${ActivityType[currentStatus.type]} ${currentStatus.name}`);
+        this.defaultStatus = true;
+        logger.info(`Set default status: Playing in ${guildCount} guilds`);
+    }
+
+    setTemporaryStatus(statusText, duration, activityType = ActivityType.Playing) {
+        if (this.statusTimeout) {
+            clearTimeout(this.statusTimeout);
+        }
+
+        this.client.user.setPresence({
+            activities: [{
+                name: statusText,
+                type: activityType
+            }],
+            status: 'online'
+        });
+        
+        this.defaultStatus = false;
+        logger.info(`Temporary status set: "${ActivityType[activityType]} ${statusText}" for ${duration} seconds`);
+        
+        this.statusTimeout = setTimeout(() => {
+            this.setDefaultStatus();
+        }, duration * 1000);
+    }
+
+    updateGuildCount() {
+        if (this.defaultStatus) {
+            this.setDefaultStatus();
+        }
     }
 }
 

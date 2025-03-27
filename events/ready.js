@@ -1,33 +1,19 @@
-const { REST, Routes, ActivityType } = require('discord.js');
+const { REST, Routes } = require('discord.js');
 const logger = require('../utils/logger');
-const StatusManager = require('../utils/statusManager'); 
+const StatusManager = require('../utils/statusManager');
 
 module.exports = {
     once: true,
     async execute(client) {
-        const guildCount = client.guilds.cache.size;
-        
         logger.info(`Logged in as ${client.user.tag}`);
-        logger.info(`Serving ${guildCount} guilds`);
-
-        client.statusManager = new StatusManager(client);
-        client.statusManager.startRotation();
-
-        logger.logToDiscord(client, `Bot is online and serving in ${client.guilds.cache.size} guilds`);
-
-        client.user.setPresence({
-            activities: [
-                {
-                    name: `in ${guildCount} guilds`,
-                    type: ActivityType.Playing
-                }
-            ],
-            status: 'online'
-        });
-
-        logger.logToDiscord(client, `Bot is online and serving in ${guildCount} guilds`);
-
+        logger.info(`Serving ${client.guilds.cache.size} guilds`);
+        
         try {
+            client.statusManager = new StatusManager(client);
+            client.statusManager.setDefaultStatus();
+
+            logger.logToDiscord(client, `Bot is online and serving in ${client.guilds.cache.size} guilds`);
+
             const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN);
             
             const slashCommands = Array.from(client.slashCommands.values())
@@ -44,7 +30,7 @@ module.exports = {
                 logger.info(`Successfully reloaded ${data.length} application (/) commands.`);
             }
         } catch (error) {
-            logger.error('Error registering slash commands:', error);
+            logger.error('Error in ready event:', error);
         }
     },
 };
