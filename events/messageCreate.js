@@ -36,6 +36,16 @@ module.exports = {
                 });
             }
         }
+
+        if (command.requiresAuth && !permissionManager.isAuthorized(message.author.id, commandName)) {
+            return message.reply({ 
+                embeds: [createEmbed({
+                    title: 'Permission Error',
+                    description: 'You are not authorized to use this command.',
+                    type: 'error'
+                })]
+            });
+        }
       
         if (command.args && !args.length) {
             let reply = 'You didn\'t provide any arguments.';

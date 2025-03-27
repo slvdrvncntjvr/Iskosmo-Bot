@@ -11,5 +11,10 @@ module.exports = {
         error: '❌',
         loading: '⏳'
     },
-    // to add
+    // Commands that require special authorization beyond normal permissions
+    restrictedCommands: [
+        'announce',
+        'statusset'
+    ],
+    // Add other configuration properties as needed
 };

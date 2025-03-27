@@ -29,5 +29,16 @@ module.exports = {
                 }
             }
         }
+
+        if (command.requiresAuth && !permissionManager.isAuthorized(interaction.user.id, interaction.commandName)) {
+            return interaction.reply({ 
+                embeds: [createEmbed({
+                    title: 'Permission Error',
+                    description: 'You are not authorized to use this command.',
+                    type: 'error'
+                })],
+                ephemeral: true
+            });
+        }
     },
 };

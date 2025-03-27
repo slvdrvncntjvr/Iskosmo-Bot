@@ -7,7 +7,7 @@ const path = require('path');
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const config = require('./config');
 const logger = require('./utils/logger');
-
+const config = require('./config');
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -35,6 +35,11 @@ const loadCommands = (dir) => {
             if (command.slashCommand) {
                 client.slashCommands.set(command.name, command);
             }
+        }
+    }
+    for (const command of client.commands.values()) {
+        if (config.restrictedCommands.includes(command.name)) {
+            command.requiresAuth = true;
         }
     }
 };
