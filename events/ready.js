@@ -1,14 +1,31 @@
-const { REST, Routes } = require('discord.js');
+const { REST, Routes, ActivityType } = require('discord.js');
 const logger = require('../utils/logger');
 
 module.exports = {
     once: true,
     async execute(client) {
+        const guildCount = client.guilds.cache.size;
+        
         logger.info(`Logged in as ${client.user.tag}`);
-        logger.info(`Serving ${client.guilds.cache.size} guilds`);
-       
-        client.user.setActivity('!help | Serving the community', { type: 'PLAYING' });
-       
+        logger.info(`Serving ${guildCount} guilds`);
+
+        client.statusManager = new StatusManager(client);
+        client.statusManager.startRotation();
+
+        logger.logToDiscord(client, `Bot is online and serving in ${client.guilds.cache.size} guilds`);
+
+        client.user.setPresence({
+            activities: [
+                {
+                    name: `in ${guildCount} guilds`,
+                    type: ActivityType.Playing
+                }
+            ],
+            status: 'online'
+        });
+
+        logger.logToDiscord(client, `Bot is online and serving in ${guildCount} guilds`);
+
         try {
             const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN);
             
