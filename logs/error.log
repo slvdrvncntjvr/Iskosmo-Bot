@@ -1,0 +1,3 @@
+[2025-03-26 14:00:49] error: Failed to login: An invalid token was provided.
+[2025-03-27 02:50:05] error: Failed to login: Connect Timeout Error (attempted address: discord.com:443, timeout: 10000ms)
+[2025-03-27 09:17:34] error: Failed to send announcement to CCISkolars [PUP Main Campus] (1249140952581410987): Missing Access
