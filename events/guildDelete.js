@@ -6,15 +6,9 @@ module.exports = {
     async execute(guild, client) {
         const guildCount = client.guilds.cache.size;
 
-        client.user.setPresence({
-            activities: [
-                {
-                    name: `in ${guildCount} guilds`,
-                    type: ActivityType.Playing
-                }
-            ],
-            status: 'online'
-        });
+        if (client.statusManager) {
+            client.statusManager.updateStatus();
+        }
         
         logger.info(`Left guild: ${guild.name} (ID: ${guild.id}). Now serving ${guildCount} guilds.`);
         logger.logToDiscord(client, `Left guild: ${guild.name} (ID: ${guild.id}). Now serving ${guildCount} guilds.`);
