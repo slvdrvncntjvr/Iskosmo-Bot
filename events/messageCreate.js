@@ -1,6 +1,7 @@
 const config = require('../config');
 const logger = require('../utils/logger');
 const { createEmbed } = require('../utils/embedBuilder');
+const permissionManager = require('../utils/permissionManager'); 
 
 module.exports = {
     once: false,

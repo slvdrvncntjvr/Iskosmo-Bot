@@ -7,6 +7,13 @@ const path = require('path');
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const logger = require('./utils/logger');
 const config = require('./config');
+
+// create data directory if it doesn't exist
+const dataDir = path.join(__dirname, 'data');
+if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true });
+}
+
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,

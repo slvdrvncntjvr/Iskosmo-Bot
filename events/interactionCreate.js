@@ -1,5 +1,6 @@
 const logger = require('../utils/logger');
 const { createEmbed } = require('../utils/embedBuilder');
+const permissionManager = require('../utils/permissionManager'); // Add this line
 
 module.exports = {
     once: false,
@@ -8,6 +9,18 @@ module.exports = {
             const command = client.slashCommands.get(interaction.commandName);
             
             if (!command) return;
+            
+            // Check authorization before executing the command
+            if (command.requiresAuth && !permissionManager.isAuthorized(interaction.user.id, interaction.commandName)) {
+                return interaction.reply({ 
+                    embeds: [createEmbed({
+                        title: 'Permission Error',
+                        description: 'You are not authorized to use this command.',
+                        type: 'error'
+                    })],
+                    ephemeral: true
+                });
+            }
             
             try {
                 await command.executeSlash(interaction, client);
@@ -28,17 +41,6 @@ module.exports = {
                     await interaction.reply({ embeds: [errorEmbed], ephemeral: true });
                 }
             }
-        }
-
-        if (command.requiresAuth && !permissionManager.isAuthorized(interaction.user.id, interaction.commandName)) {
-            return interaction.reply({ 
-                embeds: [createEmbed({
-                    title: 'Permission Error',
-                    description: 'You are not authorized to use this command.',
-                    type: 'error'
-                })],
-                ephemeral: true
-            });
         }
     },
 };
