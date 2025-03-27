@@ -1,5 +1,6 @@
 const { REST, Routes, ActivityType } = require('discord.js');
 const logger = require('../utils/logger');
+const StatusManager = require('../utils/statusManager'); 
 
 module.exports = {
     once: true,

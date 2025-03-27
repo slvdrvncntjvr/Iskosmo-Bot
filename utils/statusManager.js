@@ -7,9 +7,9 @@ class StatusManager {
         this.statusIndex = 0;
         this.interval = null;
     }
-
+    
     startRotation() {
-
+        // Clear any existing interval
         if (this.interval) {
             clearInterval(this.interval);
         }
@@ -65,7 +65,7 @@ class StatusManager {
             status: 'online'
         });
         
-        logger.info(`Updated status to: ${currentStatus.type} ${currentStatus.name}`);
+        logger.info(`Updated status to: ${ActivityType[currentStatus.type]} ${currentStatus.name}`);
     }
 }
 
