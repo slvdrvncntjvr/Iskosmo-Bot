@@ -47,7 +47,10 @@ function isOwner(userId) {
 }
 
 function isAuthorized(userId, commandName) {
-    // Bot owners are always authorized
+    console.log(`Checking auth for user ${userId} on command ${commandName}`);
+    console.log(`Owner check: ${isOwner(userId)}`);
+    console.log(`Command auth: ${permissionsData.commands[commandName]?.includes(userId)}`);
+    
     if (isOwner(userId)) return true;
     
     if (permissionsData.commands[commandName] && 

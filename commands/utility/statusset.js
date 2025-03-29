@@ -8,6 +8,7 @@ module.exports = {
     usage: '<text> [time_in_seconds]',
     category: 'utility',
     permissions: [PermissionFlagsBits.ManageGuild],
+    requiresAuth: true,
     
     slashCommand: new SlashCommandBuilder()
         .setName('statusset')
