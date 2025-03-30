@@ -350,3 +350,29 @@
 [2025-03-27 09:23:07] info: Permissions data saved successfully
 [2025-03-27 09:23:07] info: jzoa added yuen0ia as authorized user for statusset
 [2025-03-27 09:23:07] info: jzoa used command: auth
+[2025-03-30 22:45:07] info: Loading command: joke
+[2025-03-30 22:45:07] info: Loading command: ban
+[2025-03-30 22:45:07] info: Loading command: kick
+[2025-03-30 22:45:07] info: Permissions data loaded successfully
+[2025-03-30 22:45:07] info: Loading command: announce
+[2025-03-30 22:45:07] info: Loading command: auth
+[2025-03-30 22:45:07] info: Loading command: debug
+[2025-03-30 22:45:08] info: Loading command: getvid
+[2025-03-30 22:45:08] info: Loading command: help
+[2025-03-30 22:45:08] info: Loading command: logchannel
+[2025-03-30 22:45:08] info: Loading command: ping
+[2025-03-30 22:45:08] info: Loading command: statusset
+[2025-03-30 22:45:08] info: Loading event: guildCreate
+[2025-03-30 22:45:08] info: Loading event: guildDelete
+[2025-03-30 22:45:08] info: Loading event: interactionCreate
+[2025-03-30 22:45:08] info: Loading event: messageCreate
+[2025-03-30 22:45:08] info: Loading event: ready
+[2025-03-30 22:45:09] info: Bot successfully logged in
+[2025-03-30 22:45:09] info: Logged in as Iskosmo#5697
+[2025-03-30 22:45:09] info: Serving 5 guilds
+[2025-03-30 22:45:09] info: Set default status: Playing in 5 guilds
+[2025-03-30 22:45:09] info: Started refreshing 11 application (/) commands.
+[2025-03-30 22:45:10] info: Successfully reloaded 11 application (/) commands.
+[2025-03-30 22:45:53] info: jzoa used command: getvid
+[2025-03-30 22:47:04] info: jzoa used command: getvid
+[2025-03-30 22:47:16] info: jzoa used command: getvid
