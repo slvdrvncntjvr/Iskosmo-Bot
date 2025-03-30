@@ -1,9 +1,10 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { createEmbed } = require('../../utils/embedBuilder');
-const { getRandomMobileUserAgent } = require('../../utils/userAgents');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const logger = require('../../utils/logger');
+const { getRandomMobileUserAgent } = require('../../utils/userAgents');
+const HttpsProxyAgent = require('https-proxy-agent');
 
 module.exports = {
     name: 'getpost',
@@ -220,6 +221,13 @@ module.exports = {
             'Cache-Control': 'no-cache',
             'Pragma': 'no-cache'
         };
+
+        let axiosConfig = { headers };
+        if (process.env.HTTP_PROXY) {
+            const httpsAgent = new HttpsProxyAgent(process.env.HTTP_PROXY);
+            axiosConfig.httpsAgent = httpsAgent;
+            logger.info(`Using proxy for Facebook request: ${process.env.HTTP_PROXY}`);
+        }
         
         const response = await axios.get(url, { headers });
         const $ = cheerio.load(response.data);
