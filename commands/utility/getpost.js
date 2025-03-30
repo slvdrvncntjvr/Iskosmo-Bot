@@ -3,8 +3,6 @@ const { createEmbed } = require('../../utils/embedBuilder');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const logger = require('../../utils/logger');
-const { getRandomMobileUserAgent } = require('../../utils/userAgents');
-const HttpsProxyAgent = require('https-proxy-agent');
 
 module.exports = {
     name: 'getpost',
@@ -68,9 +66,8 @@ module.exports = {
         });
         
         try {
-            // Get the mobile version of the page which is easier to scrape
-            const mobileUrl = this.convertToMobileUrl(pageUrl);
-            const posts = await this.scrapePosts(mobileUrl, count);
+            // Simplify the approach - use the page as-is
+            const posts = await this.scrapePosts(pageUrl, count);
             
             if (!posts || posts.length === 0) {
                 return loadingMessage.edit({
@@ -83,7 +80,7 @@ module.exports = {
             }
             
             // Create embeds for each post
-            const embeds = posts.map(post => this.createPostEmbed(post, mobileUrl));
+            const embeds = posts.map(post => this.createPostEmbed(post));
             
             // Edit the loading message with the first embed
             await loadingMessage.edit({ embeds: [embeds[0]] });
@@ -123,9 +120,7 @@ module.exports = {
         }
         
         try {
-            // Get the mobile version of the page which is easier to scrape
-            const mobileUrl = this.convertToMobileUrl(pageUrl);
-            const posts = await this.scrapePosts(mobileUrl, count);
+            const posts = await this.scrapePosts(pageUrl, count);
             
             if (!posts || posts.length === 0) {
                 return interaction.editReply({
@@ -138,7 +133,7 @@ module.exports = {
             }
             
             // Create embeds for each post
-            const embeds = posts.map(post => this.createPostEmbed(post, mobileUrl));
+            const embeds = posts.map(post => this.createPostEmbed(post));
             
             // Edit the deferred reply with the first embed
             await interaction.editReply({ embeds: [embeds[0]] });
@@ -176,137 +171,147 @@ module.exports = {
     },
     
     /**
-     * Convert a Facebook URL to its mobile version
-     * @param {string} url - The Facebook URL
-     * @returns {string} - The mobile version of the URL
-     */
-    convertToMobileUrl(url) {
-        try {
-            const parsedUrl = new URL(url);
-            
-            // Replace the hostname with the mobile version
-            if (parsedUrl.hostname === 'www.facebook.com') {
-                parsedUrl.hostname = 'm.facebook.com';
-            } else if (parsedUrl.hostname === 'facebook.com') {
-                parsedUrl.hostname = 'm.facebook.com';
-            } else if (parsedUrl.hostname === 'www.fb.com') {
-                parsedUrl.hostname = 'm.facebook.com';
-                // Convert the path if it's a short URL
-                if (parsedUrl.pathname.length <= 2) {
-                    // This is a guess, we'd need to follow redirects to be sure
-                    parsedUrl.pathname = `/${parsedUrl.pathname.substring(1)}`;
-                }
-            }
-            
-            return parsedUrl.toString();
-        } catch (error) {
-            // If parsing fails, just replace www with m
-            return url.replace('www.facebook.com', 'm.facebook.com')
-                      .replace('facebook.com', 'm.facebook.com');
-        }
-    },
-    
-    /**
      * Scrape posts from a Facebook page
-     * @param {string} url - The mobile Facebook page URL
+     * @param {string} url - The Facebook page URL
      * @param {number} count - Number of posts to retrieve
      * @returns {Promise<Array>} - Array of post data
      */
     async scrapePosts(url, count) {
-        // Set up a user agent to mimic a mobile browser
+        // Set up a user agent to mimic a regular browser
         const headers = {
-            'User-Agent': getRandomMobileUserAgent(),
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
             'Accept-Language': 'en-US,en;q=0.9',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
             'Cache-Control': 'no-cache',
             'Pragma': 'no-cache'
         };
-
-        let axiosConfig = { headers };
-        if (process.env.HTTP_PROXY) {
-            const httpsAgent = new HttpsProxyAgent(process.env.HTTP_PROXY);
-            axiosConfig.httpsAgent = httpsAgent;
-            logger.info(`Using proxy for Facebook request: ${process.env.HTTP_PROXY}`);
-        }
         
-        const response = await axios.get(url, { headers });
-        const $ = cheerio.load(response.data);
-        
-        // Extract the page name
-        const pageName = $('title').text().replace(' | Facebook', '');
-        
-        // Find post articles
-        const posts = [];
-        const postElements = $('article').slice(0, count);
-        
-        postElements.each((i, element) => {
-            const postElement = $(element);
+        try {
+            // Try to use an alternative approach - FBDown
+            // This service helps extract public Facebook content
+            const fbDownUrl = `https://www.getfbdown.com/search.php?url=${encodeURIComponent(url)}`;
             
-            // Extract post text content
-            let postContent = '';
-            postElement.find('div[data-gt]').each((i, div) => {
-                if ($(div).find('img, video').length === 0) {
-                    const text = $(div).text().trim();
-                    if (text && text.length > postContent.length) {
-                        postContent = text;
-                    }
-                }
+            const response = await axios.get(fbDownUrl, { 
+                headers,
+                maxRedirects: 5,
+                timeout: 10000
             });
             
-            // If we still don't have content, try other selectors
-            if (!postContent) {
-                postElement.find('p').each((i, p) => {
-                    const text = $(p).text().trim();
-                    if (text) {
-                        postContent += text + '\n';
-                    }
+            const $ = cheerio.load(response.data);
+            
+            // Extract the page name
+            const pageName = $('h1').first().text().trim() || url.split('/').pop() || 'Facebook Page';
+            
+            // Find post containers
+            const posts = [];
+            const postContainers = $('.card').slice(0, count);
+            
+            postContainers.each((i, element) => {
+                const postElement = $(element);
+                
+                // Extract post text content
+                const postContent = postElement.find('.card-text').text().trim() || 'No text content';
+                
+                // Extract post date (if available)
+                const dateElement = postElement.find('.text-muted').text().trim();
+                const postDate = dateElement || 'Recently';
+                
+                // Extract post URL
+                const postUrl = postElement.find('a[href*="facebook.com"]').attr('href') || url;
+                
+                // Extract image if available
+                const imageUrl = postElement.find('img.img-fluid').attr('src') || '';
+                
+                posts.push({
+                    content: postContent,
+                    date: postDate,
+                    url: postUrl,
+                    imageUrl: imageUrl,
+                    pageName: pageName
+                });
+            });
+            
+            // If we couldn't find posts with the first method, try a fallback
+            if (posts.length === 0) {
+                // Try a different scraping approach - use a Facebook page scraper service
+                const fbScraperUrl = `https://www.facebook.com/pg/${url.split('/').pop()}/posts/`;
+                
+                const fbResponse = await axios.get(fbScraperUrl, { 
+                    headers,
+                    maxRedirects: 5,
+                    timeout: 10000
+                });
+                
+                const $fb = cheerio.load(fbResponse.data);
+                
+                // Find post containers
+                $fb('.userContentWrapper').slice(0, count).each((i, element) => {
+                    const postElement = $fb(element);
+                    
+                    // Extract post text content
+                    const postContent = postElement.find('.userContent').text().trim() || 'No text content';
+                    
+                    // Extract post date
+                    const dateElement = postElement.find('abbr').text().trim();
+                    const postDate = dateElement || 'Recently';
+                    
+                    // Extract post URL
+                    const postUrl = postElement.find('a._5pcq').attr('href') || url;
+                    
+                    // Extract image if available
+                    const imageUrl = postElement.find('img.scaledImageFitWidth').attr('src') || '';
+                    
+                    posts.push({
+                        content: postContent,
+                        date: postDate,
+                        url: postUrl.startsWith('http') ? postUrl : `https://www.facebook.com${postUrl}`,
+                        imageUrl: imageUrl,
+                        pageName: pageName
+                    });
                 });
             }
             
-            // Extract post date
-            const dateElement = postElement.find('abbr');
-            const postDate = dateElement.text() || 'Unknown date';
+            return posts;
+        } catch (error) {
+            logger.error(`Facebook scraping error: ${error.message}`);
             
-            // Extract post URL
-            let postUrl = '';
-            postElement.find('a').each((i, a) => {
-                const href = $(a).attr('href');
-                if (href && href.includes('/story.php')) {
-                    postUrl = 'https://m.facebook.com' + href;
-                    return false; // break the loop
-                }
-            });
-            
-            // Extract image if available
-            let imageUrl = '';
-            postElement.find('img').each((i, img) => {
-                const src = $(img).attr('src');
-                // Skip small icons and profile pictures
-                if (src && !src.includes('emoji') && !src.includes('profile')) {
-                    imageUrl = src;
-                    return false; // break the loop
-                }
-            });
-            
-            posts.push({
-                content: postContent.trim() || 'No text content',
-                date: postDate,
-                url: postUrl || url, // Use the post URL if found, otherwise use page URL
-                imageUrl: imageUrl,
-                pageName: pageName
-            });
-        });
-        
-        return posts;
+            // Try a simpler fallback approach
+            try {
+                logger.info('Attempting fallback method for Facebook scraping');
+                
+                // Use a simpler approach - just load the page directly
+                const simpleResponse = await axios.get(url, { 
+                    headers,
+                    maxRedirects: 5,
+                    timeout: 10000
+                });
+                
+                const $simple = cheerio.load(simpleResponse.data);
+                
+                // Extract the page name from title
+                const pageName = $simple('title').text().replace(' | Facebook', '') || url.split('/').pop() || 'Facebook Page';
+                
+                // Create a single dummy post with page info
+                return [{
+                    content: `This is the Facebook page for ${pageName}. Due to Facebook's privacy settings, individual posts couldn't be retrieved. Please visit the page directly to see posts.`,
+                    date: 'Now',
+                    url: url,
+                    imageUrl: $simple('meta[property="og:image"]').attr('content') || '',
+                    pageName: pageName
+                }];
+            } catch (fallbackError) {
+                logger.error(`Facebook fallback scraping error: ${fallbackError.message}`);
+                throw new Error('Unable to retrieve Facebook content. Facebook may be blocking automated access.');
+            }
+        }
     },
     
     /**
      * Create an embed for a Facebook post
      * @param {Object} post - The post data
-     * @param {string} pageUrl - The URL of the Facebook page
      * @returns {EmbedBuilder} - Discord embed for the post
      */
-    createPostEmbed(post, pageUrl) {
+    createPostEmbed(post) {
         // Truncate content if it's too long
         const content = post.content.length > 4000 
             ? post.content.substring(0, 4000) + '...' 
