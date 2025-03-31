@@ -48,6 +48,30 @@ class StatusManager {
             this.setDefaultStatus();
         }
     }
+
+    checkAndRecoverStatus() {
+        const currentActivities = this.client.user.presence?.activities || [];
+        
+        if (currentActivities.length === 0) {
+            logger.warn('Detected missing rich presence, recovering...');
+            this.setDefaultStatus();
+            return true;
+        }
+
+        if (this.defaultStatus) {
+            const guildCount = this.client.guilds.cache.size;
+            const expectedActivity = `in ${guildCount} guilds`;
+            
+            if (currentActivities[0]?.name !== expectedActivity) {
+                logger.warn('Detected incorrect default status, recovering...');
+                this.setDefaultStatus();
+                return true;
+            }
+        }
+        
+        logger.info('Status check passed, presence is intact');
+        return false;
+    }
 }
 
 module.exports = StatusManager;

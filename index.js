@@ -7,6 +7,7 @@ const path = require('path');
 const { Client, GatewayIntentBits, Collection, Partials } = require('discord.js');
 const logger = require('./utils/logger');
 const config = require('./config');
+const { findPackageJSON } = require('module');
 
 // create data directory if it doesn't exist
 const dataDir = path.join(__dirname, 'data');
@@ -27,7 +28,12 @@ const client = new Client({
         Partials.Message,
         Partials.Channel,
         Partials.Reaction
-    ]
+    ],
+
+    resetTimeOffset: 0,
+    failIfNotExists: false,
+    shards: 'auto',
+    allowedMentions: { parse: ['users', 'roles'], repliedUser: false },
 });
 
 client.commands = new Collection();
@@ -90,3 +96,12 @@ client.login(process.env.DISCORD_BOT_TOKEN)
 process.on('unhandledRejection', error => {
     logger.error('Unhandled promise rejection:', error);
 });
+
+setInterval(() => {
+    const memoryUsage = process.memoryUsage();
+    logger.info(`Memory usage: ${Math.round(memoryUsage.heapUsed / 1024 / 1024)} MB`);
+
+    if (memoryUsage.heapUsed > 500 * 1024 * 1024) { 
+        logger.warn('High memory usage detected, potential memory leak');
+    }
+}, 30 * 60 * 1000);

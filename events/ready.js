@@ -8,6 +8,17 @@ module.exports = {
         logger.info(`Logged in as ${client.user.tag}`);
         logger.info(`Serving ${client.guilds.cache.size} guilds`);
         
+        setInterval(() => {
+            if (client.statusManager) {
+                logger.info('Running scheduled status check');
+                client.statusManager.checkAndRecoverStatus();
+            }
+        }, 30 * 60 * 1000); 
+
+        setInterval(() => {
+            logger.info(`Heartbeat check: Bot is connected to ${client.guilds.cache.size} guilds`);
+        }, 60 * 60 * 1000);
+
         try {
             client.statusManager = new StatusManager(client);
             client.statusManager.setDefaultStatus();
