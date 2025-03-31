@@ -8,6 +8,9 @@ const { Client, GatewayIntentBits, Collection, Partials } = require('discord.js'
 const logger = require('./utils/logger');
 const config = require('./config');
 const { findPackageJSON } = require('module');
+const MemoryManager = require('./utils/memoryManager');
+const deviceManager = require('./utils/deviceManager');
+const CommandOptimizer = require('./utils/commandOptimizer');
 
 // create data directory if it doesn't exist
 const dataDir = path.join(__dirname, 'data');
@@ -38,6 +41,8 @@ const client = new Client({
 
 client.commands = new Collection();
 client.slashCommands = new Collection();
+client.memoryManager = new MemoryManager(client);
+client.commandOptimizer = new CommandOptimizer(client);
 
 const loadCommands = (dir) => {
     const commandFolders = fs.readdirSync(path.join(__dirname, dir));
@@ -105,3 +110,41 @@ setInterval(() => {
         logger.warn('High memory usage detected, potential memory leak');
     }
 }, 30 * 60 * 1000);
+
+setInterval(() => {
+    deviceManager.checkDeviceStatus();
+}, 15 * 60 * 1000);
+
+deviceManager.checkDeviceStatus();
+
+process.on('unhandledRejection', error => {
+    logger.error('Unhandled promise rejection:', error);
+
+    if (error.message && (
+        error.message.includes('memory') || 
+        error.message.includes('heap') ||
+        error.message.includes('allocation')
+    )) {
+        logger.warn('Memory-related error detected, forcing cleanup');
+        if (client.memoryManager) {
+            client.memoryManager.performMemoryCleanup(true);
+        }
+    }
+});
+
+process.on('SIGTERM', gracefulShutdown);
+process.on('SIGINT', gracefulShutdown);
+
+async function gracefulShutdown() {
+    logger.info('Shutdown signal received, cleaning up...');
+    
+    try {
+        logger.info('Destroying client connection...');
+        await client.destroy();
+        logger.info('Shutdown complete');
+    } catch (error) {
+        logger.error('Error during shutdown:', error);
+    }
+    
+    process.exit(0);
+}
