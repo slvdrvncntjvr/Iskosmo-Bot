@@ -12,7 +12,6 @@ const MemoryManager = require('./utils/memoryManager');
 const deviceManager = require('./utils/deviceManager');
 const CommandOptimizer = require('./utils/commandOptimizer');
 
-// create data directory if it doesn't exist
 const dataDir = path.join(__dirname, 'data');
 if (!fs.existsSync(dataDir)) {
     fs.mkdirSync(dataDir, { recursive: true });
@@ -32,7 +31,6 @@ const client = new Client({
         Partials.Channel,
         Partials.Reaction
     ],
-
     resetTimeOffset: 0,
     failIfNotExists: false,
     shards: 'auto',
@@ -98,10 +96,6 @@ client.login(process.env.DISCORD_BOT_TOKEN)
         process.exit(1);
     });
 
-process.on('unhandledRejection', error => {
-    logger.error('Unhandled promise rejection:', error);
-});
-
 setInterval(() => {
     const memoryUsage = process.memoryUsage();
     logger.info(`Memory usage: ${Math.round(memoryUsage.heapUsed / 1024 / 1024)} MB`);
@@ -119,7 +113,7 @@ deviceManager.checkDeviceStatus();
 
 process.on('unhandledRejection', error => {
     logger.error('Unhandled promise rejection:', error);
-
+    
     if (error.message && (
         error.message.includes('memory') || 
         error.message.includes('heap') ||
