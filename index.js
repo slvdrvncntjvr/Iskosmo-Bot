@@ -11,6 +11,7 @@ const { findPackageJSON } = require('module');
 const MemoryManager = require('./utils/memoryManager');
 const deviceManager = require('./utils/deviceManager');
 const CommandOptimizer = require('./utils/commandOptimizer');
+const killSwitch = require('./utils/killSwitch');
 
 const dataDir = path.join(__dirname, 'data');
 if (!fs.existsSync(dataDir)) {
@@ -36,6 +37,8 @@ const client = new Client({
     shards: 'auto',
     allowedMentions: { parse: ['users', 'roles'], repliedUser: false },
 });
+
+killSwitch.initialize(client);
 
 client.commands = new Collection();
 client.slashCommands = new Collection();
@@ -125,6 +128,9 @@ process.on('unhandledRejection', error => {
         }
     }
 });
+
+const { startHealthServer } = require('./utils/healthCheck');
+startHealthServer(3000); // http://localhost:3000/health
 
 process.on('SIGTERM', gracefulShutdown);
 process.on('SIGINT', gracefulShutdown);

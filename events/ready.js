@@ -1,6 +1,7 @@
 const { REST, Routes } = require('discord.js');
 const logger = require('../utils/logger');
 const StatusManager = require('../utils/statusManager');
+const killSwitch = require('../utils/killSwitch');
 
 module.exports = {
     once: true,
@@ -20,8 +21,12 @@ module.exports = {
         }, 60 * 60 * 1000);
 
         try {
+            killSwitch.applyInitialState();
             client.statusManager = new StatusManager(client);
-            client.statusManager.setDefaultStatus();
+
+            if (!killSwitch.isKilled()) { 
+                client.statusManager.setDefaultStatus();
+            }
 
             logger.logToDiscord(client, `Bot is online and serving in ${client.guilds.cache.size} guilds`);
 
