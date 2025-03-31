@@ -3,14 +3,14 @@
     {
       "trigger": "zoa",
       "response": "kalbo",
-      "createdAt": "2025-03-31T11:56:10.764Z",
+      "createdAt": "2025-03-31T12:30:06.097Z",
       "createdBy": "592273861811241002",
       "matchType": "exact",
       "caseSensitive": false,
       "allowedChannels": [],
       "ignoredUsers": [],
       "cooldown": 0,
-      "lastTriggered": "2025-03-31T11:56:56.147Z",
+      "lastTriggered": null,
       "enabled": true
     }
   ]

@@ -538,25 +538,20 @@ module.exports = {
             });
         }
     },
-    
-    // Helper to validate emojis
+
     isValidEmoji(emoji, guild) {
-        // Check if it's a standard emoji
         const standardEmojiRegex = /^(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])+$/;
         if (standardEmojiRegex.test(emoji)) {
             return true;
         }
-        
-        // Check if it's a custom emoji
+
         const customEmojiRegex = /<a?:[a-zA-Z0-9_]+:(\d+)>/;
         const match = emoji.match(customEmojiRegex);
         if (match) {
             const emojiId = match[1];
-            // Check if the emoji is from this guild
             return guild.emojis.cache.has(emojiId);
         }
-        
-        // Check if it's just the ID or name:ID format
+
         const idOnlyRegex = /^(\d+)$|^[a-zA-Z0-9_]+:(\d+)$/;
         const idMatch = emoji.match(idOnlyRegex);
         if (idMatch) {

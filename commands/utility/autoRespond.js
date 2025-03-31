@@ -1,4 +1,3 @@
-// commands/utility/autorespond.js
 const { SlashCommandBuilder } = require('discord.js');
 const { createEmbed } = require('../../utils/embedBuilder');
 const responseManager = require('../../utils/responseManager');
@@ -9,7 +8,7 @@ module.exports = {
     description: 'Create, list, or remove automatic responses to specific triggers',
     usage: '<add/remove/list/info/toggle> [trigger] [response] [options]',
     category: 'utility',
-    requiresAuth: true, // Only authorized users can manage auto-responses
+    requiresAuth: true, 
     
     slashCommand: new SlashCommandBuilder()
         .setName('autorespond')
@@ -45,7 +44,7 @@ module.exports = {
                         .setDescription('Cooldown in seconds between triggers (0 for no cooldown)')
                         .setRequired(false)
                         .setMinValue(0)
-                        .setMaxValue(86400))) // Max 1 day
+                        .setMaxValue(86400))) 
         .addSubcommand(subcommand =>
             subcommand
                 .setName('remove')

@@ -19,3 +19,5 @@
 [2025-03-31 19:48:15] error: Error processing auto-responses: prefix is not defined
 [2025-03-31 19:48:16] error: Error processing auto-responses: prefix is not defined
 [2025-03-31 19:48:19] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 20:29:34] error: Error processing auto-responses: Maximum call stack size exceeded
+[2025-03-31 20:30:09] error: Error processing auto-responses: Maximum call stack size exceeded

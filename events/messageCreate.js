@@ -4,9 +4,7 @@ const { createEmbed } = require('../utils/embedBuilder');
 const permissionManager = require('../utils/permissionManager');
 const killSwitch = require('../utils/killSwitch');
 const responseManager = require('../utils/responseManager');
-console.log('messageCreate event handler loaded');
-console.log('Config loaded:', config);
-console.log('Prefix from config:', config.prefix);
+
 
 
 const KILL_CODE = "H4LTN0W";
@@ -122,27 +120,31 @@ module.exports = {
         
         if (killSwitch.isKilled()) return;
 
-        console.log('Processing message:', message.content.substring(0, 20), '...');
-        console.log('Is command?', message.content.startsWith(config.prefix));
-        console.log('Config prefix:', config.prefix);
-
          // ===== AUTO RESPONSE SYSTEM =====
          if (message.guild && !message.content.startsWith(config.prefix)) {
             try {
-                console.log('Checking for auto-responses');
-                const autoResponse = responseManager.checkForAutoResponse(message);
-                if (autoResponse) {
-                    message.channel.send(autoResponse)
-                        .catch(error => logger.error('Error sending auto-response:', error));
-                }
+                const guildId = message.guild.id;
+                const hasResponses = responseManager.hasResponses(guildId);
+                const hasReacts = responseManager.hasReacts(guildId);
+                
+                if (hasResponses || hasReacts) {
+                    if (hasResponses) {
+                        const autoResponse = responseManager.checkForAutoResponse(message);
+                        if (autoResponse) {
+                            message.channel.send(autoResponse)
+                                .catch(error => logger.error('Error sending auto-response:', error));
+                        }
+                    }
 
-                const autoReactions = responseManager.checkForAutoReactions(message);
-                if (autoReactions.length > 0) {
-                    for (const emoji of autoReactions) {
-                        try {
-                            await message.react(emoji);
-                        } catch (error) {
-                            logger.error(`Error adding reaction ${emoji}:`, error);
+                    if (hasReacts) {
+                        const autoReactions = responseManager.checkForAutoReactions(message);
+                        if (autoReactions.length > 0) {
+                            Promise.all(autoReactions.map(emoji => 
+                                message.react(emoji).catch(error => 
+                                    logger.error(`Error adding reaction ${emoji}:`, error))
+                            )).catch(error => 
+                                logger.error('Error applying reactions:', error)
+                            );   
                         }
                     }
                 }

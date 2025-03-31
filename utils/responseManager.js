@@ -9,7 +9,38 @@ class ResponseManager {
         this.responses = new Map(); 
         this.reacts = new Map();    
         this.loadData();
+        this.triggerMatchCache = new Map();
+        this.MAX_CACHE_SIZE = 100;
     }
+
+    getCachedTriggerMatch(content, trigger, matchType, caseSensitive) {
+        const cacheKey = `${content}:${trigger}:${matchType}:${caseSensitive}`;
+
+        if (this.triggerMatchCache.has(cacheKey)) {
+            return this.triggerMatchCache.get(cacheKey);
+        }
+
+        const result = this.messageMatchesTrigger(content, trigger, matchType, caseSensitive);
+
+        this.triggerMatchCache.set(cacheKey, result);
+
+        if (this.triggerMatchCache.size > this.MAX_CACHE_SIZE) {
+            const firstKey = this.triggerMatchCache.keys().next().value;
+            this.triggerMatchCache.delete(firstKey);
+        }
+        
+        return result;
+    }
+    
+
+    hasResponses(guildId) {
+        const responses = this.responses.get(guildId);
+        return responses && responses.length > 0;
+    }
+    hasReacts(guildId) {
+        const reacts = this.reacts.get(guildId);
+        return reacts && reacts.length > 0;
+    }    
 
     loadData() {
         try {
@@ -55,12 +86,15 @@ class ResponseManager {
             }
             
             fs.writeFileSync(this.responsesPath, JSON.stringify(data, null, 2), 'utf8');
+
+            if (!this._isTriggering) {
             logger.info(`Saved ${this.getTotalResponseCount()} auto-responses`);
+            }
             return true;
-        } catch (error) {
-            logger.error('Error saving auto-responses:', error);
-            return false;
-        }
+            } catch (error) {
+                    logger.error('Error saving auto-responses:', error);
+                    return false;
+                }
     }
 
     saveReacts() {
@@ -238,52 +272,55 @@ class ResponseManager {
 
     // Check if a message should trigger an auto-response
     checkForAutoResponse(message) {
-        if (!message.guild) return null;
-        
-        const guildId = message.guild.id;
-        const guildResponses = this.getResponses(guildId);
-        
-        if (!guildResponses.length) return null;
-        
-        const content = message.content;
-        const channelId = message.channel.id;
-        const userId = message.author.id;
-        const now = Date.now();
-        
-        for (const response of guildResponses) {
-            // Skip disabled responses
-            if (!response.enabled) continue;
+        try {
+            if (!message.guild) return null;
             
-            // Check channel restrictions
-            if (response.allowedChannels.length > 0 && !response.allowedChannels.includes(channelId)) {
-                continue;
-            }
+            const guildId = message.guild.id;
+            const guildResponses = this.getResponses(guildId);
             
-            // Check user ignores
-            if (response.ignoredUsers.includes(userId)) {
-                continue;
-            }
+            if (!guildResponses.length) return null;
             
-            // Check cooldown
-            if (response.cooldown > 0 && response.lastTriggered) {
-                const cooldownMs = response.cooldown * 1000;
-                const timeSinceLastTrigger = now - new Date(response.lastTriggered).getTime();
-                if (timeSinceLastTrigger < cooldownMs) {
+            const content = message.content;
+            const channelId = message.channel.id;
+            const userId = message.author.id;
+            const now = Date.now();
+            
+            let needsSave = false;
+            
+            for (const response of guildResponses) {
+                if (!response.enabled) continue;
+
+                if (response.allowedChannels.length > 0 && !response.allowedChannels.includes(channelId)) {
                     continue;
                 }
+
+                if (response.ignoredUsers.includes(userId)) {
+                    continue;
+                }
+
+                if (response.cooldown > 0 && response.lastTriggered) {
+                    const cooldownMs = response.cooldown * 1000;
+                    const timeSinceLastTrigger = now - new Date(response.lastTriggered).getTime();
+                    if (timeSinceLastTrigger < cooldownMs) {
+                        continue;
+                    }
+                }
+
+                if (this.messageMatchesTrigger(content, response.trigger, response.matchType, response.caseSensitive)) {    
+                    response.lastTriggered = new Date().toISOString();
+                    needsSave = true;
+                    return response.response;
+                }
+            }
+
+            if (needsSave) {
+                this.saveResponses();
             }
             
-            // Check if message matches trigger
-            if (this.messageMatchesTrigger(content, response.trigger, response.matchType, response.caseSensitive)) {
-                // Update last triggered time
-                response.lastTriggered = new Date().toISOString();
-                this.saveResponses();
-                
-                return response.response;
-            }
+            return null;
+        } finally {
+            this._isTriggering = false;
         }
-        
-        return null;
     }
 
     checkForAutoReactions(message) {
@@ -298,6 +335,7 @@ class ResponseManager {
         const channelId = message.channel.id;
         const userId = message.author.id;
         const now = Date.now();
+        let needsSave = false;
         const matchedReactions = [];
         
         for (const react of guildReacts) {
@@ -318,23 +356,21 @@ class ResponseManager {
                     continue;
                 }
             }
-            
-            // Check if message matches trigger
+
             if (this.messageMatchesTrigger(content, react.trigger, react.matchType, react.caseSensitive)) {
-                // Update last triggered time
                 react.lastTriggered = new Date().toISOString();
+                needsSave = true;
                 matchedReactions.push(react.emoji);
             }
         }
         
-        if (matchedReactions.length > 0) {
+        if (needsSave) {
             this.saveReacts();
         }
         
         return matchedReactions;
     }
 
-    // Helper to check if a message matches a trigger based on match type
     messageMatchesTrigger(message, trigger, matchType, caseSensitive) {
         if (!caseSensitive) {
             message = message.toLowerCase();
@@ -356,6 +392,10 @@ class ResponseManager {
                 return message.includes(trigger);
         }
     }
+
+    /* messageMatchesTrigger(message, trigger, matchType, caseSensitive) {
+        return this.getCachedTriggerMatch(message, trigger, matchType, caseSensitive);
+    } */
 
     listResponses(guildId) {
         return this.getResponses(guildId);
