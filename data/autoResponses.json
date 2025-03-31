@@ -1,0 +1,17 @@
+{
+  "1300639781364957266": [
+    {
+      "trigger": "zoa",
+      "response": "kalbo",
+      "createdAt": "2025-03-31T11:56:10.764Z",
+      "createdBy": "592273861811241002",
+      "matchType": "exact",
+      "caseSensitive": false,
+      "allowedChannels": [],
+      "ignoredUsers": [],
+      "cooldown": 0,
+      "lastTriggered": "2025-03-31T11:56:56.147Z",
+      "enabled": true
+    }
+  ]
+}

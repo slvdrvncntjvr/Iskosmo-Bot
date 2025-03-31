@@ -129,3 +129,242 @@
 [2025-03-31 16:57:03] info: Shutdown signal received, cleaning up...
 [2025-03-31 16:57:03] info: Destroying client connection...
 [2025-03-31 16:57:03] info: Shutdown complete
+[2025-03-31 19:06:59] info: Kill switch initialized
+[2025-03-31 19:06:59] info: Memory monitoring started
+[2025-03-31 19:06:59] info: Loading command: joke
+[2025-03-31 19:06:59] info: Loading command: snipe
+[2025-03-31 19:06:59] info: Loading command: ban
+[2025-03-31 19:06:59] info: Loading command: kick
+[2025-03-31 19:06:59] info: Permissions data loaded successfully
+[2025-03-31 19:06:59] info: Loading command: announce
+[2025-03-31 19:06:59] info: Loading command: auth
+[2025-03-31 19:06:59] info: Created empty auto-responses file
+[2025-03-31 19:06:59] info: Created empty auto-reactions file
+[2025-03-31 19:06:59] info: Loading command: autoreact
+[2025-03-31 19:06:59] info: Loading command: autorespond
+[2025-03-31 19:06:59] info: Loading command: debug
+[2025-03-31 19:07:00] info: Loading command: getvid
+[2025-03-31 19:07:00] info: Loading command: help
+[2025-03-31 19:07:00] info: Loading command: logchannel
+[2025-03-31 19:07:00] info: Loading command: ping
+[2025-03-31 19:07:00] info: Loading command: statusset
+[2025-03-31 19:07:00] info: Loading event: guildCreate
+[2025-03-31 19:07:00] info: Loading event: guildDelete
+[2025-03-31 19:07:00] info: Loading event: interactionCreate
+[2025-03-31 19:07:00] info: Loading event: messageCreate
+[2025-03-31 19:07:00] info: Loading event: messageDelete
+[2025-03-31 19:07:00] info: Loading event: ready
+[2025-03-31 19:07:00] info: Loading event: resume
+[2025-03-31 19:07:00] info: Health check server running on port 3000
+[2025-03-31 19:07:01] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-03-31 19:07:02] info: Bot successfully logged in
+[2025-03-31 19:07:03] info: Logged in as Iskosmo#5697
+[2025-03-31 19:07:03] info: Serving 5 guilds
+[2025-03-31 19:07:03] info: Set default status: Playing in 5 guilds
+[2025-03-31 19:07:03] info: Started refreshing 14 application (/) commands.
+[2025-03-31 19:07:03] info: Successfully reloaded 14 application (/) commands.
+[2025-03-31 19:07:16] info: jzoa used command: help
+[2025-03-31 19:07:21] info: jzoa used command: autorespond
+[2025-03-31 19:07:29] info: jzoa used command: autorespond
+[2025-03-31 19:08:14] info: Saved 1 auto-responses
+[2025-03-31 19:08:15] info: jzoa used command: autorespond
+[2025-03-31 19:08:19] info: Saved 1 auto-responses
+[2025-03-31 19:08:20] info: Saved 1 auto-responses
+[2025-03-31 19:08:37] info: Saved 1 auto-responses
+[2025-03-31 19:08:37] info: Saved 0 auto-responses
+[2025-03-31 19:08:38] info: jzoa used command: autorespond
+[2025-03-31 19:08:53] info: Saved 1 auto-responses
+[2025-03-31 19:08:54] info: jzoa used command: autorespond
+[2025-03-31 19:08:58] info: Saved 1 auto-responses
+[2025-03-31 19:09:29] info: Saved 1 auto-responses
+[2025-03-31 19:09:29] info: Saved 0 auto-responses
+[2025-03-31 19:09:30] info: jzoa used command: autorespond
+[2025-03-31 19:09:57] info: Saved 1 auto-responses
+[2025-03-31 19:09:58] info: jzoa used command: autorespond
+[2025-03-31 19:10:05] info: Saved 1 auto-responses
+[2025-03-31 19:10:19] info: Saved 1 auto-responses
+[2025-03-31 19:10:19] info: Saved 0 auto-responses
+[2025-03-31 19:10:20] info: jzoa used command: autorespond
+[2025-03-31 19:10:40] info: Saved 1 auto-reactions
+[2025-03-31 19:10:40] info: jzoa used command: autoreact
+[2025-03-31 19:10:43] info: Saved 1 auto-reactions
+[2025-03-31 19:10:57] info: Saved 1 auto-reactions
+[2025-03-31 19:10:58] info: Saved 0 auto-reactions
+[2025-03-31 19:10:58] info: jzoa used command: autoreact
+[2025-03-31 19:11:57] info: Saved 1 auto-responses
+[2025-03-31 19:11:57] info: jzoa used command: autorespond
+[2025-03-31 19:11:59] info: Memory status: 70MB heap, 75.7% system RAM used
+[2025-03-31 19:12:06] info: Saved 1 auto-responses
+[2025-03-31 19:12:06] info: Saved 0 auto-responses
+[2025-03-31 19:12:06] info: jzoa used command: autorespond
+[2025-03-31 19:12:38] info: Message by yuen0ia was deleted in #no-mic
+[2025-03-31 19:12:40] info: Message by yuen0ia was deleted in #no-mic
+[2025-03-31 19:12:46] info: jzoa used command: snipe
+[2025-03-31 19:16:59] info: Memory status: 70MB heap, 75.6% system RAM used
+[2025-03-31 19:20:04] info: Shutdown signal received, cleaning up...
+[2025-03-31 19:20:04] info: Destroying client connection...
+[2025-03-31 19:20:04] info: Shutdown complete
+[2025-03-31 19:21:16] info: Kill switch initialized
+[2025-03-31 19:21:16] info: Memory monitoring started
+[2025-03-31 19:21:16] info: Loading command: joke
+[2025-03-31 19:21:16] info: Loading command: snipe
+[2025-03-31 19:21:16] info: Loading command: ban
+[2025-03-31 19:21:16] info: Loading command: kick
+[2025-03-31 19:21:16] info: Permissions data loaded successfully
+[2025-03-31 19:21:16] info: Loading command: announce
+[2025-03-31 19:21:16] info: Loading command: auth
+[2025-03-31 19:21:16] info: Loaded 0 auto-responses across 1 guilds
+[2025-03-31 19:21:16] info: Loaded 0 auto-reactions across 1 guilds
+[2025-03-31 19:21:16] info: Loading command: autoreact
+[2025-03-31 19:21:16] info: Loading command: autorespond
+[2025-03-31 19:21:16] info: Loading command: debug
+[2025-03-31 19:21:17] info: Loading command: getvid
+[2025-03-31 19:21:17] info: Loading command: help
+[2025-03-31 19:21:17] info: Loading command: logchannel
+[2025-03-31 19:21:17] info: Loading command: ping
+[2025-03-31 19:21:17] info: Loading command: statusset
+[2025-03-31 19:21:17] info: Loading event: guildCreate
+[2025-03-31 19:21:17] info: Loading event: guildDelete
+[2025-03-31 19:21:17] info: Loading event: interactionCreate
+[2025-03-31 19:21:17] info: Loading event: messageCreate
+[2025-03-31 19:21:17] info: Loading event: messageDelete
+[2025-03-31 19:21:17] info: Loading event: ready
+[2025-03-31 19:21:17] info: Loading event: resume
+[2025-03-31 19:21:17] info: Health check server running on port 3000
+[2025-03-31 19:21:17] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-03-31 19:21:18] info: Bot successfully logged in
+[2025-03-31 19:21:18] info: Logged in as Iskosmo#5697
+[2025-03-31 19:21:18] info: Serving 5 guilds
+[2025-03-31 19:21:18] info: Set default status: Playing in 5 guilds
+[2025-03-31 19:21:18] info: Started refreshing 14 application (/) commands.
+[2025-03-31 19:21:19] info: Successfully reloaded 14 application (/) commands.
+[2025-03-31 19:21:30] info: jzoa used command: help
+[2025-03-31 19:21:32] info: Saved 1 auto-responses
+[2025-03-31 19:21:32] info: jzoa used command: autorespond
+[2025-03-31 19:21:38] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 19:21:40] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 19:21:45] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 19:21:46] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 19:21:57] info: jzoa used command: ping
+[2025-03-31 19:22:05] info: Saved 0 auto-responses
+[2025-03-31 19:22:06] info: jzoa used command: autorespond
+[2025-03-31 19:22:16] info: Saved 1 auto-responses
+[2025-03-31 19:22:16] info: jzoa used command: autorespond
+[2025-03-31 19:22:22] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 19:26:16] info: Memory status: 69MB heap, 72.3% system RAM used
+[2025-03-31 19:31:16] info: Memory status: 69MB heap, 70.6% system RAM used
+[2025-03-31 19:33:32] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 19:34:18] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 19:34:34] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 19:35:52] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 19:36:16] info: Memory status: 69MB heap, 69.4% system RAM used
+[2025-03-31 19:36:17] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-03-31 19:36:36] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 19:36:39] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 19:36:41] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 19:41:16] info: Memory status: 69MB heap, 72.0% system RAM used
+[2025-03-31 19:44:39] info: Shutdown signal received, cleaning up...
+[2025-03-31 19:44:39] info: Destroying client connection...
+[2025-03-31 19:44:39] info: Shutdown complete
+[2025-03-31 19:47:53] info: Kill switch initialized
+[2025-03-31 19:47:53] info: Memory monitoring started
+[2025-03-31 19:47:53] info: Loading command: joke
+[2025-03-31 19:47:53] info: Loading command: snipe
+[2025-03-31 19:47:53] info: Loading command: ban
+[2025-03-31 19:47:53] info: Loading command: kick
+[2025-03-31 19:47:53] info: Permissions data loaded successfully
+[2025-03-31 19:47:53] info: Loading command: announce
+[2025-03-31 19:47:53] info: Loading command: auth
+[2025-03-31 19:47:53] info: Loaded 1 auto-responses across 1 guilds
+[2025-03-31 19:47:53] info: Loaded 0 auto-reactions across 1 guilds
+[2025-03-31 19:47:53] info: Loading command: autoreact
+[2025-03-31 19:47:53] info: Loading command: autorespond
+[2025-03-31 19:47:53] info: Loading command: debug
+[2025-03-31 19:47:54] info: Loading command: getvid
+[2025-03-31 19:47:54] info: Loading command: help
+[2025-03-31 19:47:54] info: Loading command: logchannel
+[2025-03-31 19:47:54] info: Loading command: ping
+[2025-03-31 19:47:54] info: Loading command: statusset
+[2025-03-31 19:47:54] info: Loading event: guildCreate
+[2025-03-31 19:47:54] info: Loading event: guildDelete
+[2025-03-31 19:47:54] info: Loading event: interactionCreate
+[2025-03-31 19:47:54] info: Loading event: messageCreate
+[2025-03-31 19:47:54] info: Loading event: messageDelete
+[2025-03-31 19:47:54] info: Loading event: ready
+[2025-03-31 19:47:54] info: Loading event: resume
+[2025-03-31 19:47:54] info: Health check server running on port 3000
+[2025-03-31 19:47:54] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-03-31 19:47:56] info: Bot successfully logged in
+[2025-03-31 19:47:56] info: Logged in as Iskosmo#5697
+[2025-03-31 19:47:56] info: Serving 5 guilds
+[2025-03-31 19:47:56] info: Set default status: Playing in 5 guilds
+[2025-03-31 19:47:56] info: Started refreshing 14 application (/) commands.
+[2025-03-31 19:47:56] info: Successfully reloaded 14 application (/) commands.
+[2025-03-31 19:48:15] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 19:48:15] info: Saved 0 auto-responses
+[2025-03-31 19:48:15] info: jzoa used command: autorespond
+[2025-03-31 19:48:16] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 19:48:16] info: Saved 1 auto-responses
+[2025-03-31 19:48:17] info: jzoa used command: autorespond
+[2025-03-31 19:48:19] error: Error processing auto-responses: prefix is not defined
+[2025-03-31 19:48:33] info: Shutdown signal received, cleaning up...
+[2025-03-31 19:48:33] info: Destroying client connection...
+[2025-03-31 19:48:33] info: Shutdown complete
+[2025-03-31 19:54:32] info: Kill switch initialized
+[2025-03-31 19:54:32] info: Memory monitoring started
+[2025-03-31 19:54:32] info: Loading command: joke
+[2025-03-31 19:54:32] info: Loading command: snipe
+[2025-03-31 19:54:32] info: Loading command: ban
+[2025-03-31 19:54:32] info: Loading command: kick
+[2025-03-31 19:54:32] info: Permissions data loaded successfully
+[2025-03-31 19:54:32] info: Loading command: announce
+[2025-03-31 19:54:32] info: Loading command: auth
+[2025-03-31 19:54:32] info: Loaded 1 auto-responses across 1 guilds
+[2025-03-31 19:54:32] info: Loaded 0 auto-reactions across 1 guilds
+[2025-03-31 19:54:32] info: Loading command: autoreact
+[2025-03-31 19:54:32] info: Loading command: autorespond
+[2025-03-31 19:54:32] info: Loading command: debug
+[2025-03-31 19:54:33] info: Loading command: getvid
+[2025-03-31 19:54:33] info: Loading command: help
+[2025-03-31 19:54:33] info: Loading command: logchannel
+[2025-03-31 19:54:33] info: Loading command: ping
+[2025-03-31 19:54:33] info: Loading command: statusset
+[2025-03-31 19:54:33] info: Loading event: guildCreate
+[2025-03-31 19:54:33] info: Loading event: guildDelete
+[2025-03-31 19:54:33] info: Loading event: interactionCreate
+[2025-03-31 19:54:33] info: Loading event: messageCreate
+[2025-03-31 19:54:33] info: Loading event: messageDelete
+[2025-03-31 19:54:33] info: Loading event: ready
+[2025-03-31 19:54:33] info: Loading event: resume
+[2025-03-31 19:54:33] info: Health check server running on port 3000
+[2025-03-31 19:54:33] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-03-31 19:54:34] info: Bot successfully logged in
+[2025-03-31 19:54:34] info: Logged in as Iskosmo#5697
+[2025-03-31 19:54:34] info: Serving 5 guilds
+[2025-03-31 19:54:34] info: Set default status: Playing in 5 guilds
+[2025-03-31 19:54:34] info: Started refreshing 14 application (/) commands.
+[2025-03-31 19:54:35] info: Successfully reloaded 14 application (/) commands.
+[2025-03-31 19:54:51] info: Saved 0 auto-responses
+[2025-03-31 19:54:52] info: jzoa used command: autorespond
+[2025-03-31 19:54:58] info: Saved 1 auto-responses
+[2025-03-31 19:54:58] info: jzoa used command: autorespond
+[2025-03-31 19:55:01] info: Saved 1 auto-responses
+[2025-03-31 19:55:18] info: Saved 0 auto-responses
+[2025-03-31 19:55:19] info: jzoa used command: autorespond
+[2025-03-31 19:55:36] info: Saved 1 auto-responses
+[2025-03-31 19:55:36] info: jzoa used command: autorespond
+[2025-03-31 19:55:49] info: Saved 1 auto-responses
+[2025-03-31 19:56:05] info: Saved 0 auto-responses
+[2025-03-31 19:56:05] info: jzoa used command: autorespond
+[2025-03-31 19:56:10] info: Saved 1 auto-responses
+[2025-03-31 19:56:11] info: jzoa used command: autorespond
+[2025-03-31 19:56:13] info: Saved 1 auto-responses
+[2025-03-31 19:56:19] info: Saved 1 auto-responses
+[2025-03-31 19:56:56] info: Saved 1 auto-responses
+[2025-03-31 19:59:32] info: Memory status: 69MB heap, 70.2% system RAM used
+[2025-03-31 20:04:32] info: Memory status: 69MB heap, 70.5% system RAM used
+[2025-03-31 20:09:32] info: Memory status: 70MB heap, 70.7% system RAM used
+[2025-03-31 20:09:33] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-03-31 20:13:31] info: Shutdown signal received, cleaning up...
+[2025-03-31 20:13:31] info: Destroying client connection...
+[2025-03-31 20:13:31] info: Shutdown complete
