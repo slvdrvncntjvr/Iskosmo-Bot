@@ -32,10 +32,9 @@ const logger = createLogger({
 
 logger.logToDiscord = async (client, message, level = 'info') => {
     try {
-        // Get log settings
         const LOG_SETTINGS_PATH = path.join(__dirname, '../data/logSettings.json');
         if (!fs.existsSync(LOG_SETTINGS_PATH)) {
-            return; // No settings file exists yet
+            return; 
         }
         
         const logSettings = JSON.parse(fs.readFileSync(LOG_SETTINGS_PATH, 'utf8'));

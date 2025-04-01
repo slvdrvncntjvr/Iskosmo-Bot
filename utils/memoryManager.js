@@ -1,6 +1,7 @@
 const logger = require('./logger');
 const os = require('os');
 const cooldownManager = require('./cooldownManager');
+const messageTracker = require('./messageTracker');
 
 class MemoryManager {
     constructor(client) {
@@ -48,6 +49,10 @@ class MemoryManager {
     
     performMemoryCleanup(aggressive) {
         this.clearResponseCache();
+
+        if (messageTracker) {
+            messageTracker.cleanupOldMessages(force);
+        }
 
         if (cooldownManager) {
             cooldownManager.maybeCleanupExpired();

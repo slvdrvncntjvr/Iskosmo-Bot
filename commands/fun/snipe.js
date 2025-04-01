@@ -1,179 +1,196 @@
 // commands/fun/snipe.js
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js');
 const { createEmbed } = require('../../utils/embedBuilder');
 const messageTracker = require('../../utils/messageTracker');
+const snipeManager = require('../../utils/snipeManager');
 const logger = require('../../utils/logger');
 
 module.exports = {
     name: 'snipe',
-    description: 'Shows the most recently deleted message in the channel',
+    description: 'Show the most recently deleted message in a channel',
+    usage: '[#channel] [index]',
     category: 'fun',
-
+    requiresAuth: false,
+    
     slashCommand: new SlashCommandBuilder()
         .setName('snipe')
-        .setDescription('Shows the most recently deleted message in the channel'),
+        .setDescription('Show the most recently deleted message in a channel')
+        .addChannelOption(option => 
+            option.setName('channel')
+                .setDescription('Channel to snipe from (defaults to current channel)')
+                .setRequired(false))
+        .addIntegerOption(option => 
+            option.setName('index')
+                .setDescription('Which deleted message to show (0 = most recent)')
+                .setRequired(false)
+                .setMinValue(0)
+                .setMaxValue(9)),
     
     async execute(message, args, client) {
-        try {
-            const deletedMessage = messageTracker.getDeletedMessage(message.channel.id);
-            
-            if (!deletedMessage) {
-                return message.reply({
-                    embeds: [createEmbed({
-                        title: 'No Deleted Messages',
-                        description: 'There are no recently deleted messages in this channel.',
-                        type: 'warning'
-                    })]
-                });
+        // Parse arguments
+        let targetChannelId = message.channel.id;
+        let index = 0;
+        
+        // Check for channel mention
+        if (args.length > 0 && args[0].match(/^<#\d+>$/)) {
+            const channelMention = args[0];
+            targetChannelId = channelMention.replace(/[<#>]/g, '');
+            args.shift(); // Remove the channel argument
+        }
+        
+        // Check for index
+        if (args.length > 0) {
+            const parsedIndex = parseInt(args[0], 10);
+            if (!isNaN(parsedIndex) && parsedIndex >= 0 && parsedIndex < 10) {
+                index = parsedIndex;
             }
-
-            const timeSinceDeleted = this.formatTimeDifference(
-                deletedMessage.deletedAt, 
-                new Date()
-            );
-
-            const snipeEmbed = createEmbed({
-                title: 'Sniped Message',
-                description: deletedMessage.content || '*No text content*',
-                type: 'info',
-                fields: [
-                    { 
-                        name: 'Author', 
-                        value: `<@${deletedMessage.author.id}> (${deletedMessage.author.tag})`, 
-                        inline: true 
-                    },
-                    { 
-                        name: 'Deleted', 
-                        value: `${timeSinceDeleted} ago`, 
-                        inline: true 
-                    }
-                ]
-            });
-
-            snipeEmbed.setAuthor({
-                name: deletedMessage.author.tag,
-                iconURL: deletedMessage.author.avatarURL
-            });
-
-            snipeEmbed.setTimestamp(deletedMessage.createdAt);
-
-            if (deletedMessage.attachments.length > 0) {
-                snipeEmbed.addFields({
-                    name: 'Attachments',
-                    value: deletedMessage.attachments.map((url, i) => 
-                        `[Attachment ${i+1}](${url})`
-                    ).join(', ')
-                });
-
-                snipeEmbed.setImage(deletedMessage.attachments[0]);
-            }
-
-            message.reply({ embeds: [snipeEmbed] });
-            
-        } catch (error) {
-            logger.error('Error in snipe command:', error);
-            
-            message.reply({
+        }
+        
+        // Get the target channel
+        const targetChannel = client.channels.cache.get(targetChannelId);
+        
+        if (!targetChannel) {
+            return message.reply({
                 embeds: [createEmbed({
                     title: 'Error',
-                    description: 'An error occurred while retrieving the deleted message.',
+                    description: 'Invalid channel. Please specify a valid channel.',
                     type: 'error'
                 })]
             });
         }
+        
+        // If target channel is different from current channel, check permissions
+        if (targetChannel.id !== message.channel.id) {
+            const isOwner = message.author.id === process.env.BOT_OWNER_ID;
+            
+            // If not the owner, check permissions
+            if (!isOwner) {
+                // Check if user has permission for cross-channel sniping
+                const canSnipe = snipeManager.canSnipeAcrossChannels(message.member, isOwner);
+                
+                if (!canSnipe) {
+                    return message.reply({
+                        embeds: [createEmbed({
+                            title: 'Permission Denied',
+                            description: 'You don\'t have permission to snipe messages from other channels.',
+                            type: 'error'
+                        })]
+                    });
+                }
+            }
+        }
+        
+        // Get the deleted message
+        const deletedMessage = messageTracker.getDeletedMessage(targetChannel.id, index);
+        
+        if (!deletedMessage) {
+            return message.reply({
+                embeds: [createEmbed({
+                    title: 'No Deleted Messages',
+                    description: index === 0 
+                        ? `No recently deleted messages found in ${targetChannel}.`
+                        : `No deleted message found at index ${index} in ${targetChannel}.`,
+                    type: 'info'
+                })]
+            });
+        }
+
+        const timestamp = new Date(deletedMessage.timestamp).toLocaleString();
+
+        const fields = [];
+        if (deletedMessage.attachments && deletedMessage.attachments.length > 0) {
+            fields.push({
+                name: 'Attachments',
+                value: deletedMessage.attachments
+                    .map(a => `[${a.name}](${a.url})`)
+                    .join('\n')
+            });
+        }
+
+        return message.reply({
+            embeds: [createEmbed({
+                title: `Sniped Message ${index > 0 ? `(${index + 1} back)` : ''}`,
+                description: deletedMessage.content,
+                type: 'info',
+                author: {
+                    name: `${deletedMessage.author.username}#${deletedMessage.author.discriminator}`,
+                    icon_url: deletedMessage.author.avatar
+                },
+                footer: {
+                    text: `Deleted at ${timestamp}${targetChannel.id !== message.channel.id ? ` in #${targetChannel.name}` : ''}`
+                },
+                fields
+            })]
+        });;
     },
     
     async executeSlash(interaction, client) {
-        try {
-            const deletedMessage = messageTracker.getDeletedMessage(interaction.channel.id);
-            
-            if (!deletedMessage) {
-                return interaction.reply({
-                    embeds: [createEmbed({
-                        title: 'No Deleted Messages',
-                        description: 'There are no recently deleted messages in this channel.',
-                        type: 'warning'
-                    })]
-                });
+        const targetChannel = interaction.options.getChannel('channel') || interaction.channel;
+        const index = interaction.options.getInteger('index') || 0;
+
+        if (targetChannel.id !== interaction.channel.id) {
+            const isOwner = interaction.user.id === process.env.BOT_OWNER_ID;
+
+            if (!isOwner) {
+                const canSnipe = snipeManager.canSnipeAcrossChannels(interaction.member, isOwner);
+                
+                if (!canSnipe) {
+                    return interaction.reply({
+                        embeds: [createEmbed({
+                            title: 'Permission Denied',
+                            description: 'You don\'t have permission to snipe messages from other channels.',
+                            type: 'error'
+                        })],
+                        ephemeral: true
+                    });
+                }
             }
-
-            const timeSinceDeleted = this.formatTimeDifference(
-                deletedMessage.deletedAt, 
-                new Date()
-            );
-
-            const snipeEmbed = createEmbed({
-                title: 'Sniped Message',
-                description: deletedMessage.content || '*No text content*',
-                type: 'info',
-                fields: [
-                    { 
-                        name: 'Author', 
-                        value: `<@${deletedMessage.author.id}> (${deletedMessage.author.tag})`, 
-                        inline: true 
-                    },
-                    { 
-                        name: 'Deleted', 
-                        value: `${timeSinceDeleted} ago`, 
-                        inline: true 
-                    }
-                ]
-            });
-
-            snipeEmbed.setAuthor({
-                name: deletedMessage.author.tag,
-                iconURL: deletedMessage.author.avatarURL
-            });
-
-            snipeEmbed.setTimestamp(deletedMessage.createdAt);
-
-            if (deletedMessage.attachments.length > 0) {
-                snipeEmbed.addFields({
-                    name: 'Attachments',
-                    value: deletedMessage.attachments.map((url, i) => 
-                        `[Attachment ${i+1}](${url})`
-                    ).join(', ')
-                });
-
-                snipeEmbed.setImage(deletedMessage.attachments[0]);
-            }
-
-            interaction.reply({ embeds: [snipeEmbed] });
-            
-        } catch (error) {
-            logger.error('Error in snipe slash command:', error);
-            
-            interaction.reply({
+        }
+        
+        // Get the deleted message
+        const deletedMessage = messageTracker.getDeletedMessage(targetChannel.id, index);
+        
+        if (!deletedMessage) {
+            return interaction.reply({
                 embeds: [createEmbed({
-                    title: 'Error',
-                    description: 'An error occurred while retrieving the deleted message.',
-                    type: 'error'
+                    title: 'No Deleted Messages',
+                    description: index === 0 
+                        ? `No recently deleted messages found in ${targetChannel}.`
+                        : `No deleted message found at index ${index} in ${targetChannel}.`,
+                    type: 'info'
                 })],
                 ephemeral: true
             });
         }
-    },
-    
-    /**
-     * format the time difference between two dates
-     * @param {Date} startDate The earlier date
-     * @param {Date} endDate The later date
-     * @returns {string} Formatted time difference
-     */
-    formatTimeDifference(startDate, endDate) {
-        const diff = Math.abs(endDate - startDate) / 1000; 
         
-        if (diff < 60) {
-            return `${Math.round(diff)} second${Math.round(diff) !== 1 ? 's' : ''}`;
-        } else if (diff < 3600) {
-            const minutes = Math.floor(diff / 60);
-            return `${minutes} minute${minutes !== 1 ? 's' : ''}`;
-        } else if (diff < 86400) {
-            const hours = Math.floor(diff / 3600);
-            return `${hours} hour${hours !== 1 ? 's' : ''}`;
-        } else {
-            const days = Math.floor(diff / 86400);
-            return `${days} day${days !== 1 ? 's' : ''}`;
+        // Format the timestamp
+        const timestamp = new Date(deletedMessage.timestamp).toLocaleString();
+        
+        // Build embed fields for attachments if any
+        const fields = [];
+        if (deletedMessage.attachments && deletedMessage.attachments.length > 0) {
+            fields.push({
+                name: 'Attachments',
+                value: deletedMessage.attachments
+                    .map(a => `[${a.name}](${a.url})`)
+                    .join('\n')
+            });
         }
+
+        return interaction.reply({
+            embeds: [createEmbed({
+                title: `Sniped Message ${index > 0 ? `(${index + 1} back)` : ''}`,
+                description: deletedMessage.content,
+                type: 'info',
+                author: {
+                    name: `${deletedMessage.author.username}#${deletedMessage.author.discriminator}`,
+                    icon_url: deletedMessage.author.avatar
+                },
+                footer: {
+                    text: `Deleted at ${timestamp}${targetChannel.id !== interaction.channel.id ? ` in #${targetChannel.name}` : ''}`
+                },
+                fields
+            })]
+        });;
     }
 };
