@@ -11,7 +11,7 @@ module.exports = {
             actualClient.statusManager.updateGuildCount();
         }
         
-        const eventType = this.name === 'guildCreate' ? 'Joined' : 'Left';
+        const eventType = 'Joined';
         logger.info(`Joined new guild: ${guild.name} (ID: ${guild.id}). Now serving ${guildCount} guilds.`);
         logger.logToDiscord(client, `Joined new guild: ${guild.name} (ID: ${guild.id}). Now serving ${guildCount} guilds.`);
     },

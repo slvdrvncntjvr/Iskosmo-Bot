@@ -31,6 +31,11 @@ const logger = createLogger({
 });
 
 logger.logToDiscord = async (client, message, level = 'info') => {
+    if (!client) {
+        console.error('Cannot log to Discord: client is undefined');
+        return;
+    }
+
     try {
         const LOG_SETTINGS_PATH = path.join(__dirname, '../data/logSettings.json');
         if (!fs.existsSync(LOG_SETTINGS_PATH)) {
@@ -45,8 +50,7 @@ logger.logToDiscord = async (client, message, level = 'info') => {
             
             const channel = guild.channels.cache.get(channelId);
             if (!channel) continue;
-            
-            // Format the log message with timestamp
+
             const timestamp = new Date().toISOString().replace('T', ' ').slice(0, 19);
             const logMessage = `[${timestamp}] ${level.toUpperCase()}: ${message}`;
             

@@ -21,7 +21,7 @@ class MemoryManager {
         logger.info('Memory monitoring started');
     }
     
-    checkMemoryUsage() {
+    checkMemoryUsage(force = false) {
         const memoryUsage = process.memoryUsage();
         const systemFree = os.freemem();
         const systemTotal = os.totalmem();
@@ -51,7 +51,7 @@ class MemoryManager {
         this.clearResponseCache();
 
         if (messageTracker) {
-            messageTracker.cleanupOldMessages(force);
+            messageTracker.cleanupOldMessages(aggressive);
         }
 
         if (cooldownManager) {

@@ -270,8 +270,8 @@ class ResponseManager {
         return false;
     }
 
-    // Check if a message should trigger an auto-response
     checkForAutoResponse(message) {
+        this._isTriggering = true;
         try {
             if (!message.guild) return null;
             

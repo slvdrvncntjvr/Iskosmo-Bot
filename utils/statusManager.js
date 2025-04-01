@@ -44,7 +44,7 @@ class StatusManager {
     }
 
     updateGuildCount() {
-        if (this.defaultStatus) {
+        if (this.defaultStatus === true) {
             this.setDefaultStatus();
         }
     }

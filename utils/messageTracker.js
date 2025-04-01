@@ -150,17 +150,16 @@ checkMemoryUsage(force = false) {
         }
     }
 }
-
 cleanupOldMessages(aggressive = false) {
     const now = Date.now();
     this.lastCleanup = now;
     let removedCount = 0;
-    
+
     for (const [channelId, messages] of this.deletedMessages.entries()) {
         let newMessages;
         
         if (aggressive) {
-            newMessages = messages.slice(0, 1);
+            newMessages = messages.slice(0, 1); 
             removedCount += messages.length - newMessages.length;
         } else {
             newMessages = messages.filter(msg => {
@@ -169,24 +168,21 @@ cleanupOldMessages(aggressive = false) {
                 return !isExpired;
             });
         }
-        
+
         if (newMessages.length === 0) {
             this.deletedMessages.delete(channelId);
         } else if (newMessages.length < messages.length) {
             this.deletedMessages.set(channelId, newMessages);
         }
     }
-    
+
     if (removedCount > 0) {
         if (this.logDeletions) {
             logger.debug(`Cleaned up ${removedCount} expired deleted messages`);
         }
-            }
-        }
+    }
+}
 
-        maybeCleanupOldMessages() {
-            this.checkMemoryUsage();
-        }
 }
 
 module.exports = new MessageTracker();

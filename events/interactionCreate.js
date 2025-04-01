@@ -27,22 +27,22 @@ module.exports = {
             }
         }
 
+        const commandName = interaction.commandName;
         const isBotOwner = interaction.user.id === process.env.BOT_OWNER_ID;
         const isCooldownCommand = commandName === 'cooldown';
-    
-        if (!isBotOwner && !isCooldownCommand) {
-            const canProceed = cooldownManager.handleInteractionCooldown(interaction, commandName);
-            if (!canProceed) {
-                return;
-            }
-        }
         
         if (interaction.isCommand()) {
-            const command = client.slashCommands.get(interaction.commandName);
-            
+            if (!isBotOwner && !isCooldownCommand) {
+                const canProceed = cooldownManager.handleInteractionCooldown(interaction, commandName);
+                if (!canProceed) {
+                    return;
+                }
+            }
+
+            const command = client.slashCommands.get(commandName);
             if (!command) return;
 
-            if (command.requiresAuth && !permissionManager.isAuthorized(interaction.user.id, interaction.commandName)) {
+            if (command.requiresAuth && !permissionManager.isAuthorized(interaction.user.id, commandName)) {
                 return interaction.reply({ 
                     embeds: [createEmbed({
                         title: 'Permission Error',
@@ -55,10 +55,10 @@ module.exports = {
             
             try {
                 await command.executeSlash(interaction, client);
-                logger.info(`${interaction.user.tag} used slash command: ${interaction.commandName}`);
-                logger.logToDiscord(client, `${interaction.user.tag} used slash command: ${interaction.commandName} in ${interaction.guild.name}`);
+                logger.info(`${interaction.user.tag} used slash command: ${commandName}`);
+                logger.logToDiscord(client, `${interaction.user.tag} used slash command: ${commandName} in ${interaction.guild.name}`);
             } catch (error) {
-                logger.error(`Error executing slash command ${interaction.commandName}:`, error);
+                logger.error(`Error executing slash command ${commandName}:`, error);
                 
                 const errorEmbed = createEmbed({
                     title: 'Command Error',
