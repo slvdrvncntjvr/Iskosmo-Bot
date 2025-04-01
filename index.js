@@ -100,14 +100,23 @@ client.login(process.env.DISCORD_BOT_TOKEN)
         process.exit(1);
     });
 
+// memory pressure detection
 setInterval(() => {
-    const memoryUsage = process.memoryUsage();
-    logger.info(`Memory usage: ${Math.round(memoryUsage.heapUsed / 1024 / 1024)} MB`);
-
-    if (memoryUsage.heapUsed > 500 * 1024 * 1024) { 
-        logger.warn('High memory usage detected, potential memory leak');
+    try {
+      const memoryUsage = process.memoryUsage();
+      const memoryUsagePercent = (memoryUsage.heapUsed / memoryUsage.heapTotal) * 100;
+      
+      if (memoryUsagePercent > 85) {
+        console.warn(`[MEMORY WARNING] High memory usage: ${memoryUsagePercent.toFixed(1)}%`);
+        if (global.gc) {
+          console.log('Forcing garbage collection...');
+          global.gc();
+        }
+      }
+    } catch (error) {
+      console.error('Error checking memory:', error);
     }
-}, 30 * 60 * 1000);
+  }, 60000); 
 
 setInterval(() => {
     deviceManager.checkDeviceStatus();
