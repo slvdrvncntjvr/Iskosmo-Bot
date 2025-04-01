@@ -45,6 +45,8 @@ client.commands = new Collection();
 client.slashCommands = new Collection();
 client.memoryManager = new MemoryManager(client);
 client.commandOptimizer = new CommandOptimizer(client);
+const MemoryManager = require('./utils/memoryManager');
+client.memoryManager = new MemoryManager(client);
 
 const loadCommands = (dir) => {
     const commandFolders = fs.readdirSync(path.join(__dirname, dir));

@@ -6,31 +6,46 @@ const messageTracker = require('./messageTracker');
 class MemoryManager {
     constructor(client) {
         this.client = client;
-        this.warningThreshold = 1.3 * 1024 * 1024 * 1024; // 1.3GB (65% of 2GB)
-        this.criticalThreshold = 1.6 * 1024 * 1024 * 1024; // 1.6GB (80% of 2GB)
+        this.warningThreshold = 800 * 1024 * 1024;
+        this.criticalThreshold = 1024 * 1024 * 1024;
+        this.lowSystemMemoryThreshold = 400 * 1024 * 1024;
         this.lastCacheClear = Date.now();
-        this.cacheInterval = 30 * 60 * 1000; 
+        this.cacheInterval = 30 * 60 * 1000;
+        this.memoryCheckInterval = 2 * 60 * 1000;
 
         this.responseCache = new Map();
+        
+        this.inRecoveryMode = false;
+        this.recoveryModeStarted = null;
+        this.recoveryModeDuration = 5 * 60 * 1000;
 
         this.startMonitoring();
     }
     
     startMonitoring() {
-        setInterval(() => this.checkMemoryUsage(), 5 * 60 * 1000);
-        logger.info('Memory monitoring started');
+        setInterval(() => this.checkMemoryUsage(), this.memoryCheckInterval);
+        logger.info('Memory monitoring started with adjusted thresholds for low-memory device');
     }
     
-    checkMemoryUsage(force = false) {
+    checkMemoryUsage() {
         const memoryUsage = process.memoryUsage();
         const systemFree = os.freemem();
         const systemTotal = os.totalmem();
         const systemUsedPercent = ((systemTotal - systemFree) / systemTotal) * 100;
         
-        logger.info(`Memory status: ${Math.round(memoryUsage.heapUsed / 1024 / 1024)}MB heap, ${systemUsedPercent.toFixed(1)}% system RAM used`);
+        logger.info(`Memory status: ${Math.round(memoryUsage.heapUsed / 1024 / 1024)}MB heap, ${systemUsedPercent.toFixed(1)}% system RAM used, ${Math.round(systemFree / 1024 / 1024)}MB free`);
 
-        if (systemFree < 400 * 1024 * 1024) { 
-            logger.warn(`Low system memory: ${Math.round(systemFree / 1024 / 1024)}MB free`);
+        if (this.inRecoveryMode) {
+            const now = Date.now();
+            if (now - this.recoveryModeStarted > this.recoveryModeDuration && systemFree > this.lowSystemMemoryThreshold * 1.5) {
+                this.inRecoveryMode = false;
+                logger.info('Exiting memory recovery mode - system memory has recovered');
+            }
+        }
+
+        if (systemFree < this.lowSystemMemoryThreshold) { 
+            logger.warn(`Low system memory: ${Math.round(systemFree / 1024 / 1024)}MB free - entering recovery mode`);
+            this.enterRecoveryMode();
             this.performMemoryCleanup(true);
             return;
         }
@@ -47,6 +62,15 @@ class MemoryManager {
         }
     }
     
+    enterRecoveryMode() {
+        if (!this.inRecoveryMode) {
+            this.inRecoveryMode = true;
+            this.recoveryModeStarted = Date.now();
+            logger.warn('Entering memory recovery mode - limiting functionality to preserve stability');
+            console.log('\x1b[41m\x1b[37m%s\x1b[0m', ' MEMORY RECOVERY MODE ACTIVE ');
+        }
+    }
+    
     performMemoryCleanup(aggressive) {
         this.clearResponseCache();
 
@@ -56,11 +80,11 @@ class MemoryManager {
 
         if (cooldownManager) {
             cooldownManager.maybeCleanupExpired();
-            if (force) {
+            if (aggressive) {
                 const essentialCommands = ['getvid', 'announce', 'debug'];
                 let removedCount = 0;
                 
-                for (const [key, cooldown] of cooldownManager.activeCooldowns.entries()) {
+                for (const [key, cooldown] of [...cooldownManager.activeCooldowns.entries()]) {
                     if (!essentialCommands.includes(cooldown.commandName)) {
                         cooldownManager.activeCooldowns.delete(key);
                         removedCount++;
@@ -77,20 +101,32 @@ class MemoryManager {
             logger.warn('Performing aggressive memory cleanup');
 
             const activeGuildMembers = new Set();
-            this.client.guilds.cache.forEach(guild => {
-                if (guild.members?.cache) {
-                    guild.members.cache.forEach(member => {
-                        activeGuildMembers.add(member.id);
-                    });
-                }
-            });
+            if (this.client && this.client.guilds) {
+                this.client.guilds.cache.forEach(guild => {
+                    if (guild.members?.cache) {
+                        guild.members.cache.forEach(member => {
+                            activeGuildMembers.add(member.id);
+                        });
+                    }
+                });
+            }
             
-            // sweep users not in active guilds
-            this.client.users.cache.sweep(user => !activeGuildMembers.has(user.id));
+            if (this.client && this.client.users) {
+                const initialSize = this.client.users.cache.size;
+                this.client.users.cache.sweep(user => !activeGuildMembers.has(user.id));
+                const removedUsers = initialSize - this.client.users.cache.size;
+                if (removedUsers > 0) {
+                    logger.info(`Memory cleanup: Removed ${removedUsers} cached users`);
+                }
+            }
  
             if (global.gc) {
                 logger.info('Triggering garbage collection');
-                global.gc();
+                try {
+                    global.gc();
+                } catch (error) {
+                    logger.error('Error during forced garbage collection:', error);
+                }
             }
         }
         
@@ -104,6 +140,8 @@ class MemoryManager {
     }
 
     cacheResponse(commandName, key, response, ttl = 10 * 60 * 1000) { 
+        if (this.inRecoveryMode) return;
+        
         const cacheKey = `${commandName}:${key}`;
         this.responseCache.set(cacheKey, {
             data: response,
@@ -122,6 +160,25 @@ class MemoryManager {
         }
         
         return cached.data;
+    }
+    
+    isInRecoveryMode() {
+        return this.inRecoveryMode;
+    }
+    
+    getMemoryStatus() {
+        const memoryUsage = process.memoryUsage();
+        const systemFree = os.freemem();
+        const systemTotal = os.totalmem();
+        
+        return {
+            heapUsed: Math.round(memoryUsage.heapUsed / 1024 / 1024),
+            heapTotal: Math.round(memoryUsage.heapTotal / 1024 / 1024),
+            systemFree: Math.round(systemFree / 1024 / 1024),
+            systemTotal: Math.round(systemTotal / 1024 / 1024),
+            systemUsedPercent: ((systemTotal - systemFree) / systemTotal) * 100,
+            inRecoveryMode: this.inRecoveryMode
+        };
     }
 }
 
