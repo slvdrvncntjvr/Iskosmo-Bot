@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const config = require('../../config');
 const { createEmbed } = require('../../utils/embedBuilder');
+const cooldownManager = require('../../utils/cooldownManager');
 
 module.exports = {
     name: 'help',

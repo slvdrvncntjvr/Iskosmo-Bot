@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const logger = require('./logger');
 const { ActivityType } = require('discord.js');
+const cooldownManager = require('./cooldownManager');
 
 const KILL_SWITCH_FILE = path.join(__dirname, '../data/killswitch.json');
 
@@ -83,6 +84,11 @@ class KillSwitch {
             this.applyKilledStatus();
         } catch (error) {
             logger.error('Error setting presence during kill:', error);
+        }
+
+        if (cooldownManager) {
+            const count = cooldownManager.resetAllCooldowns();
+            logger.info(`Kill switch reset ${count} active cooldowns`);
         }
         
         this.saveState();

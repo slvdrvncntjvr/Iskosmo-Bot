@@ -2,6 +2,7 @@ const logger = require('../utils/logger');
 const { createEmbed } = require('../utils/embedBuilder');
 const permissionManager = require('../utils/permissionManager');
 const killSwitch = require('../utils/killSwitch');
+const cooldownManager = require('../utils/cooldownManager');
 
 module.exports = {
     once: false,
@@ -22,6 +23,16 @@ module.exports = {
                     ephemeral: true
                 });
             } else {
+                return;
+            }
+        }
+
+        const isBotOwner = interaction.user.id === process.env.BOT_OWNER_ID;
+        const isCooldownCommand = commandName === 'cooldown';
+    
+        if (!isBotOwner && !isCooldownCommand) {
+            const canProceed = cooldownManager.handleInteractionCooldown(interaction, commandName);
+            if (!canProceed) {
                 return;
             }
         }

@@ -4,6 +4,7 @@ const { createEmbed } = require('../utils/embedBuilder');
 const permissionManager = require('../utils/permissionManager');
 const killSwitch = require('../utils/killSwitch');
 const responseManager = require('../utils/responseManager');
+const cooldownManager = require('../utils/cooldownManager');
 
 
 
@@ -209,6 +210,16 @@ module.exports = {
                     type: 'error'
                 })]
             });
+        }
+
+        const isBotOwner = message.author.id === process.env.BOT_OWNER_ID;
+        const isCooldownCommand = commandName === 'cooldown';
+
+        if (!isBotOwner && !isCooldownCommand) {
+            const canProceed = cooldownManager.handleCooldown(message, commandName);
+            if (!canProceed) {
+                return;
+            }
         }
         
         try {

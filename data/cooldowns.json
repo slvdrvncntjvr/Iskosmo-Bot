@@ -1,0 +1,10 @@
+{
+  "global": {
+    "ping": 5,
+    "joke": 5,
+    "getvid": 10,
+    "debug": 30,
+    "announce": 60
+  },
+  "guilds": {}
+}

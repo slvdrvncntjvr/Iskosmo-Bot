@@ -1,5 +1,6 @@
 const logger = require('./logger');
 const os = require('os');
+const cooldownManager = require('./cooldownManager');
 
 class MemoryManager {
     constructor(client) {
@@ -47,6 +48,25 @@ class MemoryManager {
     
     performMemoryCleanup(aggressive) {
         this.clearResponseCache();
+
+        if (cooldownManager) {
+            cooldownManager.maybeCleanupExpired();
+            if (force) {
+                const essentialCommands = ['getvid', 'announce', 'debug'];
+                let removedCount = 0;
+                
+                for (const [key, cooldown] of cooldownManager.activeCooldowns.entries()) {
+                    if (!essentialCommands.includes(cooldown.commandName)) {
+                        cooldownManager.activeCooldowns.delete(key);
+                        removedCount++;
+                    }
+                }
+                
+                if (removedCount > 0) {
+                    logger.warn(`Emergency cleanup: Removed ${removedCount} non-essential cooldowns`);
+                }
+            }
+        }
 
         if (aggressive) {
             logger.warn('Performing aggressive memory cleanup');
