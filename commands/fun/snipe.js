@@ -107,21 +107,25 @@ module.exports = {
             });
         }
 
+        const authorName = deletedMessage.author.discriminator 
+            ? `${deletedMessage.author.username}#${deletedMessage.author.discriminator}`
+            : deletedMessage.author.username;
+
         return message.reply({
             embeds: [createEmbed({
                 title: `Sniped Message ${index > 0 ? `(${index + 1} back)` : ''}`,
                 description: deletedMessage.content,
                 type: 'info',
                 author: {
-                    name: `${deletedMessage.author.username}#${deletedMessage.author.discriminator}`,
-                    icon_url: deletedMessage.author.avatar
+                    name: authorName,
+                    icon_url: deletedMessage.author.avatar //should now be the full URL
                 },
                 footer: {
                     text: `Deleted at ${timestamp}${targetChannel.id !== message.channel.id ? ` in #${targetChannel.name}` : ''}`
                 },
                 fields
             })]
-        });;
+        });
     },
     
     async executeSlash(interaction, client) {

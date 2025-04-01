@@ -32,7 +32,7 @@ class MessageTracker {
                     id: message.author.id,
                     username: message.author.username,
                     discriminator: message.author.discriminator,
-                    avatar: message.author.displayAvatarURL({ dynamic: true })
+                    avatar: message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 128 })
                 },
                 timestamp: Date.now(),
                 attachments: message.attachments.map(a => ({

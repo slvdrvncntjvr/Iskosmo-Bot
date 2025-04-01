@@ -10,7 +10,7 @@ const config = require('../config');
  * @param {Array} options.fields - Embed fields
  * @returns {EmbedBuilder} Discord.js embed
  */
-function createEmbed({ title, description, type = 'info', fields = [] }) {
+function createEmbed({ title, description, type = 'info', fields = [], author, footer }) {
     let color;
     
     switch (type) {
@@ -44,6 +44,21 @@ function createEmbed({ title, description, type = 'info', fields = [] }) {
         });
     }
     
+    if (author) {
+        embed.setAuthor({
+            name: author.name,
+            iconURL: author.icon_url || author.iconURL, 
+            url: author.url
+        });
+    }
+    
+    if (footer) {
+        embed.setFooter({
+            text: footer.text,
+            iconURL: footer.icon_url || footer.iconURL
+        });
+    }
+
     return embed;
 }
 
