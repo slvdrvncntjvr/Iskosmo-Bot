@@ -47,7 +47,7 @@ class MemoryManager {
     
     performMemoryCleanup(aggressive) {
         this.clearResponseCache();
-y
+
         if (aggressive) {
             logger.warn('Performing aggressive memory cleanup');
 
