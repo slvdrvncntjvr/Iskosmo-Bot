@@ -1,4 +1,3 @@
-// commands/fun/snipe.js
 const { SlashCommandBuilder } = require('discord.js');
 const { createEmbed } = require('../../utils/embedBuilder');
 const messageTracker = require('../../utils/messageTracker');
@@ -27,26 +26,22 @@ module.exports = {
                 .setMaxValue(9)),
     
     async execute(message, args, client) {
-        // Parse arguments
         let targetChannelId = message.channel.id;
         let index = 0;
-        
-        // Check for channel mention
+
         if (args.length > 0 && args[0].match(/^<#\d+>$/)) {
             const channelMention = args[0];
             targetChannelId = channelMention.replace(/[<#>]/g, '');
-            args.shift(); // Remove the channel argument
+            args.shift(); 
         }
-        
-        // Check for index
+
         if (args.length > 0) {
             const parsedIndex = parseInt(args[0], 10);
             if (!isNaN(parsedIndex) && parsedIndex >= 0 && parsedIndex < 10) {
                 index = parsedIndex;
             }
         }
-        
-        // Get the target channel
+
         const targetChannel = client.channels.cache.get(targetChannelId);
         
         if (!targetChannel) {
@@ -58,14 +53,11 @@ module.exports = {
                 })]
             });
         }
-        
-        // If target channel is different from current channel, check permissions
+
         if (targetChannel.id !== message.channel.id) {
             const isOwner = message.author.id === process.env.BOT_OWNER_ID;
-            
-            // If not the owner, check permissions
+
             if (!isOwner) {
-                // Check if user has permission for cross-channel sniping
                 const canSnipe = snipeManager.canSnipeAcrossChannels(message.member, isOwner);
                 
                 if (!canSnipe) {
@@ -79,8 +71,7 @@ module.exports = {
                 }
             }
         }
-        
-        // Get the deleted message
+
         const deletedMessage = messageTracker.getDeletedMessage(targetChannel.id, index);
         
         if (!deletedMessage) {
@@ -150,8 +141,7 @@ module.exports = {
                 }
             }
         }
-        
-        // Get the deleted message
+
         const deletedMessage = messageTracker.getDeletedMessage(targetChannel.id, index);
         
         if (!deletedMessage) {
@@ -166,11 +156,9 @@ module.exports = {
                 ephemeral: true
             });
         }
-        
-        // Format the timestamp
+
         const timestamp = new Date(deletedMessage.timestamp).toLocaleString();
-        
-        // Build embed fields for attachments if any
+
         const fields = [];
         if (deletedMessage.attachments && deletedMessage.attachments.length > 0) {
             fields.push({

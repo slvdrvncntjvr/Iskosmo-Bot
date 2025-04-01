@@ -11,23 +11,18 @@ class SnipeManager {
         this.loadConfig();
     }
 
-    /**
-     * Load snipe configuration from disk
-     */
     loadConfig() {
         try {
             if (fs.existsSync(this.configPath)) {
                 const data = fs.readFileSync(this.configPath, 'utf8');
                 this.config = JSON.parse(data);
-                
-                // Validate structure
+
                 if (!this.config.allowedRoles) {
                     this.config.allowedRoles = {};
                 }
                 
                 logger.info(`Loaded snipe configuration for ${Object.keys(this.config.allowedRoles).length} guilds`);
             } else {
-                // Create default config
                 this.config = {
                     allowedRoles: {}
                 };
@@ -40,9 +35,6 @@ class SnipeManager {
         }
     }
 
-    /**
-     * Save snipe configuration to disk
-     */
     saveConfig() {
         try {
             fs.writeFileSync(this.configPath, JSON.stringify(this.config, null, 2), 'utf8');
@@ -111,22 +103,17 @@ class SnipeManager {
      * @returns {boolean} Whether the user has permission
      */
     canSnipeAcrossChannels(member, isOwner) {
-        // Bot owner always has permission
         if (isOwner) return true;
-        
-        // Server admin always has permission
+
         if (member.permissions.has('ADMINISTRATOR')) return true;
-        
-        // Check for configured roles
+
         const guildId = member.guild.id;
         const allowedRoles = this.getAllowedRoles(guildId);
         
         if (allowedRoles.length === 0) {
-            // If no roles are configured, only admins can cross-snipe
             return false;
         }
-        
-        // Check if member has any of the allowed roles
+
         return member.roles.cache.some(role => allowedRoles.includes(role.id));
     }
 }

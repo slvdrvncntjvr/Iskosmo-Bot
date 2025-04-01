@@ -122,13 +122,11 @@ module.exports = {
     },
     
     async getYoutubeVideos(channelQuery, maxResults = 1) {
-        // Initialize YouTube API client
         const youtube = google.youtube({
             version: 'v3',
             auth: process.env.YOUTUBE_API_KEY
         });
-        
-        // First, search for the channel
+
         const channelResponse = await youtube.search.list({
             part: 'snippet',
             q: channelQuery,
@@ -142,8 +140,7 @@ module.exports = {
         
         const channelId = channelResponse.data.items[0].id.channelId;
         const channelTitle = channelResponse.data.items[0].snippet.title;
-        
-        // Then, get the latest videos from that channel
+
         const videosResponse = await youtube.search.list({
             part: 'snippet',
             channelId: channelId,

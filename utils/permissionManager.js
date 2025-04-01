@@ -8,11 +8,9 @@ if (!fs.existsSync(path.join(__dirname, '../data'))) {
     fs.mkdirSync(path.join(__dirname, '../data'), { recursive: true });
 }
 let permissionsData = {
-    // default bot owner ID - replace with your Discord ID
     owners: process.env.BOT_OWNER_ID ? [process.env.BOT_OWNER_ID] : [],
-    // Command-specific authorized users
     commands: {
-        // Example: announce: ["123456789", "987654321"]
+        // example: announce: ["123456789", "987654321"]
     }
 };
 
@@ -23,7 +21,6 @@ function loadPermissions() {
             permissionsData = data;
             logger.info('Permissions data loaded successfully');
         } else {
-            // Create default permissions file
             savePermissions();
             logger.info('Created default permissions file');
         }

@@ -1,4 +1,3 @@
-// commands/utility/snipeperm.js
 const { SlashCommandBuilder } = require('discord.js');
 const { createEmbed } = require('../../utils/embedBuilder');
 const snipeManager = require('../../utils/snipeManager');
@@ -9,7 +8,7 @@ module.exports = {
     description: 'Manage permissions for cross-channel sniping',
     usage: '<add/remove/list> [role]',
     category: 'utility',
-    requiresAuth: true, // Only authorized users can manage snipe permissions
+    requiresAuth: true, 
     
     slashCommand: new SlashCommandBuilder()
         .setName('snipeperm')

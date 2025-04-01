@@ -1,4 +1,3 @@
-// commands/utility/autoreact.js
 const { SlashCommandBuilder } = require('discord.js');
 const { createEmbed } = require('../../utils/embedBuilder');
 const responseManager = require('../../utils/responseManager');
@@ -9,7 +8,7 @@ module.exports = {
     description: 'Create, list, or remove automatic reactions to specific triggers',
     usage: '<add/remove/list/info/toggle> [trigger] [emoji] [options]',
     category: 'utility',
-    requiresAuth: true, // Only authorized users can manage auto-reactions
+    requiresAuth: true, 
     
     slashCommand: new SlashCommandBuilder()
         .setName('autoreact')

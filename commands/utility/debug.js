@@ -6,8 +6,7 @@ module.exports = {
     name: 'debug',
     description: 'Show debugging information',
     category: 'utility',
-    
-    // Slash command definition
+
     slashCommand: new SlashCommandBuilder()
         .setName('debug')
         .setDescription('Show debugging information'),
@@ -20,11 +19,9 @@ module.exports = {
             const memoryUsage = `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)} MB`;
             const serverCount = client.guilds.cache.size;
             const pingLatency = `${Math.round(client.ws.ping)}ms`;
-            
-            // Get system info
+
             const systemInfo = getSystemInfo();
-            
-            // Get packages info
+
             const packages = Object.keys(require('../../package.json').dependencies).join(', ');
 
             const debugEmbed = createEmbed({
@@ -70,11 +67,9 @@ module.exports = {
             const memoryUsage = `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)} MB`;
             const serverCount = client.guilds.cache.size;
             const pingLatency = `${Math.round(client.ws.ping)}ms`;
-            
-            // Get system info
+
             const systemInfo = getSystemInfo();
-            
-            // Get packages info
+
             const packages = Object.keys(require('../../package.json').dependencies).join(', ');
 
             const debugEmbed = createEmbed({
@@ -111,7 +106,6 @@ module.exports = {
     }
 };
 
-// Helper function to format uptime
 function formatUptime(ms) {
     const seconds = Math.floor((ms / 1000) % 60);
     const minutes = Math.floor((ms / (1000 * 60)) % 60);
@@ -121,7 +115,6 @@ function formatUptime(ms) {
     return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 
-// Get system info in a cross-platform way
 function getSystemInfo() {
     try {
         const platform = os.platform();
@@ -130,8 +123,7 @@ function getSystemInfo() {
         const arch = os.arch();
         const totalMem = Math.round(os.totalmem() / (1024 * 1024 * 1024) * 100) / 100;
         const freeMem = Math.round(os.freemem() / (1024 * 1024 * 1024) * 100) / 100;
-        
-        // Safely get CPU info
+
         let cpuInfo = "Unknown";
         const cpus = os.cpus();
         if (cpus && cpus.length > 0 && cpus[0] && cpus[0].model) {

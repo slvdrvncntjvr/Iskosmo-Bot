@@ -6,8 +6,7 @@ module.exports = {
     name: 'joke',
     description: 'Get a random joke',
     category: 'fun',
-    
-    // Slash command definition
+
     slashCommand: new SlashCommandBuilder()
         .setName('joke')
         .setDescription('Get a random joke'),

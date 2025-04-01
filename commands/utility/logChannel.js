@@ -111,8 +111,7 @@ module.exports = {
             return this.setLogChannel(interaction, guildId, channel);
         }
     },
-    
-    // Helper methods for code reuse between prefix and slash commands
+
     async viewLogChannel(interaction, guildId) {
         const logChannelId = logSettings[guildId];
         

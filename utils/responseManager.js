@@ -154,15 +154,13 @@ class ResponseManager {
         return existingIndex >= 0 ? 'updated' : 'added';
     }
 
-    // Add a new auto-reaction
     addReact(guildId, trigger, emoji, options = {}) {
         if (!this.reacts.has(guildId)) {
             this.reacts.set(guildId, []);
         }
         
         const guildReacts = this.reacts.get(guildId);
-        
-        // Check if trigger already exists with the same emoji
+
         const existingIndex = guildReacts.findIndex(r => 
             r.trigger.toLowerCase() === trigger.toLowerCase() && r.emoji === emoji);
         
@@ -171,12 +169,12 @@ class ResponseManager {
             emoji,
             createdAt: new Date().toISOString(),
             createdBy: options.createdBy || 'Unknown',
-            matchType: options.matchType || 'contains', // 'contains', 'exact', 'startsWith', 'endsWith'
+            matchType: options.matchType || 'contains', 
             caseSensitive: options.caseSensitive || false,
-            allowedChannels: options.allowedChannels || [], // Empty means all channels
-            ignoredUsers: options.ignoredUsers || [], // Users to ignore
-            cooldown: options.cooldown || 0, // Cooldown in seconds, 0 means no cooldown
-            lastTriggered: null, // Will be set when triggered
+            allowedChannels: options.allowedChannels || [], 
+            ignoredUsers: options.ignoredUsers || [], 
+            cooldown: options.cooldown || 0, 
+            lastTriggered: null, 
             enabled: true
         };
         
@@ -190,7 +188,6 @@ class ResponseManager {
         return existingIndex >= 0 ? 'updated' : 'added';
     }
 
-    // Remove an auto-response
     removeResponse(guildId, trigger) {
         if (!this.responses.has(guildId)) return false;
         
@@ -253,7 +250,6 @@ class ResponseManager {
         return false;
     }
 
-    // Toggle enabled status of an auto-reaction
     toggleReact(guildId, trigger, emoji) {
         if (!this.reacts.has(guildId)) return false;
         
