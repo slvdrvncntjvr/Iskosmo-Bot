@@ -10,6 +10,60 @@
       "allowedChannels": [],
       "ignoredUsers": [],
       "cooldown": 0,
+      "lastTriggered": "2025-04-01T03:11:14.341Z",
+      "enabled": true
+    },
+    {
+      "trigger": "yuzo",
+      "response": "oblak",
+      "createdAt": "2025-03-31T12:57:52.966Z",
+      "createdBy": "836211593049276426",
+      "matchType": "exact",
+      "caseSensitive": false,
+      "allowedChannels": [],
+      "ignoredUsers": [],
+      "cooldown": 0,
+      "lastTriggered": "2025-03-31T12:57:56.482Z",
+      "enabled": true
+    },
+    {
+      "trigger": "yue",
+      "response": "oblak",
+      "createdAt": "2025-04-01T03:11:23.154Z",
+      "createdBy": "592273861811241002",
+      "matchType": "contains",
+      "caseSensitive": false,
+      "allowedChannels": [],
+      "ignoredUsers": [],
+      "cooldown": 0,
+      "lastTriggered": null,
+      "enabled": true
+    }
+  ],
+  "1249954563944087562": [
+    {
+      "trigger": "zoa",
+      "response": "kalbo",
+      "createdAt": "2025-03-31T14:03:37.124Z",
+      "createdBy": "592273861811241002",
+      "matchType": "exact",
+      "caseSensitive": false,
+      "allowedChannels": [],
+      "ignoredUsers": [],
+      "cooldown": 0,
+      "lastTriggered": "2025-03-31T14:03:45.398Z",
+      "enabled": true
+    },
+    {
+      "trigger": "jay",
+      "response": "Owlahhhh",
+      "createdAt": "2025-03-31T14:12:48.245Z",
+      "createdBy": "592273861811241002",
+      "matchType": "exact",
+      "caseSensitive": false,
+      "allowedChannels": [],
+      "ignoredUsers": [],
+      "cooldown": 0,
       "lastTriggered": null,
       "enabled": true
     }

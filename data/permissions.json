@@ -6,6 +6,9 @@
     "statusset": [
       "836211593049276426"
     ],
-    "announce": []
+    "announce": [],
+    "autorespond": [
+      "836211593049276426"
+    ]
   }
 }

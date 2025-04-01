@@ -21,3 +21,4 @@
 [2025-03-31 19:48:19] error: Error processing auto-responses: prefix is not defined
 [2025-03-31 20:29:34] error: Error processing auto-responses: Maximum call stack size exceeded
 [2025-03-31 20:30:09] error: Error processing auto-responses: Maximum call stack size exceeded
+[2025-04-01 04:18:30] error: Failed to login: getaddrinfo EAI_AGAIN discord.com
