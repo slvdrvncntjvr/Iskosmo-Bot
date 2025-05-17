@@ -23,3 +23,32 @@
 [2025-03-31 20:30:09] error: Error processing auto-responses: Maximum call stack size exceeded
 [2025-04-01 04:18:30] error: Failed to login: getaddrinfo EAI_AGAIN discord.com
 [2025-04-01 17:39:00] error: Error executing ping command: author is not defined
+[2025-05-14 22:29:45] error: Error in ready event: Invalid Form Body
+10.options[2][APPLICATION_COMMAND_OPTIONS_TYPE_INVALID]: Sub-command and sub-command group option types are mutually exclusive to all other types
+10.options[3][APPLICATION_COMMAND_OPTIONS_TYPE_INVALID]: Sub-command and sub-command group option types are mutually exclusive to all other types
+10.options[4][APPLICATION_COMMAND_OPTIONS_TYPE_INVALID]: Sub-command and sub-command group option types are mutually exclusive to all other types
+10.options[5][APPLICATION_COMMAND_OPTIONS_TYPE_INVALID]: Sub-command and sub-command group option types are mutually exclusive to all other types
+[2025-05-14 22:32:35] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-14 22:32:35] error: Facebook API error: {"error":{"message":"Unsupported get request. Object with ID 'help' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api","type":"GraphMethodException","code":100,"error_subcode":33,"fbtrace_id":"AX8HLS71M36wtpCVQbHL6p9"}}
+[2025-05-14 22:32:49] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-14 22:32:49] error: Facebook API error: {"error":{"message":"Invalid OAuth 2.0 Access Token","type":"OAuthException","code":190,"error_subcode":2069032,"is_transient":false,"error_user_title":"User Access Token Is Not Supported","error_user_msg":"A Page access token is required for this call for the new Pages experience.","fbtrace_id":"AupqL4FKoto2JoKs0R4VA1P"}}
+[2025-05-17 19:15:59] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-17 19:15:59] error: Facebook API error: {"error":{"message":"Invalid OAuth 2.0 Access Token","type":"OAuthException","code":190,"error_subcode":2069032,"is_transient":false,"error_user_title":"User Access Token Is Not Supported","error_user_msg":"A Page access token is required for this call for the new Pages experience.","fbtrace_id":"AHQcraLqvmoWntiMLGRlGje"}}
+[2025-05-17 19:17:17] error: Error tracking deleted message: Cannot read properties of null (reading 'bot')
+[2025-05-17 19:17:23] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-17 19:17:23] error: Facebook API error: {"error":{"message":"Invalid OAuth 2.0 Access Token","type":"OAuthException","code":190,"error_subcode":2069032,"is_transient":false,"error_user_title":"User Access Token Is Not Supported","error_user_msg":"A Page access token is required for this call for the new Pages experience.","fbtrace_id":"AIwezMRJUCpA2KLnxTpLLjb"}}
+[2025-05-17 19:19:47] error: Error tracking deleted message: Cannot read properties of null (reading 'bot')
+[2025-05-17 19:19:51] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-17 19:19:51] error: Facebook API error: {"error":{"message":"Invalid OAuth 2.0 Access Token","type":"OAuthException","code":190,"error_subcode":2069032,"is_transient":false,"error_user_title":"User Access Token Is Not Supported","error_user_msg":"A Page access token is required for this call for the new Pages experience.","fbtrace_id":"AXKRqF3Sxl3QIaKjarbOE4B"}}
+[2025-05-17 19:29:05] error: Error tracking deleted message: Cannot read properties of null (reading 'bot')
+[2025-05-17 19:29:10] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-17 19:29:10] error: Facebook API error: {"error":{"message":"Invalid OAuth 2.0 Access Token","type":"OAuthException","code":190,"error_subcode":2069032,"is_transient":false,"error_user_title":"User Access Token Is Not Supported","error_user_msg":"A Page access token is required for this call for the new Pages experience.","fbtrace_id":"ASd5ppc85Dc6XMqGb9Sx4el"}}
+[2025-05-17 19:30:56] error: Error tracking deleted message: Cannot read properties of null (reading 'bot')
+[2025-05-17 19:31:18] error: Search endpoint failed: Request failed with status code 400
+[2025-05-17 19:31:18] error: Facebook API search error: {"error":{"message":"Unsupported get request. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api","type":"GraphMethodException","code":100,"error_subcode":33,"fbtrace_id":"A_-qYAIlUA3swBH1ReGvT7I"}}
+[2025-05-17 19:31:18] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-17 19:31:18] error: Facebook API error: {"error":{"message":"Invalid OAuth 2.0 Access Token","type":"OAuthException","code":190,"error_subcode":2069032,"is_transient":false,"error_user_title":"User Access Token Is Not Supported","error_user_msg":"A Page access token is required for this call for the new Pages experience.","fbtrace_id":"AIBnI1t363UPSqPiipeT1Ul"}}
+[2025-05-17 19:33:07] error: Search endpoint failed: Request failed with status code 400
+[2025-05-17 19:33:07] error: Facebook API search error: {"error":{"message":"Unsupported get request. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api","type":"GraphMethodException","code":100,"error_subcode":33,"fbtrace_id":"AFCo_WsVOp5n7qEnSs9D0Ek"}}
+[2025-05-17 19:33:07] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-17 19:33:07] error: Facebook API error: {"error":{"message":"Invalid OAuth 2.0 Access Token","type":"OAuthException","code":190,"error_subcode":2069032,"is_transient":false,"error_user_title":"User Access Token Is Not Supported","error_user_msg":"A Page access token is required for this call for the new Pages experience.","fbtrace_id":"A6z7S9o71v71S12zh0_XKZG"}}

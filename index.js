@@ -158,3 +158,87 @@ async function gracefulShutdown() {
     
     process.exit(0);
 }
+
+// Facebook post checker
+async function checkFacebookPosts() {
+    try {
+        const fbSettingsPath = path.join(__dirname, 'data/facebookSettings.json');
+        if (!fs.existsSync(fbSettingsPath)) {
+            return;
+        }
+
+        const fbSettings = JSON.parse(fs.readFileSync(fbSettingsPath, 'utf8'));
+        const currentTime = Date.now();
+        
+        for (const [guildId, settings] of Object.entries(fbSettings)) {
+            // Skip if autopost is disabled or missing required settings
+            if (!settings.autopost || !settings.channelId || (!settings.defaultPage && !process.env.FACEBOOK_DEFAULT_PAGE)) {
+                continue;
+            }
+            
+            // Check if it's time to check based on interval
+            const interval = settings.interval || 30; // Default 30 minutes
+            const lastCheck = settings.lastCheckTime || 0;
+            const intervalMs = interval * 60 * 1000;
+            
+            if (currentTime - lastCheck < intervalMs) {
+                continue;
+            }
+            
+            // Update last check time
+            settings.lastCheckTime = currentTime;
+            fs.writeFileSync(fbSettingsPath, JSON.stringify(fbSettings, null, 2), 'utf8');
+            
+            // Try to get the guild and channel
+            const guild = client.guilds.cache.get(guildId);
+            if (!guild) continue;
+            
+            const channel = guild.channels.cache.get(settings.channelId);
+            if (!channel) continue;
+            
+            // Get the pageId to check
+            const pageId = settings.defaultPage || process.env.FACEBOOK_DEFAULT_PAGE;
+            const getpostCommand = client.commands.get('getpost');
+            
+            if (!getpostCommand) {
+                logger.error('Facebook post checker: getpost command not found');
+                continue;
+            }
+            
+            // Fetch the most recent post
+            const posts = await getpostCommand.fetchPosts(pageId, 1);
+            if (!posts || !posts.length) continue;
+            
+            const latestPost = posts[0];
+            
+            // Check if we've already posted this
+            const latestPostTime = new Date(latestPost.created_time).getTime();
+            const lastPostedTime = settings.lastPostTime || 0;
+            
+            // Only post if it's newer than our last posted time
+            if (latestPostTime > lastPostedTime) {
+                const pageName = await getpostCommand.getPageName(pageId);
+                const embed = await getpostCommand.createPostEmbed(latestPost, pageName);
+                
+                await channel.send({ 
+                    content: '📢 **New Facebook Post!**',
+                    embeds: [embed] 
+                });
+                
+                // Update last post time
+                settings.lastPostTime = latestPostTime;
+                fs.writeFileSync(fbSettingsPath, JSON.stringify(fbSettings, null, 2), 'utf8');
+                
+                logger.info(`Posted new Facebook update to ${guild.name} #${channel.name}`);
+            }
+        }
+    } catch (error) {
+        logger.error('Error in Facebook post checker:', error);
+    }
+}
+
+// Run the Facebook post checker every 5 minutes
+setInterval(checkFacebookPosts, 5 * 60 * 1000);
+
+// Initial check a minute after startup
+setTimeout(checkFacebookPosts, 60 * 1000);

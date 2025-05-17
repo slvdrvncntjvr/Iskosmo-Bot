@@ -124,3 +124,469 @@
 [2025-04-01 17:41:08] info: Shutdown signal received, cleaning up...
 [2025-04-01 17:41:08] info: Destroying client connection...
 [2025-04-01 17:41:09] info: Shutdown complete
+[2025-05-14 22:29:41] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-14 22:29:41] info: Kill switch initialized
+[2025-05-14 22:29:41] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-14 22:29:41] info: Loading command: joke
+[2025-05-14 22:29:41] info: Loaded snipe configuration for 0 guilds
+[2025-05-14 22:29:41] info: Loading command: snipe
+[2025-05-14 22:29:41] info: Loading command: ban
+[2025-05-14 22:29:41] info: Loading command: kick
+[2025-05-14 22:29:41] info: Permissions data loaded successfully
+[2025-05-14 22:29:41] info: Loading command: announce
+[2025-05-14 22:29:41] info: Loading command: auth
+[2025-05-14 22:29:41] info: Loaded 5 auto-responses across 2 guilds
+[2025-05-14 22:29:41] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-14 22:29:41] info: Loading command: autoreact
+[2025-05-14 22:29:41] info: Loading command: autorespond
+[2025-05-14 22:29:41] info: Loading command: cooldown
+[2025-05-14 22:29:41] info: Loading command: debug
+[2025-05-14 22:29:41] info: Loading command: getpost
+[2025-05-14 22:29:43] info: Loading command: getvid
+[2025-05-14 22:29:43] info: Loading command: help
+[2025-05-14 22:29:43] info: Loading command: logchannel
+[2025-05-14 22:29:43] info: Loading command: memory
+[2025-05-14 22:29:43] info: Loading command: ping
+[2025-05-14 22:29:43] info: Loading command: snipeperm
+[2025-05-14 22:29:43] info: Loading command: statusset
+[2025-05-14 22:29:43] info: Loading event: guildCreate
+[2025-05-14 22:29:43] info: Loading event: guildDelete
+[2025-05-14 22:29:43] info: Loading event: interactionCreate
+[2025-05-14 22:29:43] info: Loading event: messageCreate
+[2025-05-14 22:29:43] info: Loading event: messageDelete
+[2025-05-14 22:29:43] info: Loading event: ready
+[2025-05-14 22:29:43] info: Loading event: resume
+[2025-05-14 22:29:43] info: Health check server running on port 3000
+[2025-05-14 22:29:43] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-14 22:29:44] info: Bot successfully logged in
+[2025-05-14 22:29:45] info: Logged in as Iskosmo#5697
+[2025-05-14 22:29:45] info: Serving 5 guilds
+[2025-05-14 22:29:45] info: Set default status: Playing in 5 guilds
+[2025-05-14 22:29:45] info: Started refreshing 18 application (/) commands.
+[2025-05-14 22:29:45] error: Error in ready event: Invalid Form Body
+10.options[2][APPLICATION_COMMAND_OPTIONS_TYPE_INVALID]: Sub-command and sub-command group option types are mutually exclusive to all other types
+10.options[3][APPLICATION_COMMAND_OPTIONS_TYPE_INVALID]: Sub-command and sub-command group option types are mutually exclusive to all other types
+10.options[4][APPLICATION_COMMAND_OPTIONS_TYPE_INVALID]: Sub-command and sub-command group option types are mutually exclusive to all other types
+10.options[5][APPLICATION_COMMAND_OPTIONS_TYPE_INVALID]: Sub-command and sub-command group option types are mutually exclusive to all other types
+[2025-05-14 22:31:10] info: Shutdown signal received, cleaning up...
+[2025-05-14 22:31:10] info: Destroying client connection...
+[2025-05-14 22:31:11] info: Shutdown complete
+[2025-05-14 22:31:15] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-14 22:31:15] info: Kill switch initialized
+[2025-05-14 22:31:15] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-14 22:31:15] info: Loading command: joke
+[2025-05-14 22:31:15] info: Loaded snipe configuration for 0 guilds
+[2025-05-14 22:31:15] info: Loading command: snipe
+[2025-05-14 22:31:15] info: Loading command: ban
+[2025-05-14 22:31:15] info: Loading command: kick
+[2025-05-14 22:31:15] info: Permissions data loaded successfully
+[2025-05-14 22:31:15] info: Loading command: announce
+[2025-05-14 22:31:15] info: Loading command: auth
+[2025-05-14 22:31:15] info: Loaded 5 auto-responses across 2 guilds
+[2025-05-14 22:31:15] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-14 22:31:15] info: Loading command: autoreact
+[2025-05-14 22:31:16] info: Loading command: autorespond
+[2025-05-14 22:31:16] info: Loading command: cooldown
+[2025-05-14 22:31:16] info: Loading command: debug
+[2025-05-14 22:31:16] info: Loading command: getpost
+[2025-05-14 22:31:16] info: Loading command: getvid
+[2025-05-14 22:31:16] info: Loading command: help
+[2025-05-14 22:31:16] info: Loading command: logchannel
+[2025-05-14 22:31:16] info: Loading command: memory
+[2025-05-14 22:31:17] info: Loading command: ping
+[2025-05-14 22:31:17] info: Loading command: snipeperm
+[2025-05-14 22:31:17] info: Loading command: statusset
+[2025-05-14 22:31:17] info: Loading event: guildCreate
+[2025-05-14 22:31:17] info: Loading event: guildDelete
+[2025-05-14 22:31:17] info: Loading event: interactionCreate
+[2025-05-14 22:31:17] info: Loading event: messageCreate
+[2025-05-14 22:31:17] info: Loading event: messageDelete
+[2025-05-14 22:31:17] info: Loading event: ready
+[2025-05-14 22:31:17] info: Loading event: resume
+[2025-05-14 22:31:17] info: Health check server running on port 3000
+[2025-05-14 22:31:17] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-14 22:31:18] info: Bot successfully logged in
+[2025-05-14 22:31:19] info: Logged in as Iskosmo#5697
+[2025-05-14 22:31:19] info: Serving 5 guilds
+[2025-05-14 22:31:19] info: Set default status: Playing in 5 guilds
+[2025-05-14 22:31:19] info: Started refreshing 18 application (/) commands.
+[2025-05-14 22:31:21] info: Successfully reloaded 18 application (/) commands.
+[2025-05-14 22:31:27] info: jzoa used command: getpost
+[2025-05-14 22:32:29] info: jzoa used command: getpost
+[2025-05-14 22:32:35] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-14 22:32:35] error: Facebook API error: {"error":{"message":"Unsupported get request. Object with ID 'help' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api","type":"GraphMethodException","code":100,"error_subcode":33,"fbtrace_id":"AX8HLS71M36wtpCVQbHL6p9"}}
+[2025-05-14 22:32:35] info: jzoa used command: getpost
+[2025-05-14 22:32:36] info: jzoa used command: help
+[2025-05-14 22:32:49] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-14 22:32:49] error: Facebook API error: {"error":{"message":"Invalid OAuth 2.0 Access Token","type":"OAuthException","code":190,"error_subcode":2069032,"is_transient":false,"error_user_title":"User Access Token Is Not Supported","error_user_msg":"A Page access token is required for this call for the new Pages experience.","fbtrace_id":"AupqL4FKoto2JoKs0R4VA1P"}}
+[2025-05-14 22:32:49] info: jzoa used command: getpost
+[2025-05-14 22:33:15] info: Memory status: 71MB heap, 79.1% system RAM used, 3350MB free
+[2025-05-14 22:35:15] info: Memory status: 71MB heap, 80.9% system RAM used, 3064MB free
+[2025-05-14 22:35:27] info: Shutdown signal received, cleaning up...
+[2025-05-14 22:35:27] info: Destroying client connection...
+[2025-05-14 22:35:27] info: Shutdown complete
+[2025-05-17 19:15:43] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-17 19:15:43] info: Kill switch initialized
+[2025-05-17 19:15:43] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-17 19:15:43] info: Loading command: joke
+[2025-05-17 19:15:43] info: Loaded snipe configuration for 0 guilds
+[2025-05-17 19:15:43] info: Loading command: snipe
+[2025-05-17 19:15:43] info: Loading command: ban
+[2025-05-17 19:15:43] info: Loading command: kick
+[2025-05-17 19:15:43] info: Permissions data loaded successfully
+[2025-05-17 19:15:43] info: Loading command: announce
+[2025-05-17 19:15:43] info: Loading command: auth
+[2025-05-17 19:15:43] info: Loaded 5 auto-responses across 2 guilds
+[2025-05-17 19:15:43] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-17 19:15:43] info: Loading command: autoreact
+[2025-05-17 19:15:43] info: Loading command: autorespond
+[2025-05-17 19:15:43] info: Loading command: cooldown
+[2025-05-17 19:15:43] info: Loading command: debug
+[2025-05-17 19:15:43] info: Loading command: getpost
+[2025-05-17 19:15:45] info: Loading command: getvid
+[2025-05-17 19:15:45] info: Loading command: help
+[2025-05-17 19:15:45] info: Loading command: logchannel
+[2025-05-17 19:15:45] info: Loading command: memory
+[2025-05-17 19:15:45] info: Loading command: ping
+[2025-05-17 19:15:45] info: Loading command: snipeperm
+[2025-05-17 19:15:45] info: Loading command: statusset
+[2025-05-17 19:15:45] info: Loading event: guildCreate
+[2025-05-17 19:15:45] info: Loading event: guildDelete
+[2025-05-17 19:15:45] info: Loading event: interactionCreate
+[2025-05-17 19:15:45] info: Loading event: messageCreate
+[2025-05-17 19:15:45] info: Loading event: messageDelete
+[2025-05-17 19:15:45] info: Loading event: ready
+[2025-05-17 19:15:45] info: Loading event: resume
+[2025-05-17 19:15:45] info: Health check server running on port 3000
+[2025-05-17 19:15:45] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-17 19:15:46] info: Bot successfully logged in
+[2025-05-17 19:15:47] info: Logged in as Iskosmo#5697
+[2025-05-17 19:15:47] info: Serving 5 guilds
+[2025-05-17 19:15:47] info: Set default status: Playing in 5 guilds
+[2025-05-17 19:15:47] info: Started refreshing 18 application (/) commands.
+[2025-05-17 19:15:48] info: Successfully reloaded 18 application (/) commands.
+[2025-05-17 19:15:59] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-17 19:15:59] error: Facebook API error: {"error":{"message":"Invalid OAuth 2.0 Access Token","type":"OAuthException","code":190,"error_subcode":2069032,"is_transient":false,"error_user_title":"User Access Token Is Not Supported","error_user_msg":"A Page access token is required for this call for the new Pages experience.","fbtrace_id":"AHQcraLqvmoWntiMLGRlGje"}}
+[2025-05-17 19:16:00] info: jzoa used slash command: getpost
+[2025-05-17 19:16:12] info: Shutdown signal received, cleaning up...
+[2025-05-17 19:16:12] info: Destroying client connection...
+[2025-05-17 19:16:12] info: Shutdown complete
+[2025-05-17 19:17:13] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-17 19:17:13] info: Kill switch initialized
+[2025-05-17 19:17:13] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-17 19:17:13] info: Loading command: joke
+[2025-05-17 19:17:13] info: Loaded snipe configuration for 0 guilds
+[2025-05-17 19:17:13] info: Loading command: snipe
+[2025-05-17 19:17:13] info: Loading command: ban
+[2025-05-17 19:17:13] info: Loading command: kick
+[2025-05-17 19:17:13] info: Permissions data loaded successfully
+[2025-05-17 19:17:13] info: Loading command: announce
+[2025-05-17 19:17:13] info: Loading command: auth
+[2025-05-17 19:17:13] info: Loaded 5 auto-responses across 2 guilds
+[2025-05-17 19:17:13] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-17 19:17:13] info: Loading command: autoreact
+[2025-05-17 19:17:13] info: Loading command: autorespond
+[2025-05-17 19:17:13] info: Loading command: cooldown
+[2025-05-17 19:17:13] info: Loading command: debug
+[2025-05-17 19:17:13] info: Loading command: getpost
+[2025-05-17 19:17:14] info: Loading command: getvid
+[2025-05-17 19:17:14] info: Loading command: help
+[2025-05-17 19:17:14] info: Loading command: logchannel
+[2025-05-17 19:17:14] info: Loading command: memory
+[2025-05-17 19:17:14] info: Loading command: ping
+[2025-05-17 19:17:14] info: Loading command: snipeperm
+[2025-05-17 19:17:14] info: Loading command: statusset
+[2025-05-17 19:17:14] info: Loading event: guildCreate
+[2025-05-17 19:17:14] info: Loading event: guildDelete
+[2025-05-17 19:17:14] info: Loading event: interactionCreate
+[2025-05-17 19:17:14] info: Loading event: messageCreate
+[2025-05-17 19:17:14] info: Loading event: messageDelete
+[2025-05-17 19:17:14] info: Loading event: ready
+[2025-05-17 19:17:14] info: Loading event: resume
+[2025-05-17 19:17:14] info: Health check server running on port 3000
+[2025-05-17 19:17:14] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-17 19:17:16] info: Bot successfully logged in
+[2025-05-17 19:17:17] info: Logged in as Iskosmo#5697
+[2025-05-17 19:17:17] info: Serving 5 guilds
+[2025-05-17 19:17:17] info: Set default status: Playing in 5 guilds
+[2025-05-17 19:17:17] info: Started refreshing 18 application (/) commands.
+[2025-05-17 19:17:17] info: Successfully reloaded 18 application (/) commands.
+[2025-05-17 19:17:17] error: Error tracking deleted message: Cannot read properties of null (reading 'bot')
+[2025-05-17 19:17:23] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-17 19:17:23] error: Facebook API error: {"error":{"message":"Invalid OAuth 2.0 Access Token","type":"OAuthException","code":190,"error_subcode":2069032,"is_transient":false,"error_user_title":"User Access Token Is Not Supported","error_user_msg":"A Page access token is required for this call for the new Pages experience.","fbtrace_id":"AIwezMRJUCpA2KLnxTpLLjb"}}
+[2025-05-17 19:17:24] info: jzoa used slash command: getpost
+[2025-05-17 19:17:38] info: Shutdown signal received, cleaning up...
+[2025-05-17 19:17:38] info: Destroying client connection...
+[2025-05-17 19:17:38] info: Shutdown complete
+[2025-05-17 19:19:31] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-17 19:19:31] info: Kill switch initialized
+[2025-05-17 19:19:31] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-17 19:19:31] info: Loading command: joke
+[2025-05-17 19:19:31] info: Loaded snipe configuration for 0 guilds
+[2025-05-17 19:19:31] info: Loading command: snipe
+[2025-05-17 19:19:31] info: Loading command: ban
+[2025-05-17 19:19:31] info: Loading command: kick
+[2025-05-17 19:19:31] info: Permissions data loaded successfully
+[2025-05-17 19:19:31] info: Loading command: announce
+[2025-05-17 19:19:31] info: Loading command: auth
+[2025-05-17 19:19:31] info: Loaded 5 auto-responses across 2 guilds
+[2025-05-17 19:19:31] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-17 19:19:31] info: Loading command: autoreact
+[2025-05-17 19:19:31] info: Loading command: autorespond
+[2025-05-17 19:19:31] info: Loading command: cooldown
+[2025-05-17 19:19:31] info: Loading command: debug
+[2025-05-17 19:19:31] info: Loading command: getpost
+[2025-05-17 19:19:32] info: Loading command: getvid
+[2025-05-17 19:19:32] info: Loading command: help
+[2025-05-17 19:19:32] info: Loading command: logchannel
+[2025-05-17 19:19:32] info: Loading command: memory
+[2025-05-17 19:19:32] info: Loading command: ping
+[2025-05-17 19:19:32] info: Loading command: snipeperm
+[2025-05-17 19:19:32] info: Loading command: statusset
+[2025-05-17 19:19:32] info: Loading event: guildCreate
+[2025-05-17 19:19:32] info: Loading event: guildDelete
+[2025-05-17 19:19:32] info: Loading event: interactionCreate
+[2025-05-17 19:19:32] info: Loading event: messageCreate
+[2025-05-17 19:19:32] info: Loading event: messageDelete
+[2025-05-17 19:19:32] info: Loading event: ready
+[2025-05-17 19:19:32] info: Loading event: resume
+[2025-05-17 19:19:32] info: Health check server running on port 3000
+[2025-05-17 19:19:32] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-17 19:19:34] info: Bot successfully logged in
+[2025-05-17 19:19:35] info: Logged in as Iskosmo#5697
+[2025-05-17 19:19:35] info: Serving 5 guilds
+[2025-05-17 19:19:35] info: Set default status: Playing in 5 guilds
+[2025-05-17 19:19:35] info: Started refreshing 18 application (/) commands.
+[2025-05-17 19:19:35] info: Successfully reloaded 18 application (/) commands.
+[2025-05-17 19:19:47] error: Error tracking deleted message: Cannot read properties of null (reading 'bot')
+[2025-05-17 19:19:51] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-17 19:19:51] error: Facebook API error: {"error":{"message":"Invalid OAuth 2.0 Access Token","type":"OAuthException","code":190,"error_subcode":2069032,"is_transient":false,"error_user_title":"User Access Token Is Not Supported","error_user_msg":"A Page access token is required for this call for the new Pages experience.","fbtrace_id":"AXKRqF3Sxl3QIaKjarbOE4B"}}
+[2025-05-17 19:19:51] info: jzoa used slash command: getpost
+[2025-05-17 19:20:36] info: Shutdown signal received, cleaning up...
+[2025-05-17 19:20:36] info: Destroying client connection...
+[2025-05-17 19:20:36] info: Shutdown complete
+[2025-05-17 19:28:58] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-17 19:28:58] info: Kill switch initialized
+[2025-05-17 19:28:58] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-17 19:28:58] info: Loading command: joke
+[2025-05-17 19:28:58] info: Loaded snipe configuration for 0 guilds
+[2025-05-17 19:28:58] info: Loading command: snipe
+[2025-05-17 19:28:58] info: Loading command: ban
+[2025-05-17 19:28:58] info: Loading command: kick
+[2025-05-17 19:28:58] info: Permissions data loaded successfully
+[2025-05-17 19:28:58] info: Loading command: announce
+[2025-05-17 19:28:58] info: Loading command: auth
+[2025-05-17 19:28:58] info: Loaded 5 auto-responses across 2 guilds
+[2025-05-17 19:28:58] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-17 19:28:58] info: Loading command: autoreact
+[2025-05-17 19:28:58] info: Loading command: autorespond
+[2025-05-17 19:28:58] info: Loading command: cooldown
+[2025-05-17 19:28:58] info: Loading command: debug
+[2025-05-17 19:28:58] info: Loading command: getpost
+[2025-05-17 19:28:59] info: Loading command: getvid
+[2025-05-17 19:28:59] info: Loading command: help
+[2025-05-17 19:28:59] info: Loading command: logchannel
+[2025-05-17 19:28:59] info: Loading command: memory
+[2025-05-17 19:28:59] info: Loading command: ping
+[2025-05-17 19:28:59] info: Loading command: snipeperm
+[2025-05-17 19:28:59] info: Loading command: statusset
+[2025-05-17 19:28:59] info: Loading event: guildCreate
+[2025-05-17 19:28:59] info: Loading event: guildDelete
+[2025-05-17 19:28:59] info: Loading event: interactionCreate
+[2025-05-17 19:28:59] info: Loading event: messageCreate
+[2025-05-17 19:28:59] info: Loading event: messageDelete
+[2025-05-17 19:28:59] info: Loading event: ready
+[2025-05-17 19:28:59] info: Loading event: resume
+[2025-05-17 19:28:59] info: Health check server running on port 3000
+[2025-05-17 19:28:59] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-17 19:29:01] info: Bot successfully logged in
+[2025-05-17 19:29:02] info: Logged in as Iskosmo#5697
+[2025-05-17 19:29:02] info: Serving 5 guilds
+[2025-05-17 19:29:02] info: Set default status: Playing in 5 guilds
+[2025-05-17 19:29:02] info: Started refreshing 18 application (/) commands.
+[2025-05-17 19:29:03] info: Successfully reloaded 18 application (/) commands.
+[2025-05-17 19:29:05] error: Error tracking deleted message: Cannot read properties of null (reading 'bot')
+[2025-05-17 19:29:10] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-17 19:29:10] error: Facebook API error: {"error":{"message":"Invalid OAuth 2.0 Access Token","type":"OAuthException","code":190,"error_subcode":2069032,"is_transient":false,"error_user_title":"User Access Token Is Not Supported","error_user_msg":"A Page access token is required for this call for the new Pages experience.","fbtrace_id":"ASd5ppc85Dc6XMqGb9Sx4el"}}
+[2025-05-17 19:29:11] info: jzoa used slash command: getpost
+[2025-05-17 19:29:46] info: Shutdown signal received, cleaning up...
+[2025-05-17 19:29:46] info: Destroying client connection...
+[2025-05-17 19:29:46] info: Shutdown complete
+[2025-05-17 19:30:51] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-17 19:30:51] info: Kill switch initialized
+[2025-05-17 19:30:51] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-17 19:30:51] info: Loading command: joke
+[2025-05-17 19:30:51] info: Loaded snipe configuration for 0 guilds
+[2025-05-17 19:30:51] info: Loading command: snipe
+[2025-05-17 19:30:51] info: Loading command: ban
+[2025-05-17 19:30:51] info: Loading command: kick
+[2025-05-17 19:30:51] info: Permissions data loaded successfully
+[2025-05-17 19:30:51] info: Loading command: announce
+[2025-05-17 19:30:51] info: Loading command: auth
+[2025-05-17 19:30:51] info: Loaded 5 auto-responses across 2 guilds
+[2025-05-17 19:30:51] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-17 19:30:51] info: Loading command: autoreact
+[2025-05-17 19:30:51] info: Loading command: autorespond
+[2025-05-17 19:30:51] info: Loading command: cooldown
+[2025-05-17 19:30:51] info: Loading command: debug
+[2025-05-17 19:30:51] info: Loading command: getpost
+[2025-05-17 19:30:52] info: Loading command: getvid
+[2025-05-17 19:30:52] info: Loading command: help
+[2025-05-17 19:30:52] info: Loading command: logchannel
+[2025-05-17 19:30:52] info: Loading command: memory
+[2025-05-17 19:30:52] info: Loading command: ping
+[2025-05-17 19:30:52] info: Loading command: snipeperm
+[2025-05-17 19:30:52] info: Loading command: statusset
+[2025-05-17 19:30:52] info: Loading event: guildCreate
+[2025-05-17 19:30:52] info: Loading event: guildDelete
+[2025-05-17 19:30:52] info: Loading event: interactionCreate
+[2025-05-17 19:30:52] info: Loading event: messageCreate
+[2025-05-17 19:30:52] info: Loading event: messageDelete
+[2025-05-17 19:30:52] info: Loading event: ready
+[2025-05-17 19:30:52] info: Loading event: resume
+[2025-05-17 19:30:52] info: Health check server running on port 3000
+[2025-05-17 19:30:52] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-17 19:30:54] info: Bot successfully logged in
+[2025-05-17 19:30:54] info: Logged in as Iskosmo#5697
+[2025-05-17 19:30:54] info: Serving 5 guilds
+[2025-05-17 19:30:54] info: Set default status: Playing in 5 guilds
+[2025-05-17 19:30:54] info: Started refreshing 18 application (/) commands.
+[2025-05-17 19:30:55] info: Successfully reloaded 18 application (/) commands.
+[2025-05-17 19:30:56] error: Error tracking deleted message: Cannot read properties of null (reading 'bot')
+[2025-05-17 19:31:03] info: jzoa used command: getpost
+[2025-05-17 19:31:17] warn: Direct page feed fetch failed, trying alternative method: Request failed with status code 400
+[2025-05-17 19:31:18] warn: Posts endpoint fetch failed: Request failed with status code 400
+[2025-05-17 19:31:18] error: Search endpoint failed: Request failed with status code 400
+[2025-05-17 19:31:18] error: Facebook API search error: {"error":{"message":"Unsupported get request. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api","type":"GraphMethodException","code":100,"error_subcode":33,"fbtrace_id":"A_-qYAIlUA3swBH1ReGvT7I"}}
+[2025-05-17 19:31:18] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-17 19:31:18] error: Facebook API error: {"error":{"message":"Invalid OAuth 2.0 Access Token","type":"OAuthException","code":190,"error_subcode":2069032,"is_transient":false,"error_user_title":"User Access Token Is Not Supported","error_user_msg":"A Page access token is required for this call for the new Pages experience.","fbtrace_id":"AIBnI1t363UPSqPiipeT1Ul"}}
+[2025-05-17 19:31:19] info: jzoa used slash command: getpost
+[2025-05-17 19:31:41] info: Shutdown signal received, cleaning up...
+[2025-05-17 19:31:41] info: Destroying client connection...
+[2025-05-17 19:31:41] info: Shutdown complete
+[2025-05-17 19:32:57] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-17 19:32:58] info: Kill switch initialized
+[2025-05-17 19:32:58] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-17 19:32:58] info: Loading command: joke
+[2025-05-17 19:32:58] info: Loaded snipe configuration for 0 guilds
+[2025-05-17 19:32:58] info: Loading command: snipe
+[2025-05-17 19:32:58] info: Loading command: ban
+[2025-05-17 19:32:58] info: Loading command: kick
+[2025-05-17 19:32:58] info: Permissions data loaded successfully
+[2025-05-17 19:32:58] info: Loading command: announce
+[2025-05-17 19:32:58] info: Loading command: auth
+[2025-05-17 19:32:58] info: Loaded 5 auto-responses across 2 guilds
+[2025-05-17 19:32:58] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-17 19:32:58] info: Loading command: autoreact
+[2025-05-17 19:32:58] info: Loading command: autorespond
+[2025-05-17 19:32:58] info: Loading command: cooldown
+[2025-05-17 19:32:58] info: Loading command: debug
+[2025-05-17 19:32:58] info: Loading command: getpost
+[2025-05-17 19:32:58] info: Loading command: getvid
+[2025-05-17 19:32:58] info: Loading command: help
+[2025-05-17 19:32:58] info: Loading command: logchannel
+[2025-05-17 19:32:58] info: Loading command: memory
+[2025-05-17 19:32:58] info: Loading command: ping
+[2025-05-17 19:32:58] info: Loading command: snipeperm
+[2025-05-17 19:32:58] info: Loading command: statusset
+[2025-05-17 19:32:58] info: Loading event: guildCreate
+[2025-05-17 19:32:58] info: Loading event: guildDelete
+[2025-05-17 19:32:58] info: Loading event: interactionCreate
+[2025-05-17 19:32:58] info: Loading event: messageCreate
+[2025-05-17 19:32:58] info: Loading event: messageDelete
+[2025-05-17 19:32:58] info: Loading event: ready
+[2025-05-17 19:32:58] info: Loading event: resume
+[2025-05-17 19:32:58] info: Health check server running on port 3000
+[2025-05-17 19:32:59] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-17 19:33:00] info: Bot successfully logged in
+[2025-05-17 19:33:01] info: Logged in as Iskosmo#5697
+[2025-05-17 19:33:01] info: Serving 5 guilds
+[2025-05-17 19:33:01] info: Set default status: Playing in 5 guilds
+[2025-05-17 19:33:01] info: Started refreshing 18 application (/) commands.
+[2025-05-17 19:33:02] info: Successfully reloaded 18 application (/) commands.
+[2025-05-17 19:33:05] info: Token info: {"data":{"app_id":"542580575399712","type":"USER","application":"piyupeeps","data_access_expires_at":1755257299,"expires_at":1747486800,"is_valid":true,"scopes":["pages_show_list","pages_read_engagement","pages_manage_posts","public_profile"],"granular_scopes":[{"scope":"pages_show_list","target_ids":["315405501666971"]},{"scope":"pages_read_engagement","target_ids":["315405501666971"]},{"scope":"pages_manage_posts","target_ids":["315405501666971"]}],"user_id":"4124405244547522"}}
+[2025-05-17 19:33:05] info: Page info: {"id":"315405501666971","name":"Piyupeeps Iskocial"}
+[2025-05-17 19:33:06] warn: Direct page feed fetch failed, trying alternative method: Request failed with status code 400
+[2025-05-17 19:33:06] warn: Posts endpoint fetch failed: Request failed with status code 400
+[2025-05-17 19:33:07] error: Search endpoint failed: Request failed with status code 400
+[2025-05-17 19:33:07] error: Facebook API search error: {"error":{"message":"Unsupported get request. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api","type":"GraphMethodException","code":100,"error_subcode":33,"fbtrace_id":"AFCo_WsVOp5n7qEnSs9D0Ek"}}
+[2025-05-17 19:33:07] error: Error fetching Facebook posts: Request failed with status code 400
+[2025-05-17 19:33:07] error: Facebook API error: {"error":{"message":"Invalid OAuth 2.0 Access Token","type":"OAuthException","code":190,"error_subcode":2069032,"is_transient":false,"error_user_title":"User Access Token Is Not Supported","error_user_msg":"A Page access token is required for this call for the new Pages experience.","fbtrace_id":"A6z7S9o71v71S12zh0_XKZG"}}
+[2025-05-17 19:33:07] info: jzoa used slash command: getpost
+[2025-05-17 19:33:26] info: Shutdown signal received, cleaning up...
+[2025-05-17 19:33:26] info: Destroying client connection...
+[2025-05-17 19:33:26] info: Shutdown complete
+[2025-05-17 19:34:32] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-17 19:34:32] info: Kill switch initialized
+[2025-05-17 19:34:32] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-17 19:34:32] info: Loading command: joke
+[2025-05-17 19:34:32] info: Loaded snipe configuration for 0 guilds
+[2025-05-17 19:34:32] info: Loading command: snipe
+[2025-05-17 19:34:32] info: Loading command: ban
+[2025-05-17 19:34:32] info: Loading command: kick
+[2025-05-17 19:34:32] info: Permissions data loaded successfully
+[2025-05-17 19:34:32] info: Loading command: announce
+[2025-05-17 19:34:32] info: Loading command: auth
+[2025-05-17 19:34:32] info: Loaded 5 auto-responses across 2 guilds
+[2025-05-17 19:34:32] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-17 19:34:32] info: Loading command: autoreact
+[2025-05-17 19:34:32] info: Loading command: autorespond
+[2025-05-17 19:34:32] info: Loading command: cooldown
+[2025-05-17 19:34:32] info: Loading command: debug
+[2025-05-17 19:34:32] info: Loading command: getpost
+[2025-05-17 19:34:33] info: Loading command: getvid
+[2025-05-17 19:34:33] info: Loading command: help
+[2025-05-17 19:34:33] info: Loading command: logchannel
+[2025-05-17 19:34:33] info: Loading command: memory
+[2025-05-17 19:34:33] info: Loading command: ping
+[2025-05-17 19:34:33] info: Loading command: snipeperm
+[2025-05-17 19:34:33] info: Loading command: statusset
+[2025-05-17 19:34:33] info: Loading event: guildCreate
+[2025-05-17 19:34:33] info: Loading event: guildDelete
+[2025-05-17 19:34:33] info: Loading event: interactionCreate
+[2025-05-17 19:34:33] info: Loading event: messageCreate
+[2025-05-17 19:34:33] info: Loading event: messageDelete
+[2025-05-17 19:34:33] info: Loading event: ready
+[2025-05-17 19:34:33] info: Loading event: resume
+[2025-05-17 19:34:33] info: Health check server running on port 3000
+[2025-05-17 19:34:33] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-17 19:34:35] info: Bot successfully logged in
+[2025-05-17 19:34:36] info: Logged in as Iskosmo#5697
+[2025-05-17 19:34:36] info: Serving 5 guilds
+[2025-05-17 19:34:36] info: Set default status: Playing in 5 guilds
+[2025-05-17 19:34:36] info: Started refreshing 18 application (/) commands.
+[2025-05-17 19:34:36] info: Successfully reloaded 18 application (/) commands.
+[2025-05-17 19:34:41] info: Token info: {"data":{"app_id":"542580575399712","type":"USER","application":"piyupeeps","data_access_expires_at":1755257299,"expires_at":1747486800,"is_valid":true,"scopes":["pages_show_list","pages_read_engagement","pages_manage_posts","public_profile"],"granular_scopes":[{"scope":"pages_show_list","target_ids":["315405501666971"]},{"scope":"pages_read_engagement","target_ids":["315405501666971"]},{"scope":"pages_manage_posts","target_ids":["315405501666971"]}],"user_id":"4124405244547522"}}
+[2025-05-17 19:34:41] warn: Using a USER token. For the new Pages experience, a PAGE access token is required.
+[2025-05-17 19:34:41] info: Successfully obtained page access token for page 315405501666971
+[2025-05-17 19:34:42] warn: Direct page feed fetch failed, trying alternative method: Request failed with status code 400
+[2025-05-17 19:34:44] warn: Couldn't fetch page image: Request failed with status code 400
+[2025-05-17 19:34:46] info: jzoa used slash command: getpost
+[2025-05-17 19:36:32] info: Memory status: 71MB heap, 77.1% system RAM used, 3680MB free
+[2025-05-17 19:37:22] info: jzoa used command: snipe
+[2025-05-17 19:38:28] info: jzoa used slash command: getpost
+[2025-05-17 19:38:32] info: Memory status: 71MB heap, 77.0% system RAM used, 3697MB free
+[2025-05-17 19:38:41] info: jzoa used slash command: getpost
+[2025-05-17 19:39:34] info: Token info: {"data":{"app_id":"542580575399712","type":"USER","application":"piyupeeps","data_access_expires_at":1755257299,"expires_at":1747486800,"is_valid":true,"scopes":["pages_show_list","pages_read_engagement","pages_manage_posts","public_profile"],"granular_scopes":[{"scope":"pages_show_list","target_ids":["315405501666971"]},{"scope":"pages_read_engagement","target_ids":["315405501666971"]},{"scope":"pages_manage_posts","target_ids":["315405501666971"]}],"user_id":"4124405244547522"}}
+[2025-05-17 19:39:34] warn: Using a USER token. For the new Pages experience, a PAGE access token is required.
+[2025-05-17 19:39:34] info: Successfully obtained page access token for page 315405501666971
+[2025-05-17 19:39:35] warn: Direct page feed fetch failed, trying alternative method: Request failed with status code 400
+[2025-05-17 19:40:32] info: Memory status: 71MB heap, 78.3% system RAM used, 3486MB free
+[2025-05-17 19:42:32] info: Memory status: 72MB heap, 78.6% system RAM used, 3434MB free
+[2025-05-17 19:52:59] info: Memory status: 72MB heap, 75.8% system RAM used, 3879MB free
+[2025-05-17 19:52:59] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-17 19:54:59] info: Memory status: 74MB heap, 81.6% system RAM used, 2953MB free
+[2025-05-17 19:56:59] info: Memory status: 74MB heap, 83.1% system RAM used, 2717MB free
+[2025-05-17 19:58:59] info: Memory status: 75MB heap, 80.2% system RAM used, 3186MB free
+[2025-05-17 20:00:59] info: Memory status: 75MB heap, 80.6% system RAM used, 3123MB free
+[2025-05-17 20:02:59] info: Memory status: 75MB heap, 83.4% system RAM used, 2658MB free
+[2025-05-17 20:04:36] info: Running scheduled status check
+[2025-05-17 20:04:36] info: Status check passed, presence is intact
+[2025-05-17 20:04:59] info: Memory status: 75MB heap, 87.3% system RAM used, 2038MB free
+[2025-05-17 20:04:59] info: Performing routine cache cleanup
+[2025-05-17 20:04:59] info: Cleared response cache (0 items)
+[2025-05-17 20:06:59] info: Memory status: 75MB heap, 83.3% system RAM used, 2674MB free
+[2025-05-17 20:07:59] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-17 20:08:19] info: Shutdown signal received, cleaning up...
+[2025-05-17 20:08:19] info: Destroying client connection...
+[2025-05-17 20:08:20] info: Shutdown complete
