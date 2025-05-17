@@ -108,6 +108,13 @@ setInterval(() => {
       
       if (memoryUsagePercent > 85) {
         console.warn(`[MEMORY WARNING] High memory usage: ${memoryUsagePercent.toFixed(1)}%`);
+        
+        // Use the memory manager to handle high memory situations
+        if (client.memoryManager) {
+          client.memoryManager.checkMemoryUsage();
+          client.memoryManager.performMemoryCleanup(memoryUsagePercent > 90);
+        }
+        
         if (global.gc) {
           console.log('Forcing garbage collection...');
           global.gc();

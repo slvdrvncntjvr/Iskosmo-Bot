@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 const config = require('../../config');
 const { createEmbed } = require('../../utils/embedBuilder');
 const cooldownManager = require('../../utils/cooldownManager');
+const permissionManager = require('../../utils/permissionManager'); // Added this import
 
 module.exports = {
     name: 'help',
@@ -19,10 +20,16 @@ module.exports = {
     
     async execute(message, args, client) {
         const { commands } = client;
+        const isOwner = permissionManager.isOwner(message.author.id);
  
         if (!args.length) {
             const categories = {};
             commands.forEach(command => {
+                // Skip owner-only commands for non-owners
+                if (command.requiresAuth && !isOwner) {
+                    return;
+                }
+                
                 const category = command.category || 'Uncategorized';
                 
                 if (!categories[category]) {
@@ -39,6 +46,9 @@ module.exports = {
             });
 
             for (const [category, cmds] of Object.entries(categories)) {
+                // Skip empty categories (might happen if all commands were hidden)
+                if (cmds.length === 0) continue;
+                
                 helpEmbed.addFields({
                     name: `📁 ${category.charAt(0).toUpperCase() + category.slice(1)}`,
                     value: cmds.map(cmd => `\`${cmd.name}\`: ${cmd.description}`).join('\n')
@@ -52,6 +62,17 @@ module.exports = {
         const command = commands.get(commandName);
         
         if (!command) {
+            return message.reply({ 
+                embeds: [createEmbed({
+                    title: 'Command Not Found',
+                    description: `Could not find command \`${commandName}\`.`,
+                    type: 'error'
+                })]
+            });
+        }
+        
+        // Hide owner-only command details from non-owners
+        if (command.requiresAuth && !isOwner) {
             return message.reply({ 
                 embeds: [createEmbed({
                     title: 'Command Not Found',
@@ -81,11 +102,17 @@ module.exports = {
     async executeSlash(interaction, client) {
         const commandName = interaction.options.getString('command');
         const { commands } = client;
+        const isOwner = permissionManager.isOwner(interaction.user.id);
 
         if (!commandName) {
             const categories = {};
             
             commands.forEach(command => {
+                // Skip owner-only commands for non-owners
+                if (command.requiresAuth && !isOwner) {
+                    return;
+                }
+                
                 const category = command.category || 'Uncategorized';
                 
                 if (!categories[category]) {
@@ -102,6 +129,9 @@ module.exports = {
             });
 
             for (const [category, cmds] of Object.entries(categories)) {
+                // Skip empty categories (might happen if all commands were hidden)
+                if (cmds.length === 0) continue;
+                
                 helpEmbed.addFields({
                     name: `📁 ${category.charAt(0).toUpperCase() + category.slice(1)}`,
                     value: cmds.map(cmd => `\`${cmd.name}\`: ${cmd.description}`).join('\n')
@@ -114,6 +144,18 @@ module.exports = {
         const command = commands.get(commandName.toLowerCase());
         
         if (!command) {
+            return interaction.reply({ 
+                embeds: [createEmbed({
+                    title: 'Command Not Found',
+                    description: `Could not find command \`${commandName}\`.`,
+                    type: 'error'
+                })],
+                ephemeral: true
+            });
+        }
+        
+        // Hide owner-only command details from non-owners
+        if (command.requiresAuth && !isOwner) {
             return interaction.reply({ 
                 embeds: [createEmbed({
                     title: 'Command Not Found',
