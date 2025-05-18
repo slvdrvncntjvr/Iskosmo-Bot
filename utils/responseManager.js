@@ -206,7 +206,6 @@ class ResponseManager {
         return false;
     }
 
-    // Remove an auto-reaction
     removeReact(guildId, trigger, emoji = null) {
         if (!this.reacts.has(guildId)) return false;
         
@@ -215,11 +214,9 @@ class ResponseManager {
         
         let newReacts;
         if (emoji) {
-            // Remove specific trigger+emoji combination
             newReacts = guildReacts.filter(r => 
                 !(r.trigger.toLowerCase() === trigger.toLowerCase() && r.emoji === emoji));
         } else {
-            // Remove all reactions with this trigger
             newReacts = guildReacts.filter(r => 
                 r.trigger.toLowerCase() !== trigger.toLowerCase());
         }
@@ -233,7 +230,6 @@ class ResponseManager {
         return false;
     }
 
-    // Toggle enabled status of an auto-response
     toggleResponse(guildId, trigger) {
         if (!this.responses.has(guildId)) return false;
         
@@ -388,10 +384,6 @@ class ResponseManager {
                 return message.includes(trigger);
         }
     }
-
-    /* messageMatchesTrigger(message, trigger, matchType, caseSensitive) {
-        return this.getCachedTriggerMatch(message, trigger, matchType, caseSensitive);
-    } */
 
     listResponses(guildId) {
         return this.getResponses(guildId);

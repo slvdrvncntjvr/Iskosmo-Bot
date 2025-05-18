@@ -6,7 +6,6 @@ const path = require('path');
 
 const warningsFilePath = path.join(__dirname, '../../data/warnings.json');
 
-// Helper functions for managing warnings
 const getWarnings = () => {
     try {
         if (!fs.existsSync(warningsFilePath)) {
@@ -16,7 +15,6 @@ const getWarnings = () => {
         
         const fileContent = fs.readFileSync(warningsFilePath, 'utf8');
         
-        // Check if file is empty or just whitespace
         if (!fileContent.trim()) {
             logger.warn('Warnings file is empty, creating new warnings object');
             fs.writeFileSync(warningsFilePath, JSON.stringify({}), 'utf8');
@@ -27,12 +25,10 @@ const getWarnings = () => {
             return JSON.parse(fileContent);
         } catch (parseError) {
             logger.error('Error parsing warnings file, creating backup and resetting:', parseError);
-            // Create backup of corrupted file
             const backupPath = `${warningsFilePath}.${Date.now()}.backup`;
             fs.writeFileSync(backupPath, fileContent, 'utf8');
             logger.info(`Created backup of corrupted warnings file at ${backupPath}`);
             
-            // Reset warnings
             fs.writeFileSync(warningsFilePath, JSON.stringify({}), 'utf8');
             return {};
         }
@@ -44,25 +40,22 @@ const getWarnings = () => {
 
 const saveWarnings = (warnings) => {
     try {
-        // First write to a temporary file
         const tempFilePath = `${warningsFilePath}.temp`;
         fs.writeFileSync(tempFilePath, JSON.stringify(warnings, null, 2), 'utf8');
         
-        // Verify that the temp file is valid JSON
         try {
             const testRead = fs.readFileSync(tempFilePath, 'utf8');
-            JSON.parse(testRead); // Will throw if invalid
+            JSON.parse(testRead);
             
-            // If we get here, the file is valid - rename to replace the original
             if (fs.existsSync(warningsFilePath)) {
-                fs.unlinkSync(warningsFilePath); // Delete original
+                fs.unlinkSync(warningsFilePath);
             }
             fs.renameSync(tempFilePath, warningsFilePath);
             return true;
         } catch (verifyError) {
             logger.error('Failed to verify temporary warnings file:', verifyError);
             if (fs.existsSync(tempFilePath)) {
-                fs.unlinkSync(tempFilePath); // Clean up temp file
+                fs.unlinkSync(tempFilePath);
             }
             return false;
         }
@@ -106,10 +99,9 @@ const removeWarning = (guildId, userId, warningId) => {
     warnings[guildId][userId] = warnings[guildId][userId].filter(w => w.id !== warningId);
     
     if (warnings[guildId][userId].length === initialLength) {
-        return false;  // No warning was removed
+        return false;
     }
     
-    // Cleanup empty entries
     if (warnings[guildId][userId].length === 0) {
         delete warnings[guildId][userId];
         
@@ -197,9 +189,8 @@ module.exports = {
         .setDefaultMemberPermissions(PermissionFlagsBits.ModerateMembers),
     
     async execute(message, args, client) {
-        // Fix for undefined prefix error
         if (!client.config) {
-            client.config = { prefix: '!' }; // Default prefix if config is undefined
+            client.config = { prefix: '!' };
         }
         
         if (!args.length) {
@@ -228,7 +219,6 @@ module.exports = {
                 });
             }
             
-            // Make sure you can't warn yourself or the bot
             if (target.id === message.author.id) {
                 return message.reply({ 
                     embeds: [createEmbed({
@@ -249,11 +239,9 @@ module.exports = {
                 });
             }
             
-            // FIX: Improved check for moderator permissions
             const targetMember = await message.guild.members.fetch(target.id).catch(() => null);
             if (targetMember && targetMember.permissions.has(PermissionFlagsBits.ModerateMembers) && 
                 !message.member.permissions.has(PermissionFlagsBits.Administrator)) {
-                // Only block if target is a mod AND warner is not an admin
                 return message.reply({ 
                     embeds: [createEmbed({
                         title: 'Command Error',
@@ -277,10 +265,8 @@ module.exports = {
                 });
             }
             
-            // Get number of warnings
             const userWarnings = getUserWarnings(guildId, target.id);
             
-            // Send confirmation
             message.reply({ 
                 embeds: [createEmbed({
                     title: 'User Warned',
@@ -296,7 +282,6 @@ module.exports = {
                 })]
             });
             
-            // DM the user about the warning
             try {
                 await target.send({ 
                     embeds: [createEmbed({
@@ -355,7 +340,6 @@ module.exports = {
                 });
             }
             
-            // Get updated number of warnings
             const userWarnings = getUserWarnings(guildId, target.id);
             
             message.reply({ 
@@ -443,7 +427,6 @@ module.exports = {
                 });
             }
             
-            // Format warnings
             const warningsList = warnings.map((warning, index) => {
                 const date = new Date(warning.timestamp).toLocaleString();
                 const moderator = client.users.cache.get(warning.moderatorId)?.tag || 'Unknown Moderator';
@@ -485,7 +468,6 @@ module.exports = {
         const guildId = interaction.guild.id;
         
         if (subcommand === 'add') {
-            // Make sure you can't warn yourself or the bot
             if (target.id === interaction.user.id) {
                 return interaction.reply({ 
                     embeds: [createEmbed({
@@ -508,11 +490,9 @@ module.exports = {
                 });
             }
             
-            // Check if target is a moderator/admin
             const targetMember = await interaction.guild.members.fetch(target.id).catch(() => null);
             if (targetMember && targetMember.permissions.has(PermissionFlagsBits.ModerateMembers) && 
                 !interaction.member.permissions.has(PermissionFlagsBits.Administrator)) {
-                // Only block if target is a mod AND warner is not an admin
                 return interaction.reply({ 
                     embeds: [createEmbed({
                         title: 'Command Error',
@@ -538,10 +518,8 @@ module.exports = {
                 });
             }
             
-            // Get number of warnings
             const userWarnings = getUserWarnings(guildId, target.id);
             
-            // Send confirmation
             interaction.reply({ 
                 embeds: [createEmbed({
                     title: 'User Warned',
@@ -557,7 +535,6 @@ module.exports = {
                 })]
             });
             
-            // DM the user about the warning
             try {
                 await target.send({ 
                     embeds: [createEmbed({
@@ -595,7 +572,6 @@ module.exports = {
                 });
             }
             
-            // Get updated number of warnings
             const userWarnings = getUserWarnings(guildId, target.id);
             
             interaction.reply({ 
@@ -659,7 +635,6 @@ module.exports = {
                 });
             }
             
-            // Format warnings
             const warningsList = warnings.map((warning, index) => {
                 const date = new Date(warning.timestamp).toLocaleString();
                 const moderator = client.users.cache.get(warning.moderatorId)?.tag || 'Unknown Moderator';

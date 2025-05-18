@@ -1,4 +1,3 @@
-// copyright aoz
 global.opus = require('opusscript');
 process.env.YTDL_NO_UPDATE = "true";
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -100,7 +99,6 @@ client.login(process.env.DISCORD_BOT_TOKEN)
         process.exit(1);
     });
 
-// memory pressure detection
 setInterval(() => {
     try {
       const memoryUsage = process.memoryUsage();
@@ -109,7 +107,6 @@ setInterval(() => {
       if (memoryUsagePercent > 85) {
         console.warn(`[MEMORY WARNING] High memory usage: ${memoryUsagePercent.toFixed(1)}%`);
         
-        // Use the memory manager to handle high memory situations
         if (client.memoryManager) {
           client.memoryManager.checkMemoryUsage();
           client.memoryManager.performMemoryCleanup(memoryUsagePercent > 90);
@@ -147,7 +144,7 @@ process.on('unhandledRejection', error => {
 });
 
 const { startHealthServer } = require('./utils/healthCheck');
-startHealthServer(3000); // http://localhost:3000/health
+startHealthServer(3000);
 
 process.on('SIGTERM', gracefulShutdown);
 process.on('SIGINT', gracefulShutdown);
@@ -166,7 +163,6 @@ async function gracefulShutdown() {
     process.exit(0);
 }
 
-// Facebook post checker
 async function checkFacebookPosts() {
     try {
         const fbSettingsPath = path.join(__dirname, 'data/facebookSettings.json');
@@ -178,13 +174,11 @@ async function checkFacebookPosts() {
         const currentTime = Date.now();
         
         for (const [guildId, settings] of Object.entries(fbSettings)) {
-            // Skip if autopost is disabled or missing required settings
             if (!settings.autopost || !settings.channelId || (!settings.defaultPage && !process.env.FACEBOOK_DEFAULT_PAGE)) {
                 continue;
             }
             
-            // Check if it's time to check based on interval
-            const interval = settings.interval || 30; // Default 30 minutes
+            const interval = settings.interval || 30;
             const lastCheck = settings.lastCheckTime || 0;
             const intervalMs = interval * 60 * 1000;
             
@@ -192,18 +186,15 @@ async function checkFacebookPosts() {
                 continue;
             }
             
-            // Update last check time
             settings.lastCheckTime = currentTime;
             fs.writeFileSync(fbSettingsPath, JSON.stringify(fbSettings, null, 2), 'utf8');
             
-            // Try to get the guild and channel
             const guild = client.guilds.cache.get(guildId);
             if (!guild) continue;
             
             const channel = guild.channels.cache.get(settings.channelId);
             if (!channel) continue;
             
-            // Get the pageId to check
             const pageId = settings.defaultPage || process.env.FACEBOOK_DEFAULT_PAGE;
             const getpostCommand = client.commands.get('getpost');
             
@@ -212,17 +203,14 @@ async function checkFacebookPosts() {
                 continue;
             }
             
-            // Fetch the most recent post
             const posts = await getpostCommand.fetchPosts(pageId, 1);
             if (!posts || !posts.length) continue;
             
             const latestPost = posts[0];
             
-            // Check if we've already posted this
             const latestPostTime = new Date(latestPost.created_time).getTime();
             const lastPostedTime = settings.lastPostTime || 0;
             
-            // Only post if it's newer than our last posted time
             if (latestPostTime > lastPostedTime) {
                 const pageName = await getpostCommand.getPageName(pageId);
                 const embed = await getpostCommand.createPostEmbed(latestPost, pageName);
@@ -232,7 +220,6 @@ async function checkFacebookPosts() {
                     embeds: [embed] 
                 });
                 
-                // Update last post time
                 settings.lastPostTime = latestPostTime;
                 fs.writeFileSync(fbSettingsPath, JSON.stringify(fbSettings, null, 2), 'utf8');
                 
@@ -244,8 +231,6 @@ async function checkFacebookPosts() {
     }
 }
 
-// Run the Facebook post checker every 5 minutes
 setInterval(checkFacebookPosts, 5 * 60 * 1000);
 
-// Initial check a minute after startup
 setTimeout(checkFacebookPosts, 60 * 1000);

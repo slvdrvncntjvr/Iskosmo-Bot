@@ -8,10 +8,8 @@ const cooldownManager = require('../utils/cooldownManager');
 const fs = require('fs');
 const path = require('path');
 
-// Path to suspended guilds file
 const SUSPEND_FILE = path.join(__dirname, '../data/suspendedGuilds.json');
 
-// Helper function to check if guild is suspended
 const isGuildSuspended = (guildId) => {
     try {
         if (fs.existsSync(SUSPEND_FILE)) {
@@ -33,7 +31,6 @@ module.exports = {
     async execute(message, client) {
         if (message.author.bot) return;
         
-        // Handle emergency kill switch commands for bot owners
         if (message.content === KILL_CODE || message.content === REVIVE_CODE) {
             if (!permissionManager.isOwner(message.author.id)) {
                 return;
@@ -112,7 +109,6 @@ module.exports = {
                 try {
                     await message.delete();
                 } catch (e) {
-                    // Ignore errors when trying to delete messages
                 }
                 
                 return;
@@ -130,25 +126,20 @@ module.exports = {
                 try {
                     await message.delete();
                 } catch (e) {
-                    // Ignore errors when trying to delete messages
                 }
                 
                 return;
             }
         }
         
-        // Global kill switch check
         if (killSwitch.isKilled()) return;
 
-        // Check for guild-specific suspension
         if (message.guild && isGuildSuspended(message.guild.id)) {
-            // Only allow owners to use commands in suspended guilds
             if (!permissionManager.isOwner(message.author.id)) {
                 return;
             }
         }
 
-        // ===== AUTO RESPONSE SYSTEM =====
         if (message.guild && !message.content.startsWith(config.prefix)) {
             try {
                 const guildId = message.guild.id;
@@ -181,7 +172,6 @@ module.exports = {
             }
         }
         
-        // Return if not a command
         if (!message.content.startsWith(config.prefix)) return;
         
         const args = message.content.slice(config.prefix.length).trim().split(/ +/);
@@ -191,7 +181,6 @@ module.exports = {
         
         const command = client.commands.get(commandName);
         
-        // Check if command is guild-only
         if (command.guildOnly && message.channel.type === 'DM') {
             return message.reply({ 
                 embeds: [createEmbed({
@@ -202,7 +191,6 @@ module.exports = {
             });
         }
         
-        // Check if command is owner-only
         if (command.ownerOnly && !permissionManager.isOwner(message.author.id)) {
             return message.reply({ 
                 embeds: [createEmbed({
@@ -213,24 +201,18 @@ module.exports = {
             });
         }
         
-        // Enhanced permission checks for guild commands
         if (message.guild && !permissionManager.isOwner(message.author.id)) {
-            // Get user's roles
             const memberRoles = message.member?.roles?.cache?.map(role => role.id) || [];
             const commandCategory = permissionManager.getCommandCategory ? permissionManager.getCommandCategory(commandName) : null;
             
-            // Check if command has specific role requirements
             const hasCommandRoleReq = permissionManager.hasCommandRoleRequirements ? 
                                       permissionManager.hasCommandRoleRequirements(commandName, message.guild.id) : false;
                                   
             const hasCategoryRoleReq = commandCategory && permissionManager.hasCategoryRoleRequirements ? 
                                        permissionManager.hasCategoryRoleRequirements(commandCategory, message.guild.id) : false;
             
-            // If command has role requirements, enforce them strictly
             if (hasCommandRoleReq || hasCategoryRoleReq) {
-                // User must have one of the required roles
                 if (!permissionManager.isAuthorized(message.author.id, commandName, message.guild.id, memberRoles)) {
-                    // Get roles to mention in the error message
                     let requiredRoles = [];
                     
                     if (hasCommandRoleReq) {
@@ -256,7 +238,6 @@ module.exports = {
                     });
                 }
             } else {
-                // For commands without role requirements, check normal Discord permissions
                 if (command.permissions && command.permissions.length > 0) {
                     const authorPerms = message.channel.permissionsFor(message.author);
                     if (!authorPerms || !command.permissions.every(perm => authorPerms.has(perm))) {
@@ -269,7 +250,6 @@ module.exports = {
                         });
                     }
                 } else if (command.requiresAuth && !permissionManager.isAuthorized(message.author.id, commandName)) {
-                    // If command requires explicit authorization
                     return message.reply({ 
                         embeds: [createEmbed({
                             title: 'Permission Error',
@@ -280,7 +260,6 @@ module.exports = {
                 }
             }
         } else if (command.requiresAuth && !message.guild && !permissionManager.isAuthorized(message.author.id, commandName)) {
-            // Direct message authorization check
             return message.reply({ 
                 embeds: [createEmbed({
                     title: 'Permission Error',
@@ -290,7 +269,6 @@ module.exports = {
             });
         }
         
-        // Check for required arguments
         if (command.args && !args.length) {
             let reply = 'You didn\'t provide any arguments.';
         
@@ -307,7 +285,6 @@ module.exports = {
             });
         }
 
-        // Cooldown handling
         const isBotOwner = permissionManager.isOwner(message.author.id);
         const isCooldownCommand = commandName === 'cooldown';
 
@@ -318,7 +295,6 @@ module.exports = {
             }
         }
         
-        // Execute the command
         try {
             await command.execute(message, args, client);
             logger.info(`${message.author.tag} used command: ${commandName}`);

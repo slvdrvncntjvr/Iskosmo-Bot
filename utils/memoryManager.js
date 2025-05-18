@@ -9,12 +9,12 @@ class MemoryManager {
         this.warningThreshold = 800 * 1024 * 1024;
         this.criticalThreshold = 1024 * 1024 * 1024;
         this.lowSystemMemoryThreshold = 400 * 1024 * 1024;
-        this.heapUsagePercentWarning = 95; // Increase to 95% to reduce false alarms
-        this.heapUsagePercentCritical = 98; // Increase to 98% for critical threshold
+        this.heapUsagePercentWarning = 95;
+        this.heapUsagePercentCritical = 98;
         this.lastCacheClear = Date.now();
         this.cacheInterval = 30 * 60 * 1000;
         this.memoryCheckInterval = 2 * 60 * 1000;
-        this.minimumHeapSizeForPercentageCheck = 100 * 1024 * 1024; // Only apply percentage rules for heaps > 100MB
+        this.minimumHeapSizeForPercentageCheck = 100 * 1024 * 1024;
 
         this.responseCache = new Map();
         
@@ -38,7 +38,6 @@ class MemoryManager {
         
         logger.info(`Memory status: ${Math.round(memoryUsage.heapUsed / 1024 / 1024)}MB heap, ${systemUsedPercent.toFixed(1)}% system RAM used, ${Math.round(systemFree / 1024 / 1024)}MB free`);
 
-        // Check if we need to exit recovery mode
         if (this.inRecoveryMode) {
             const now = Date.now();
             if (now - this.recoveryModeStarted > this.recoveryModeDuration && 
@@ -49,7 +48,6 @@ class MemoryManager {
             }
         }
 
-        // Check system memory
         if (systemFree < this.lowSystemMemoryThreshold) { 
             logger.warn(`Low system memory: ${Math.round(systemFree / 1024 / 1024)}MB free - entering recovery mode`);
             this.enterRecoveryMode();
@@ -57,21 +55,17 @@ class MemoryManager {
             return;
         }
 
-        // Check absolute heap usage
         if (memoryUsage.heapUsed > this.warningThreshold) {
             logger.warn(`High memory usage: ${Math.round(memoryUsage.heapUsed / 1024 / 1024)}MB`);
             this.performMemoryCleanup(false);
         }
 
-        // Routine cache clear
         if (Date.now() - this.lastCacheClear > this.cacheInterval) {
             logger.info('Performing routine cache cleanup');
             this.clearResponseCache();
             this.lastCacheClear = Date.now();
         }
 
-        // Check heap usage percentage, but only if heap is significant in size
-        // This prevents high percentage warnings on small heaps
         const heapUsedPercent = (memoryUsage.heapUsed / memoryUsage.heapTotal) * 100;
         if (memoryUsage.heapUsed > this.minimumHeapSizeForPercentageCheck) {
             if (heapUsedPercent > this.heapUsagePercentWarning) {
@@ -85,7 +79,6 @@ class MemoryManager {
                 this.performMemoryCleanup(true);
             }
         } else {
-            // For small heaps, only log high percentages but don't take action
             if (heapUsedPercent > this.heapUsagePercentWarning) {
                 logger.info(`High heap percentage (${heapUsedPercent.toFixed(1)}%) but small absolute size (${Math.round(memoryUsage.heapUsed / 1024 / 1024)}MB) - no action needed`);
             }
