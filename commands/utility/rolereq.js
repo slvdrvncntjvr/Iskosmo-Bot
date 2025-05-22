@@ -60,7 +60,7 @@ module.exports = {
                 .setDescription('List role requirements')
                 .addStringOption(option =>
                     option.setName('type')
-                        .setDescription('List by command or category')
+                        .setDescription('List by command, category, or all (use "all" to see everything)')
                         .setRequired(true)
                         .addChoices(
                             { name: 'Command', value: 'command' },

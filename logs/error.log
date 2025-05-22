@@ -60,3 +60,29 @@
 [2025-05-17 21:12:52] error: Search endpoint failed: Request failed with status code 400
 [2025-05-17 21:12:52] error: Facebook API search error: {"error":{"message":"Error validating access token: Session has expired on Saturday, 17-May-25 06:00:00 PDT. The current time is Saturday, 17-May-25 06:12:54 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AQm8GIZvlywQiWCvAGr9Zax"}}
 [2025-05-17 21:12:52] error: Error in Facebook post checker: Request failed with status code 400
+[2025-05-18 19:07:35] error: Error executing command ban in 995442745508376666: Cannot read properties of undefined (reading 'members')
+[2025-05-18 19:10:06] error: Error executing command ban in 995442745508376666: message.mentions.members.first is not a function
+[2025-05-18 19:10:19] error: Error executing command ban in 995442745508376666: message.mentions.members.first is not a function
+[2025-05-18 19:17:13] error: Error in ready event: Invalid Form Body
+19.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 19:19:21] error: Bot suspended via emergency kill code
+[2025-05-18 19:51:57] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 19:54:33] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 19:56:21] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 19:58:41] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 20:01:48] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 20:02:02] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 20:04:54] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 20:06:46] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 20:08:18] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 20:10:32] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options

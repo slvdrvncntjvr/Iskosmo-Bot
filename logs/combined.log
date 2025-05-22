@@ -1054,3 +1054,865 @@
 [2025-05-17 21:27:06] info: Shutdown signal received, cleaning up...
 [2025-05-17 21:27:06] info: Destroying client connection...
 [2025-05-17 21:27:07] info: Shutdown complete
+[2025-05-18 19:05:18] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-18 19:05:18] info: Kill switch initialized
+[2025-05-18 19:05:18] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-18 19:05:18] info: Loading command: joke
+[2025-05-18 19:05:18] info: Loaded snipe configuration for 0 guilds
+[2025-05-18 19:05:18] info: Loading command: snipe
+[2025-05-18 19:05:18] info: Loading command: ban
+[2025-05-18 19:05:18] info: Loading command: kick
+[2025-05-18 19:05:18] info: Loading command: purge
+[2025-05-18 19:05:18] info: Loading command: timeout
+[2025-05-18 19:05:18] info: Loading command: warn
+[2025-05-18 19:05:18] info: Permissions data loaded successfully
+[2025-05-18 19:05:18] info: Loading command: announce
+[2025-05-18 19:05:18] info: Loading command: auth
+[2025-05-18 19:05:18] info: Loaded 4 auto-responses across 2 guilds
+[2025-05-18 19:05:18] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-18 19:05:18] info: Loading command: autoreact
+[2025-05-18 19:05:18] info: Loading command: autorespond
+[2025-05-18 19:05:18] info: Loading command: cooldown
+[2025-05-18 19:05:18] info: Loading command: debug
+[2025-05-18 19:05:18] info: Loading command: getpost
+[2025-05-18 19:05:19] info: Loading command: getvid
+[2025-05-18 19:05:19] info: Loading command: help
+[2025-05-18 19:05:19] info: Loading command: logchannel
+[2025-05-18 19:05:19] info: Loading command: memory
+[2025-05-18 19:05:19] info: Loading command: ping
+[2025-05-18 19:05:19] info: Loading command: remoteexec
+[2025-05-18 19:05:19] info: Loading command: rolereq
+[2025-05-18 19:05:19] info: Loading command: servers
+[2025-05-18 19:05:19] info: Loading command: snipeperm
+[2025-05-18 19:05:19] info: Loading command: statusset
+[2025-05-18 19:05:19] info: Loading event: guildCreate
+[2025-05-18 19:05:19] info: Loading event: guildDelete
+[2025-05-18 19:05:19] info: Loading event: interactionCreate
+[2025-05-18 19:05:19] info: Loading event: messageCreate
+[2025-05-18 19:05:19] info: Loading event: messageDelete
+[2025-05-18 19:05:19] info: Loading event: ready
+[2025-05-18 19:05:19] info: Loading event: resume
+[2025-05-18 19:05:19] info: Health check server running on port 3000
+[2025-05-18 19:05:20] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-18 19:05:21] info: Bot successfully logged in
+[2025-05-18 19:05:21] info: Logged in as ModulAI#2431
+[2025-05-18 19:05:21] info: Serving 2 guilds
+[2025-05-18 19:05:21] info: Set default status: Playing in 2 guilds
+[2025-05-18 19:05:21] info: Started refreshing 24 application (/) commands.
+[2025-05-18 19:05:22] info: Successfully reloaded 24 application (/) commands.
+[2025-05-18 19:06:04] info: jzoa used command: servers
+[2025-05-18 19:06:19] info: Memory status: 69MB heap, 94.2% system RAM used, 938MB free
+[2025-05-18 19:06:19] info: Cleared response cache (0 items)
+[2025-05-18 19:06:19] warn: Performing aggressive memory cleanup
+[2025-05-18 19:06:19] info: Memory cleanup completed
+[2025-05-18 19:06:20] info: jzoa used command: servers
+[2025-05-18 19:06:23] info: jzoa used command: help
+[2025-05-18 19:06:31] info: jzoa used command: remoteexec
+[2025-05-18 19:07:18] info: Memory status: 69MB heap, 94.4% system RAM used, 904MB free
+[2025-05-18 19:07:19] info: Memory status: 69MB heap, 94.4% system RAM used, 898MB free
+[2025-05-18 19:07:19] info: Cleared response cache (0 items)
+[2025-05-18 19:07:19] warn: Performing aggressive memory cleanup
+[2025-05-18 19:07:19] info: Memory cleanup completed
+[2025-05-18 19:07:35] info: Command executed by bot: ban in server |WS| WERE SWEATS |WS| (995442745508376666)
+[2025-05-18 19:07:35] error: Error executing command ban in 995442745508376666: Cannot read properties of undefined (reading 'members')
+[2025-05-18 19:07:36] info: jzoa used command: remoteexec
+[2025-05-18 19:08:16] info: Shutdown signal received, cleaning up...
+[2025-05-18 19:08:16] info: Destroying client connection...
+[2025-05-18 19:08:16] info: Shutdown complete
+[2025-05-18 19:09:45] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-18 19:09:45] info: Kill switch initialized
+[2025-05-18 19:09:45] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-18 19:09:45] info: Loading command: joke
+[2025-05-18 19:09:45] info: Loaded snipe configuration for 0 guilds
+[2025-05-18 19:09:45] info: Loading command: snipe
+[2025-05-18 19:09:45] info: Loading command: ban
+[2025-05-18 19:09:45] info: Loading command: kick
+[2025-05-18 19:09:45] info: Loading command: purge
+[2025-05-18 19:09:45] info: Loading command: timeout
+[2025-05-18 19:09:45] info: Loading command: warn
+[2025-05-18 19:09:45] info: Permissions data loaded successfully
+[2025-05-18 19:09:45] info: Loading command: announce
+[2025-05-18 19:09:45] info: Loading command: auth
+[2025-05-18 19:09:45] info: Loaded 4 auto-responses across 2 guilds
+[2025-05-18 19:09:45] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-18 19:09:45] info: Loading command: autoreact
+[2025-05-18 19:09:45] info: Loading command: autorespond
+[2025-05-18 19:09:45] info: Loading command: cooldown
+[2025-05-18 19:09:45] info: Loading command: debug
+[2025-05-18 19:09:45] info: Loading command: getpost
+[2025-05-18 19:09:46] info: Loading command: getvid
+[2025-05-18 19:09:46] info: Loading command: help
+[2025-05-18 19:09:46] info: Loading command: logchannel
+[2025-05-18 19:09:46] info: Loading command: memory
+[2025-05-18 19:09:46] info: Loading command: ping
+[2025-05-18 19:09:46] info: Loading command: remoteexec
+[2025-05-18 19:09:46] info: Loading command: rolereq
+[2025-05-18 19:09:46] info: Loading command: servers
+[2025-05-18 19:09:46] info: Loading command: snipeperm
+[2025-05-18 19:09:46] info: Loading command: statusset
+[2025-05-18 19:09:46] info: Loading event: guildCreate
+[2025-05-18 19:09:46] info: Loading event: guildDelete
+[2025-05-18 19:09:46] info: Loading event: interactionCreate
+[2025-05-18 19:09:46] info: Loading event: messageCreate
+[2025-05-18 19:09:46] info: Loading event: messageDelete
+[2025-05-18 19:09:46] info: Loading event: ready
+[2025-05-18 19:09:46] info: Loading event: resume
+[2025-05-18 19:09:46] info: Health check server running on port 3000
+[2025-05-18 19:09:46] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-18 19:09:47] info: Bot successfully logged in
+[2025-05-18 19:09:48] info: Logged in as ModulAI#2431
+[2025-05-18 19:09:48] info: Serving 2 guilds
+[2025-05-18 19:09:48] info: Set default status: Playing in 2 guilds
+[2025-05-18 19:09:48] info: Started refreshing 24 application (/) commands.
+[2025-05-18 19:09:48] info: Successfully reloaded 24 application (/) commands.
+[2025-05-18 19:10:05] info: Command executed by bot: ban in server |WS| WERE SWEATS |WS| (995442745508376666)
+[2025-05-18 19:10:06] error: Error executing command ban in 995442745508376666: message.mentions.members.first is not a function
+[2025-05-18 19:10:06] info: jzoa used command: remoteexec
+[2025-05-18 19:10:19] info: Command executed by bot: ban in server |WS| WERE SWEATS |WS| (995442745508376666)
+[2025-05-18 19:10:19] error: Error executing command ban in 995442745508376666: message.mentions.members.first is not a function
+[2025-05-18 19:10:20] info: jzoa used command: remoteexec
+[2025-05-18 19:10:38] info: Shutdown signal received, cleaning up...
+[2025-05-18 19:10:38] info: Destroying client connection...
+[2025-05-18 19:10:38] info: Shutdown complete
+[2025-05-18 19:12:24] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-18 19:12:24] info: Kill switch initialized
+[2025-05-18 19:12:24] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-18 19:12:24] info: Loading command: joke
+[2025-05-18 19:12:24] info: Loaded snipe configuration for 0 guilds
+[2025-05-18 19:12:24] info: Loading command: snipe
+[2025-05-18 19:12:24] info: Loading command: ban
+[2025-05-18 19:12:24] info: Loading command: kick
+[2025-05-18 19:12:24] info: Loading command: purge
+[2025-05-18 19:12:24] info: Loading command: timeout
+[2025-05-18 19:12:24] info: Loading command: warn
+[2025-05-18 19:12:24] info: Permissions data loaded successfully
+[2025-05-18 19:12:24] info: Loading command: announce
+[2025-05-18 19:12:24] info: Loading command: auth
+[2025-05-18 19:12:24] info: Loaded 4 auto-responses across 2 guilds
+[2025-05-18 19:12:24] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-18 19:12:24] info: Loading command: autoreact
+[2025-05-18 19:12:24] info: Loading command: autorespond
+[2025-05-18 19:12:24] info: Loading command: cooldown
+[2025-05-18 19:12:24] info: Loading command: debug
+[2025-05-18 19:12:24] info: Loading command: getpost
+[2025-05-18 19:12:25] info: Loading command: getvid
+[2025-05-18 19:12:25] info: Loading command: help
+[2025-05-18 19:12:25] info: Loading command: logchannel
+[2025-05-18 19:12:25] info: Loading command: memory
+[2025-05-18 19:12:25] info: Loading command: ping
+[2025-05-18 19:12:25] info: Loading command: remoteexec
+[2025-05-18 19:12:25] info: Loading command: rolereq
+[2025-05-18 19:12:25] info: Loading command: servers
+[2025-05-18 19:12:25] info: Loading command: snipeperm
+[2025-05-18 19:12:25] info: Loading command: statusset
+[2025-05-18 19:12:25] info: Loading event: guildCreate
+[2025-05-18 19:12:25] info: Loading event: guildDelete
+[2025-05-18 19:12:25] info: Loading event: interactionCreate
+[2025-05-18 19:12:25] info: Loading event: messageCreate
+[2025-05-18 19:12:25] info: Loading event: messageDelete
+[2025-05-18 19:12:25] info: Loading event: ready
+[2025-05-18 19:12:25] info: Loading event: resume
+[2025-05-18 19:12:25] info: Health check server running on port 3000
+[2025-05-18 19:12:25] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-18 19:12:26] info: Bot successfully logged in
+[2025-05-18 19:12:27] info: Logged in as ModulAI#2431
+[2025-05-18 19:12:27] info: Serving 2 guilds
+[2025-05-18 19:12:27] info: Set default status: Playing in 2 guilds
+[2025-05-18 19:12:27] info: Started refreshing 24 application (/) commands.
+[2025-05-18 19:12:27] info: Successfully reloaded 24 application (/) commands.
+[2025-05-18 19:12:32] info: Command executed by bot: ban in server |WS| WERE SWEATS |WS| (995442745508376666)
+[2025-05-18 19:12:34] info: jzoa used command: remoteexec
+[2025-05-18 19:13:20] info: Command executed by bot: ban in server |WS| WERE SWEATS |WS| (995442745508376666)
+[2025-05-18 19:13:22] info: ModulAI#2431 banned ECON#4829 | Reason: breaking rules | Days: 0
+[2025-05-18 19:13:23] warn: Couldn't send DM to ECON#4829
+[2025-05-18 19:13:25] info: jzoa used command: remoteexec
+[2025-05-18 19:13:25] info: Memory status: 69MB heap, 88.1% system RAM used, 1907MB free
+[2025-05-18 19:13:25] info: Cleared response cache (0 items)
+[2025-05-18 19:13:25] warn: Performing aggressive memory cleanup
+[2025-05-18 19:13:25] info: Memory cleanup: Removed 1 cached users
+[2025-05-18 19:13:25] info: Memory cleanup completed
+[2025-05-18 19:14:24] info: Memory status: 69MB heap, 87.5% system RAM used, 2012MB free
+[2025-05-18 19:14:25] info: Memory status: 69MB heap, 87.5% system RAM used, 2013MB free
+[2025-05-18 19:14:25] info: Cleared response cache (0 items)
+[2025-05-18 19:14:25] warn: Performing aggressive memory cleanup
+[2025-05-18 19:14:25] info: Memory cleanup completed
+[2025-05-18 19:15:16] info: Shutdown signal received, cleaning up...
+[2025-05-18 19:15:16] info: Destroying client connection...
+[2025-05-18 19:15:17] info: Shutdown complete
+[2025-05-18 19:17:09] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-18 19:17:09] info: Kill switch initialized
+[2025-05-18 19:17:09] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-18 19:17:09] info: Loading command: joke
+[2025-05-18 19:17:09] info: Loaded snipe configuration for 0 guilds
+[2025-05-18 19:17:09] info: Loading command: snipe
+[2025-05-18 19:17:09] info: Loading command: ban
+[2025-05-18 19:17:09] info: Loading command: kick
+[2025-05-18 19:17:09] info: Loading command: purge
+[2025-05-18 19:17:09] info: Loading command: timeout
+[2025-05-18 19:17:09] info: Loading command: warn
+[2025-05-18 19:17:09] info: Permissions data loaded successfully
+[2025-05-18 19:17:09] info: Loading command: announce
+[2025-05-18 19:17:09] info: Loading command: auth
+[2025-05-18 19:17:09] info: Loaded 4 auto-responses across 2 guilds
+[2025-05-18 19:17:09] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-18 19:17:09] info: Loading command: autoreact
+[2025-05-18 19:17:09] info: Loading command: autorespond
+[2025-05-18 19:17:09] info: Loading command: cooldown
+[2025-05-18 19:17:09] info: Loading command: debug
+[2025-05-18 19:17:09] info: Loading command: getpost
+[2025-05-18 19:17:10] info: Loading command: getvid
+[2025-05-18 19:17:10] info: Loading command: help
+[2025-05-18 19:17:10] info: Loading command: logchannel
+[2025-05-18 19:17:10] info: Loading command: memory
+[2025-05-18 19:17:10] info: Loading command: ping
+[2025-05-18 19:17:10] info: Loading command: remoteexec
+[2025-05-18 19:17:10] info: Loading command: rolereq
+[2025-05-18 19:17:10] info: Loading command: servers
+[2025-05-18 19:17:10] info: Loading command: snipeperm
+[2025-05-18 19:17:10] info: Loading command: statusset
+[2025-05-18 19:17:10] info: Loading event: guildCreate
+[2025-05-18 19:17:10] info: Loading event: guildDelete
+[2025-05-18 19:17:10] info: Loading event: interactionCreate
+[2025-05-18 19:17:10] info: Loading event: messageCreate
+[2025-05-18 19:17:10] info: Loading event: messageDelete
+[2025-05-18 19:17:10] info: Loading event: ready
+[2025-05-18 19:17:10] info: Loading event: resume
+[2025-05-18 19:17:10] info: Health check server running on port 3000
+[2025-05-18 19:17:11] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-18 19:17:12] info: Bot successfully logged in
+[2025-05-18 19:17:12] info: Logged in as ModulAI#2431
+[2025-05-18 19:17:12] info: Serving 2 guilds
+[2025-05-18 19:17:12] info: Set default status: Playing in 2 guilds
+[2025-05-18 19:17:12] info: Started refreshing 24 application (/) commands.
+[2025-05-18 19:17:13] error: Error in ready event: Invalid Form Body
+19.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 19:17:16] info: jzoa used command: help
+[2025-05-18 19:17:24] info: jzoa used command: help
+[2025-05-18 19:18:10] info: Memory status: 69MB heap, 85.7% system RAM used, 2290MB free
+[2025-05-18 19:18:10] info: Cleared response cache (0 items)
+[2025-05-18 19:18:10] warn: Performing aggressive memory cleanup
+[2025-05-18 19:18:10] info: Memory cleanup completed
+[2025-05-18 19:18:36] info: Command executed by bot: kick in #📢┃staff-responsibilities (|WS| WERE SWEATS |WS|, 995442745508376666)
+[2025-05-18 19:18:38] info: jzoa used command: remoteexec
+[2025-05-18 19:19:09] info: Memory status: 69MB heap, 84.0% system RAM used, 2576MB free
+[2025-05-18 19:19:10] info: Memory status: 69MB heap, 83.7% system RAM used, 2623MB free
+[2025-05-18 19:19:10] info: Cleared response cache (0 items)
+[2025-05-18 19:19:10] warn: Performing aggressive memory cleanup
+[2025-05-18 19:19:10] info: Memory cleanup: Removed 1 cached users
+[2025-05-18 19:19:10] info: Memory cleanup completed
+[2025-05-18 19:19:11] warn: Emergency kill code received from jzoa
+[2025-05-18 19:19:20] info: Kill switch reset 0 active cooldowns
+[2025-05-18 19:19:20] warn: Kill switch activated - bot appears offline
+[2025-05-18 19:19:21] error: Bot suspended via emergency kill code
+[2025-05-18 19:19:29] info: Revival code received from jzoa. Bot was down for 9 seconds
+[2025-05-18 19:19:29] info: Kill switch deactivated - bot is visible again
+[2025-05-18 19:20:10] info: Memory status: 69MB heap, 84.7% system RAM used, 2449MB free
+[2025-05-18 19:20:10] info: Cleared response cache (0 items)
+[2025-05-18 19:20:10] warn: Performing aggressive memory cleanup
+[2025-05-18 19:20:10] info: Memory cleanup completed
+[2025-05-18 19:20:48] info: zoaness used command: help
+[2025-05-18 19:21:09] info: Memory status: 70MB heap, 84.4% system RAM used, 2501MB free
+[2025-05-18 19:21:10] info: Memory status: 70MB heap, 84.4% system RAM used, 2506MB free
+[2025-05-18 19:21:10] info: Cleared response cache (0 items)
+[2025-05-18 19:21:10] warn: Performing aggressive memory cleanup
+[2025-05-18 19:21:10] info: Memory cleanup completed
+[2025-05-18 19:21:43] info: zoaness used command: help
+[2025-05-18 19:22:03] info: zoaness used command: joke
+[2025-05-18 19:22:06] info: zoaness used command: snipe
+[2025-05-18 19:22:10] info: Memory status: 70MB heap, 85.1% system RAM used, 2390MB free
+[2025-05-18 19:22:10] info: Cleared response cache (0 items)
+[2025-05-18 19:22:10] warn: Performing aggressive memory cleanup
+[2025-05-18 19:22:10] info: Memory cleanup completed
+[2025-05-18 19:22:16] info: zoaness used command: ping
+[2025-05-18 19:23:09] info: Memory status: 70MB heap, 84.9% system RAM used, 2421MB free
+[2025-05-18 19:23:10] info: Memory status: 70MB heap, 85.0% system RAM used, 2409MB free
+[2025-05-18 19:23:10] info: Cleared response cache (0 items)
+[2025-05-18 19:23:10] warn: Emergency cleanup: Removed 1 non-essential cooldowns
+[2025-05-18 19:23:10] warn: Performing aggressive memory cleanup
+[2025-05-18 19:23:10] info: Memory cleanup completed
+[2025-05-18 19:24:10] info: Memory status: 71MB heap, 84.8% system RAM used, 2446MB free
+[2025-05-18 19:24:10] info: High heap percentage (95.3%) but small absolute size (71MB) - no action needed
+[2025-05-18 19:24:10] info: Cleared response cache (0 items)
+[2025-05-18 19:24:10] warn: Performing aggressive memory cleanup
+[2025-05-18 19:24:10] info: Memory cleanup completed
+[2025-05-18 19:25:09] info: Memory status: 70MB heap, 84.7% system RAM used, 2457MB free
+[2025-05-18 19:25:11] info: Memory status: 70MB heap, 84.7% system RAM used, 2455MB free
+[2025-05-18 19:25:11] info: Cleared response cache (0 items)
+[2025-05-18 19:25:11] warn: Performing aggressive memory cleanup
+[2025-05-18 19:25:11] info: Memory cleanup completed
+[2025-05-18 19:26:11] info: Memory status: 71MB heap, 84.0% system RAM used, 2575MB free
+[2025-05-18 19:26:11] info: Cleared response cache (0 items)
+[2025-05-18 19:26:11] warn: Performing aggressive memory cleanup
+[2025-05-18 19:26:11] info: Memory cleanup completed
+[2025-05-18 19:26:58] info: Shutdown signal received, cleaning up...
+[2025-05-18 19:26:58] info: Destroying client connection...
+[2025-05-18 19:26:58] info: Shutdown complete
+[2025-05-18 19:51:52] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-18 19:51:53] info: Kill switch initialized
+[2025-05-18 19:51:53] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-18 19:51:53] info: Loading command: joke
+[2025-05-18 19:51:53] info: Loaded snipe configuration for 0 guilds
+[2025-05-18 19:51:53] info: Loading command: snipe
+[2025-05-18 19:51:53] info: Loading command: ban
+[2025-05-18 19:51:53] info: Loading command: kick
+[2025-05-18 19:51:53] info: Loading command: nuke
+[2025-05-18 19:51:53] info: Loading command: purge
+[2025-05-18 19:51:53] info: Loading command: timeout
+[2025-05-18 19:51:53] info: Loading command: warn
+[2025-05-18 19:51:53] info: Permissions data loaded successfully
+[2025-05-18 19:51:53] info: Loading command: announce
+[2025-05-18 19:51:53] info: Loading command: auth
+[2025-05-18 19:51:53] info: Loaded 4 auto-responses across 2 guilds
+[2025-05-18 19:51:53] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-18 19:51:53] info: Loading command: autoreact
+[2025-05-18 19:51:53] info: Loading command: autorespond
+[2025-05-18 19:51:53] info: Loading command: cooldown
+[2025-05-18 19:51:53] info: Loading command: ddelete
+[2025-05-18 19:51:53] info: Loading command: debug
+[2025-05-18 19:51:53] info: Loading command: getpost
+[2025-05-18 19:51:55] info: Loading command: getvid
+[2025-05-18 19:51:55] info: Loading command: help
+[2025-05-18 19:51:55] info: Loading command: logchannel
+[2025-05-18 19:51:55] info: Loading command: memory
+[2025-05-18 19:51:55] info: Loading command: ping
+[2025-05-18 19:51:55] info: Loading command: remoteexec
+[2025-05-18 19:51:55] info: Loading command: rolereq
+[2025-05-18 19:51:55] info: Loading command: servers
+[2025-05-18 19:51:55] info: Loading command: snipeperm
+[2025-05-18 19:51:55] info: Loading command: statusset
+[2025-05-18 19:51:55] info: Loading event: guildCreate
+[2025-05-18 19:51:55] info: Loading event: guildDelete
+[2025-05-18 19:51:55] info: Loading event: interactionCreate
+[2025-05-18 19:51:55] info: Loading event: messageCreate
+[2025-05-18 19:51:55] info: Loading event: messageDelete
+[2025-05-18 19:51:55] info: Loading event: ready
+[2025-05-18 19:51:55] info: Loading event: resume
+[2025-05-18 19:51:55] info: Health check server running on port 3000
+[2025-05-18 19:51:55] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-18 19:51:56] info: Bot successfully logged in
+[2025-05-18 19:51:56] info: Logged in as ModulAI#2431
+[2025-05-18 19:51:56] info: Serving 2 guilds
+[2025-05-18 19:51:56] info: Set default status: Playing in 2 guilds
+[2025-05-18 19:51:56] info: Started refreshing 26 application (/) commands.
+[2025-05-18 19:51:57] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 19:52:26] info: Shutdown signal received, cleaning up...
+[2025-05-18 19:52:26] info: Destroying client connection...
+[2025-05-18 19:52:27] info: Shutdown complete
+[2025-05-18 19:54:28] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-18 19:54:28] info: Kill switch initialized
+[2025-05-18 19:54:28] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-18 19:54:28] info: Loading command: joke
+[2025-05-18 19:54:28] info: Loaded snipe configuration for 0 guilds
+[2025-05-18 19:54:28] info: Loading command: snipe
+[2025-05-18 19:54:28] info: Loading command: ban
+[2025-05-18 19:54:28] info: Loading command: kick
+[2025-05-18 19:54:28] info: Loading command: nuke
+[2025-05-18 19:54:28] info: Loading command: purge
+[2025-05-18 19:54:28] info: Loading command: timeout
+[2025-05-18 19:54:28] info: Loading command: warn
+[2025-05-18 19:54:28] info: Permissions data loaded successfully
+[2025-05-18 19:54:28] info: Loading command: announce
+[2025-05-18 19:54:28] info: Loading command: auth
+[2025-05-18 19:54:28] info: Loaded 4 auto-responses across 2 guilds
+[2025-05-18 19:54:28] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-18 19:54:28] info: Loading command: autoreact
+[2025-05-18 19:54:28] info: Loading command: autorespond
+[2025-05-18 19:54:28] info: Loading command: cooldown
+[2025-05-18 19:54:28] info: Loading command: ddelete
+[2025-05-18 19:54:28] info: Loading command: debug
+[2025-05-18 19:54:28] info: Loading command: getpost
+[2025-05-18 19:54:30] info: Loading command: getvid
+[2025-05-18 19:54:30] info: Loading command: help
+[2025-05-18 19:54:30] info: Loading command: logchannel
+[2025-05-18 19:54:30] info: Loading command: memory
+[2025-05-18 19:54:30] info: Loading command: ping
+[2025-05-18 19:54:30] info: Loading command: remoteexec
+[2025-05-18 19:54:30] info: Loading command: rolereq
+[2025-05-18 19:54:30] info: Loading command: servers
+[2025-05-18 19:54:30] info: Loading command: snipeperm
+[2025-05-18 19:54:30] info: Loading command: statusset
+[2025-05-18 19:54:30] info: Loading event: guildCreate
+[2025-05-18 19:54:30] info: Loading event: guildDelete
+[2025-05-18 19:54:30] info: Loading event: interactionCreate
+[2025-05-18 19:54:30] info: Loading event: messageCreate
+[2025-05-18 19:54:30] info: Loading event: messageDelete
+[2025-05-18 19:54:30] info: Loading event: ready
+[2025-05-18 19:54:30] info: Loading event: resume
+[2025-05-18 19:54:30] info: Health check server running on port 3000
+[2025-05-18 19:54:30] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-18 19:54:32] info: Bot successfully logged in
+[2025-05-18 19:54:32] info: Logged in as ModulAI#2431
+[2025-05-18 19:54:32] info: Serving 2 guilds
+[2025-05-18 19:54:32] info: Set default status: Playing in 2 guilds
+[2025-05-18 19:54:32] info: Started refreshing 26 application (/) commands.
+[2025-05-18 19:54:33] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 19:54:35] info: Shutdown signal received, cleaning up...
+[2025-05-18 19:54:35] info: Destroying client connection...
+[2025-05-18 19:54:35] info: Shutdown complete
+[2025-05-18 19:56:17] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-18 19:56:18] info: Kill switch initialized
+[2025-05-18 19:56:18] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-18 19:56:18] info: Loading command: joke
+[2025-05-18 19:56:18] info: Loaded snipe configuration for 0 guilds
+[2025-05-18 19:56:18] info: Loading command: snipe
+[2025-05-18 19:56:18] info: Loading command: ban
+[2025-05-18 19:56:18] info: Loading command: kick
+[2025-05-18 19:56:18] info: Loading command: nuke
+[2025-05-18 19:56:18] info: Loading command: purge
+[2025-05-18 19:56:18] info: Loading command: timeout
+[2025-05-18 19:56:18] info: Loading command: warn
+[2025-05-18 19:56:18] info: Permissions data loaded successfully
+[2025-05-18 19:56:18] info: Loading command: announce
+[2025-05-18 19:56:18] info: Loading command: auth
+[2025-05-18 19:56:18] info: Loaded 4 auto-responses across 2 guilds
+[2025-05-18 19:56:18] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-18 19:56:18] info: Loading command: autoreact
+[2025-05-18 19:56:18] info: Loading command: autorespond
+[2025-05-18 19:56:18] info: Loading command: cooldown
+[2025-05-18 19:56:18] info: Loading command: ddelete
+[2025-05-18 19:56:18] info: Loading command: debug
+[2025-05-18 19:56:18] info: Loading command: getpost
+[2025-05-18 19:56:19] info: Loading command: getvid
+[2025-05-18 19:56:19] info: Loading command: help
+[2025-05-18 19:56:19] info: Loading command: logchannel
+[2025-05-18 19:56:19] info: Loading command: memory
+[2025-05-18 19:56:19] info: Loading command: ping
+[2025-05-18 19:56:19] info: Loading command: remoteexec
+[2025-05-18 19:56:19] info: Loading command: rolereq
+[2025-05-18 19:56:19] info: Loading command: servers
+[2025-05-18 19:56:19] info: Loading command: snipeperm
+[2025-05-18 19:56:19] info: Loading command: statusset
+[2025-05-18 19:56:19] info: Loading event: guildCreate
+[2025-05-18 19:56:19] info: Loading event: guildDelete
+[2025-05-18 19:56:19] info: Loading event: interactionCreate
+[2025-05-18 19:56:19] info: Loading event: messageCreate
+[2025-05-18 19:56:19] info: Loading event: messageDelete
+[2025-05-18 19:56:19] info: Loading event: ready
+[2025-05-18 19:56:19] info: Loading event: resume
+[2025-05-18 19:56:19] info: Health check server running on port 3000
+[2025-05-18 19:56:19] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-18 19:56:20] info: Bot successfully logged in
+[2025-05-18 19:56:21] info: Logged in as ModulAI#2431
+[2025-05-18 19:56:21] info: Serving 2 guilds
+[2025-05-18 19:56:21] info: Set default status: Playing in 2 guilds
+[2025-05-18 19:56:21] info: Started refreshing 26 application (/) commands.
+[2025-05-18 19:56:21] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 19:56:31] info: Shutdown signal received, cleaning up...
+[2025-05-18 19:56:31] info: Destroying client connection...
+[2025-05-18 19:56:32] info: Shutdown complete
+[2025-05-18 19:58:37] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-18 19:58:37] info: Kill switch initialized
+[2025-05-18 19:58:37] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-18 19:58:37] info: Loading command: joke
+[2025-05-18 19:58:37] info: Loaded snipe configuration for 0 guilds
+[2025-05-18 19:58:37] info: Loading command: snipe
+[2025-05-18 19:58:37] info: Loading command: ban
+[2025-05-18 19:58:37] info: Loading command: kick
+[2025-05-18 19:58:37] info: Loading command: nuke
+[2025-05-18 19:58:37] info: Loading command: purge
+[2025-05-18 19:58:37] info: Loading command: timeout
+[2025-05-18 19:58:37] info: Loading command: warn
+[2025-05-18 19:58:37] info: Permissions data loaded successfully
+[2025-05-18 19:58:37] info: Loading command: announce
+[2025-05-18 19:58:37] info: Loading command: auth
+[2025-05-18 19:58:37] info: Loaded 4 auto-responses across 2 guilds
+[2025-05-18 19:58:37] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-18 19:58:37] info: Loading command: autoreact
+[2025-05-18 19:58:37] info: Loading command: autorespond
+[2025-05-18 19:58:37] info: Loading command: cooldown
+[2025-05-18 19:58:37] info: Loading command: ddelete
+[2025-05-18 19:58:37] info: Loading command: debug
+[2025-05-18 19:58:37] info: Loading command: getpost
+[2025-05-18 19:58:39] info: Loading command: getvid
+[2025-05-18 19:58:39] info: Loading command: help
+[2025-05-18 19:58:39] info: Loading command: logchannel
+[2025-05-18 19:58:39] info: Loading command: memory
+[2025-05-18 19:58:39] info: Loading command: ping
+[2025-05-18 19:58:39] info: Loading command: remoteexec
+[2025-05-18 19:58:39] info: Loading command: rolereq
+[2025-05-18 19:58:39] info: Loading command: servers
+[2025-05-18 19:58:39] info: Loading command: snipeperm
+[2025-05-18 19:58:39] info: Loading command: statusset
+[2025-05-18 19:58:39] info: Loading event: guildCreate
+[2025-05-18 19:58:39] info: Loading event: guildDelete
+[2025-05-18 19:58:39] info: Loading event: interactionCreate
+[2025-05-18 19:58:39] info: Loading event: messageCreate
+[2025-05-18 19:58:39] info: Loading event: messageDelete
+[2025-05-18 19:58:39] info: Loading event: ready
+[2025-05-18 19:58:39] info: Loading event: resume
+[2025-05-18 19:58:39] info: Health check server running on port 3000
+[2025-05-18 19:58:39] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-18 19:58:40] info: Bot successfully logged in
+[2025-05-18 19:58:40] info: Logged in as ModulAI#2431
+[2025-05-18 19:58:40] info: Serving 2 guilds
+[2025-05-18 19:58:40] info: Set default status: Playing in 2 guilds
+[2025-05-18 19:58:40] info: Started refreshing 26 application (/) commands.
+[2025-05-18 19:58:41] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 19:59:00] info: Shutdown signal received, cleaning up...
+[2025-05-18 19:59:00] info: Destroying client connection...
+[2025-05-18 19:59:00] info: Shutdown complete
+[2025-05-18 20:01:44] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-18 20:01:44] info: Kill switch initialized
+[2025-05-18 20:01:44] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-18 20:01:44] info: Loading command: joke
+[2025-05-18 20:01:44] info: Loaded snipe configuration for 0 guilds
+[2025-05-18 20:01:44] info: Loading command: snipe
+[2025-05-18 20:01:44] info: Loading command: ban
+[2025-05-18 20:01:44] info: Loading command: kick
+[2025-05-18 20:01:44] info: Loading command: nuke
+[2025-05-18 20:01:44] info: Loading command: purge
+[2025-05-18 20:01:44] info: Loading command: timeout
+[2025-05-18 20:01:45] info: Loading command: warn
+[2025-05-18 20:01:45] info: Permissions data loaded successfully
+[2025-05-18 20:01:45] info: Loading command: announce
+[2025-05-18 20:01:45] info: Loading command: auth
+[2025-05-18 20:01:45] info: Loaded 4 auto-responses across 2 guilds
+[2025-05-18 20:01:45] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-18 20:01:45] info: Loading command: autoreact
+[2025-05-18 20:01:45] info: Loading command: autorespond
+[2025-05-18 20:01:45] info: Loading command: cooldown
+[2025-05-18 20:01:45] info: Loading command: ddelete
+[2025-05-18 20:01:45] info: Loading command: debug
+[2025-05-18 20:01:45] info: Loading command: getpost
+[2025-05-18 20:01:46] info: Loading command: getvid
+[2025-05-18 20:01:46] info: Loading command: help
+[2025-05-18 20:01:46] info: Loading command: logchannel
+[2025-05-18 20:01:46] info: Loading command: memory
+[2025-05-18 20:01:46] info: Loading command: ping
+[2025-05-18 20:01:46] info: Loading command: remoteexec
+[2025-05-18 20:01:46] info: Loading command: rolereq
+[2025-05-18 20:01:46] info: Loading command: servers
+[2025-05-18 20:01:46] info: Loading command: snipeperm
+[2025-05-18 20:01:46] info: Loading command: statusset
+[2025-05-18 20:01:46] info: Loading event: guildCreate
+[2025-05-18 20:01:46] info: Loading event: guildDelete
+[2025-05-18 20:01:46] info: Loading event: interactionCreate
+[2025-05-18 20:01:46] info: Loading event: messageCreate
+[2025-05-18 20:01:46] info: Loading event: messageDelete
+[2025-05-18 20:01:46] info: Loading event: ready
+[2025-05-18 20:01:46] info: Loading event: resume
+[2025-05-18 20:01:46] info: Health check server running on port 3000
+[2025-05-18 20:01:46] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-18 20:01:47] info: Bot successfully logged in
+[2025-05-18 20:01:48] info: Logged in as ModulAI#2431
+[2025-05-18 20:01:48] info: Serving 2 guilds
+[2025-05-18 20:01:48] info: Set default status: Playing in 2 guilds
+[2025-05-18 20:01:48] info: Started refreshing 26 application (/) commands.
+[2025-05-18 20:01:48] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 20:01:52] info: Shutdown signal received, cleaning up...
+[2025-05-18 20:01:52] info: Destroying client connection...
+[2025-05-18 20:01:52] info: Shutdown complete
+[2025-05-18 20:01:59] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-18 20:01:59] info: Kill switch initialized
+[2025-05-18 20:01:59] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-18 20:01:59] info: Loading command: joke
+[2025-05-18 20:01:59] info: Loaded snipe configuration for 0 guilds
+[2025-05-18 20:01:59] info: Loading command: snipe
+[2025-05-18 20:01:59] info: Loading command: ban
+[2025-05-18 20:01:59] info: Loading command: kick
+[2025-05-18 20:01:59] info: Loading command: nuke
+[2025-05-18 20:01:59] info: Loading command: purge
+[2025-05-18 20:01:59] info: Loading command: timeout
+[2025-05-18 20:01:59] info: Loading command: warn
+[2025-05-18 20:01:59] info: Permissions data loaded successfully
+[2025-05-18 20:01:59] info: Loading command: announce
+[2025-05-18 20:01:59] info: Loading command: auth
+[2025-05-18 20:01:59] info: Loaded 4 auto-responses across 2 guilds
+[2025-05-18 20:01:59] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-18 20:01:59] info: Loading command: autoreact
+[2025-05-18 20:01:59] info: Loading command: autorespond
+[2025-05-18 20:01:59] info: Loading command: cooldown
+[2025-05-18 20:01:59] info: Loading command: ddelete
+[2025-05-18 20:01:59] info: Loading command: debug
+[2025-05-18 20:01:59] info: Loading command: getpost
+[2025-05-18 20:02:00] info: Loading command: getvid
+[2025-05-18 20:02:00] info: Loading command: help
+[2025-05-18 20:02:00] info: Loading command: logchannel
+[2025-05-18 20:02:00] info: Loading command: memory
+[2025-05-18 20:02:00] info: Loading command: ping
+[2025-05-18 20:02:00] info: Loading command: remoteexec
+[2025-05-18 20:02:00] info: Loading command: rolereq
+[2025-05-18 20:02:00] info: Loading command: servers
+[2025-05-18 20:02:00] info: Loading command: snipeperm
+[2025-05-18 20:02:00] info: Loading command: statusset
+[2025-05-18 20:02:00] info: Loading event: guildCreate
+[2025-05-18 20:02:00] info: Loading event: guildDelete
+[2025-05-18 20:02:00] info: Loading event: interactionCreate
+[2025-05-18 20:02:00] info: Loading event: messageCreate
+[2025-05-18 20:02:00] info: Loading event: messageDelete
+[2025-05-18 20:02:00] info: Loading event: ready
+[2025-05-18 20:02:00] info: Loading event: resume
+[2025-05-18 20:02:00] info: Health check server running on port 3000
+[2025-05-18 20:02:00] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-18 20:02:01] info: Bot successfully logged in
+[2025-05-18 20:02:02] info: Logged in as ModulAI#2431
+[2025-05-18 20:02:02] info: Serving 2 guilds
+[2025-05-18 20:02:02] info: Set default status: Playing in 2 guilds
+[2025-05-18 20:02:02] info: Started refreshing 26 application (/) commands.
+[2025-05-18 20:02:02] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 20:03:00] info: Memory status: 69MB heap, 94.2% system RAM used, 931MB free
+[2025-05-18 20:03:00] info: Cleared response cache (0 items)
+[2025-05-18 20:03:00] warn: Performing aggressive memory cleanup
+[2025-05-18 20:03:00] info: Memory cleanup completed
+[2025-05-18 20:03:03] info: Shutdown signal received, cleaning up...
+[2025-05-18 20:03:03] info: Destroying client connection...
+[2025-05-18 20:03:03] info: Shutdown complete
+[2025-05-18 20:04:49] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-18 20:04:49] info: Kill switch initialized
+[2025-05-18 20:04:49] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-18 20:04:49] info: Loading command: joke
+[2025-05-18 20:04:49] info: Loaded snipe configuration for 0 guilds
+[2025-05-18 20:04:49] info: Loading command: snipe
+[2025-05-18 20:04:49] info: Loading command: ban
+[2025-05-18 20:04:49] info: Loading command: kick
+[2025-05-18 20:04:49] info: Loading command: nuke
+[2025-05-18 20:04:49] info: Loading command: purge
+[2025-05-18 20:04:49] info: Loading command: timeout
+[2025-05-18 20:04:49] info: Loading command: warn
+[2025-05-18 20:04:49] info: Permissions data loaded successfully
+[2025-05-18 20:04:49] info: Loading command: announce
+[2025-05-18 20:04:49] info: Loading command: auth
+[2025-05-18 20:04:49] info: Loaded 4 auto-responses across 2 guilds
+[2025-05-18 20:04:49] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-18 20:04:49] info: Loading command: autoreact
+[2025-05-18 20:04:49] info: Loading command: autorespond
+[2025-05-18 20:04:49] info: Loading command: cooldown
+[2025-05-18 20:04:49] info: Loading command: ddelete
+[2025-05-18 20:04:49] info: Loading command: debug
+[2025-05-18 20:04:49] info: Loading command: getpost
+[2025-05-18 20:04:50] info: Loading command: getvid
+[2025-05-18 20:04:50] info: Loading command: help
+[2025-05-18 20:04:50] info: Loading command: logchannel
+[2025-05-18 20:04:50] info: Loading command: memory
+[2025-05-18 20:04:50] info: Loading command: ping
+[2025-05-18 20:04:50] info: Loading command: remoteexec
+[2025-05-18 20:04:50] info: Loading command: rolereq
+[2025-05-18 20:04:50] info: Loading command: servers
+[2025-05-18 20:04:50] info: Loading command: snipeperm
+[2025-05-18 20:04:50] info: Loading command: statusset
+[2025-05-18 20:04:50] info: Loading event: guildCreate
+[2025-05-18 20:04:50] info: Loading event: guildDelete
+[2025-05-18 20:04:50] info: Loading event: interactionCreate
+[2025-05-18 20:04:51] info: Loading event: messageCreate
+[2025-05-18 20:04:51] info: Loading event: messageDelete
+[2025-05-18 20:04:51] info: Loading event: ready
+[2025-05-18 20:04:51] info: Loading event: resume
+[2025-05-18 20:04:51] info: Health check server running on port 3000
+[2025-05-18 20:04:51] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-18 20:04:52] info: Bot successfully logged in
+[2025-05-18 20:04:53] info: Logged in as ModulAI#2431
+[2025-05-18 20:04:53] info: Serving 2 guilds
+[2025-05-18 20:04:53] info: Set default status: Playing in 2 guilds
+[2025-05-18 20:04:53] info: Started refreshing 26 application (/) commands.
+[2025-05-18 20:04:54] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 20:05:08] info: Shutdown signal received, cleaning up...
+[2025-05-18 20:05:08] info: Destroying client connection...
+[2025-05-18 20:05:09] info: Shutdown complete
+[2025-05-18 20:06:42] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-18 20:06:42] info: Kill switch initialized
+[2025-05-18 20:06:42] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-18 20:06:42] info: Loading command: joke
+[2025-05-18 20:06:42] info: Loaded snipe configuration for 0 guilds
+[2025-05-18 20:06:42] info: Loading command: snipe
+[2025-05-18 20:06:42] info: Loading command: ban
+[2025-05-18 20:06:42] info: Loading command: kick
+[2025-05-18 20:06:42] info: Loading command: nuke
+[2025-05-18 20:06:42] info: Loading command: purge
+[2025-05-18 20:06:42] info: Loading command: timeout
+[2025-05-18 20:06:42] info: Loading command: warn
+[2025-05-18 20:06:42] info: Permissions data loaded successfully
+[2025-05-18 20:06:42] info: Loading command: announce
+[2025-05-18 20:06:42] info: Loading command: auth
+[2025-05-18 20:06:42] info: Loaded 4 auto-responses across 2 guilds
+[2025-05-18 20:06:42] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-18 20:06:42] info: Loading command: autoreact
+[2025-05-18 20:06:42] info: Loading command: autorespond
+[2025-05-18 20:06:42] info: Loading command: cooldown
+[2025-05-18 20:06:42] info: Loading command: ddelete
+[2025-05-18 20:06:42] info: Loading command: debug
+[2025-05-18 20:06:42] info: Loading command: getpost
+[2025-05-18 20:06:43] info: Loading command: getvid
+[2025-05-18 20:06:43] info: Loading command: help
+[2025-05-18 20:06:43] info: Loading command: logchannel
+[2025-05-18 20:06:43] info: Loading command: memory
+[2025-05-18 20:06:43] info: Loading command: ping
+[2025-05-18 20:06:43] info: Loading command: remoteexec
+[2025-05-18 20:06:43] info: Loading command: rolereq
+[2025-05-18 20:06:43] info: Loading command: servers
+[2025-05-18 20:06:43] info: Loading command: snipeperm
+[2025-05-18 20:06:43] info: Loading command: statusset
+[2025-05-18 20:06:43] info: Loading event: guildCreate
+[2025-05-18 20:06:43] info: Loading event: guildDelete
+[2025-05-18 20:06:43] info: Loading event: interactionCreate
+[2025-05-18 20:06:43] info: Loading event: messageCreate
+[2025-05-18 20:06:43] info: Loading event: messageDelete
+[2025-05-18 20:06:43] info: Loading event: ready
+[2025-05-18 20:06:43] info: Loading event: resume
+[2025-05-18 20:06:43] info: Health check server running on port 3000
+[2025-05-18 20:06:43] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-18 20:06:45] info: Bot successfully logged in
+[2025-05-18 20:06:45] info: Logged in as ModulAI#2431
+[2025-05-18 20:06:45] info: Serving 2 guilds
+[2025-05-18 20:06:45] info: Set default status: Playing in 2 guilds
+[2025-05-18 20:06:45] info: Started refreshing 26 application (/) commands.
+[2025-05-18 20:06:46] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 20:08:14] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-18 20:08:14] info: Kill switch initialized
+[2025-05-18 20:08:14] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-18 20:08:14] info: Loading command: joke
+[2025-05-18 20:08:14] info: Loaded snipe configuration for 0 guilds
+[2025-05-18 20:08:14] info: Loading command: snipe
+[2025-05-18 20:08:14] info: Loading command: ban
+[2025-05-18 20:08:14] info: Loading command: kick
+[2025-05-18 20:08:14] info: Loading command: nuke
+[2025-05-18 20:08:14] info: Loading command: purge
+[2025-05-18 20:08:14] info: Loading command: timeout
+[2025-05-18 20:08:14] info: Loading command: warn
+[2025-05-18 20:08:14] info: Permissions data loaded successfully
+[2025-05-18 20:08:14] info: Loading command: announce
+[2025-05-18 20:08:14] info: Loading command: auth
+[2025-05-18 20:08:14] info: Loaded 4 auto-responses across 2 guilds
+[2025-05-18 20:08:14] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-18 20:08:14] info: Loading command: autoreact
+[2025-05-18 20:08:14] info: Loading command: autorespond
+[2025-05-18 20:08:14] info: Loading command: cooldown
+[2025-05-18 20:08:14] info: Loading command: ddelete
+[2025-05-18 20:08:14] info: Loading command: debug
+[2025-05-18 20:08:14] info: Loading command: getpost
+[2025-05-18 20:08:15] info: Loading command: getvid
+[2025-05-18 20:08:15] info: Loading command: help
+[2025-05-18 20:08:15] info: Loading command: logchannel
+[2025-05-18 20:08:15] info: Loading command: memory
+[2025-05-18 20:08:15] info: Loading command: ping
+[2025-05-18 20:08:15] info: Loading command: remoteexec
+[2025-05-18 20:08:15] info: Loading command: rolereq
+[2025-05-18 20:08:15] info: Loading command: servers
+[2025-05-18 20:08:15] info: Loading command: snipeperm
+[2025-05-18 20:08:15] info: Loading command: statusset
+[2025-05-18 20:08:15] info: Loading event: guildCreate
+[2025-05-18 20:08:15] info: Loading event: guildDelete
+[2025-05-18 20:08:15] info: Loading event: interactionCreate
+[2025-05-18 20:08:15] info: Loading event: messageCreate
+[2025-05-18 20:08:15] info: Loading event: messageDelete
+[2025-05-18 20:08:15] info: Loading event: ready
+[2025-05-18 20:08:15] info: Loading event: resume
+[2025-05-18 20:08:15] info: Health check server running on port 3000
+[2025-05-18 20:08:15] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-18 20:08:17] info: Bot successfully logged in
+[2025-05-18 20:08:17] info: Logged in as ModulAI#2431
+[2025-05-18 20:08:17] info: Serving 2 guilds
+[2025-05-18 20:08:17] info: Set default status: Playing in 2 guilds
+[2025-05-18 20:08:17] info: Started refreshing 26 application (/) commands.
+[2025-05-18 20:08:18] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-18 20:08:27] info: Shutdown signal received, cleaning up...
+[2025-05-18 20:08:27] info: Destroying client connection...
+[2025-05-18 20:08:27] info: Shutdown complete
+[2025-05-18 20:10:28] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-18 20:10:28] info: Kill switch initialized
+[2025-05-18 20:10:28] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-18 20:10:28] info: Loading command: joke
+[2025-05-18 20:10:28] info: Loaded snipe configuration for 0 guilds
+[2025-05-18 20:10:28] info: Loading command: snipe
+[2025-05-18 20:10:28] info: Loading command: ban
+[2025-05-18 20:10:28] info: Loading command: kick
+[2025-05-18 20:10:28] info: Loading command: nuke
+[2025-05-18 20:10:28] info: Loading command: purge
+[2025-05-18 20:10:28] info: Loading command: timeout
+[2025-05-18 20:10:28] info: Loading command: warn
+[2025-05-18 20:10:28] info: Permissions data loaded successfully
+[2025-05-18 20:10:28] info: Loading command: announce
+[2025-05-18 20:10:28] info: Loading command: auth
+[2025-05-18 20:10:28] info: Loaded 4 auto-responses across 2 guilds
+[2025-05-18 20:10:28] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-18 20:10:28] info: Loading command: autoreact
+[2025-05-18 20:10:28] info: Loading command: autorespond
+[2025-05-18 20:10:28] info: Loading command: cooldown
+[2025-05-18 20:10:28] info: Loading command: ddelete
+[2025-05-18 20:10:28] info: Loading command: debug
+[2025-05-18 20:10:29] info: Loading command: getpost
+[2025-05-18 20:10:30] info: Loading command: getvid
+[2025-05-18 20:10:30] info: Loading command: help
+[2025-05-18 20:10:30] info: Loading command: logchannel
+[2025-05-18 20:10:30] info: Loading command: memory
+[2025-05-18 20:10:30] info: Loading command: ping
+[2025-05-18 20:10:30] info: Loading command: remoteexec
+[2025-05-18 20:10:30] info: Loading command: rolereq
+[2025-05-18 20:10:30] info: Loading command: servers
+[2025-05-18 20:10:30] info: Loading command: snipeperm
+[2025-05-18 20:10:30] info: Loading command: statusset
+[2025-05-18 20:10:30] info: Loading event: guildCreate
+[2025-05-18 20:10:30] info: Loading event: guildDelete
+[2025-05-18 20:10:30] info: Loading event: interactionCreate
+[2025-05-18 20:10:30] info: Loading event: messageCreate
+[2025-05-18 20:10:30] info: Loading event: messageDelete
+[2025-05-18 20:10:30] info: Loading event: ready
+[2025-05-18 20:10:30] info: Loading event: resume
+[2025-05-18 20:10:30] info: Health check server running on port 3000
+[2025-05-18 20:10:30] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-18 20:10:31] info: Bot successfully logged in
+[2025-05-18 20:10:32] info: Logged in as ModulAI#2431
+[2025-05-18 20:10:32] info: Serving 2 guilds
+[2025-05-18 20:10:32] info: Set default status: Playing in 2 guilds
+[2025-05-18 20:10:32] info: Started refreshing 26 application (/) commands.
+[2025-05-18 20:10:32] error: Error in ready event: Invalid Form Body
+21.options[2][APPLICATION_COMMAND_OPTIONS_REQUIRED_INVALID]: Required options must be placed before non-required options
+[2025-05-22 16:43:31] info: Loaded cooldown settings: 5 global, 0 guild-specific
+[2025-05-22 16:43:31] info: Kill switch initialized
+[2025-05-22 16:43:31] info: Memory monitoring started with adjusted thresholds for low-memory device
+[2025-05-22 16:43:31] info: Loading command: joke
+[2025-05-22 16:43:31] info: Loaded snipe configuration for 0 guilds
+[2025-05-22 16:43:31] info: Loading command: snipe
+[2025-05-22 16:43:31] info: Loading command: ban
+[2025-05-22 16:43:31] info: Loading command: kick
+[2025-05-22 16:43:31] info: Loading command: nuke
+[2025-05-22 16:43:31] info: Loading command: purge
+[2025-05-22 16:43:31] info: Loading command: timeout
+[2025-05-22 16:43:31] info: Loading command: warn
+[2025-05-22 16:43:31] info: Permissions data loaded successfully
+[2025-05-22 16:43:31] info: Loading command: announce
+[2025-05-22 16:43:31] info: Loading command: auth
+[2025-05-22 16:43:31] info: Loaded 4 auto-responses across 2 guilds
+[2025-05-22 16:43:31] info: Loaded 0 auto-reactions across 1 guilds
+[2025-05-22 16:43:31] info: Loading command: autoreact
+[2025-05-22 16:43:31] info: Loading command: autorespond
+[2025-05-22 16:43:31] info: Loading command: cooldown
+[2025-05-22 16:43:31] info: Loading command: ddelete
+[2025-05-22 16:43:31] info: Loading command: debug
+[2025-05-22 16:43:31] info: Loading command: getpost
+[2025-05-22 16:43:33] info: Loading command: getvid
+[2025-05-22 16:43:33] info: Loading command: help
+[2025-05-22 16:43:33] info: Loading command: logchannel
+[2025-05-22 16:43:33] info: Loading command: memory
+[2025-05-22 16:43:33] info: Loading command: ping
+[2025-05-22 16:43:33] info: Loading command: remoteexec
+[2025-05-22 16:43:33] info: Loading command: rolereq
+[2025-05-22 16:43:33] info: Loading command: servers
+[2025-05-22 16:43:33] info: Loading command: snipeperm
+[2025-05-22 16:43:33] info: Loading command: statusset
+[2025-05-22 16:43:33] info: Loading event: guildCreate
+[2025-05-22 16:43:33] info: Loading event: guildDelete
+[2025-05-22 16:43:33] info: Loading event: interactionCreate
+[2025-05-22 16:43:33] info: Loading event: messageCreate
+[2025-05-22 16:43:33] info: Loading event: messageDelete
+[2025-05-22 16:43:33] info: Loading event: ready
+[2025-05-22 16:43:33] info: Loading event: resume
+[2025-05-22 16:43:33] info: Health check server running on port 3000
+[2025-05-22 16:43:33] info: Device status: Battery 100% (Charging), Temp: 30°C
+[2025-05-22 16:43:34] info: Bot successfully logged in
+[2025-05-22 16:43:34] info: Logged in as ModulAI#2431
+[2025-05-22 16:43:34] info: Serving 2 guilds
+[2025-05-22 16:43:34] info: Set default status: Playing in 2 guilds
+[2025-05-22 16:43:34] info: Started refreshing 26 application (/) commands.
+[2025-05-22 16:43:35] info: Successfully reloaded 26 application (/) commands.
+[2025-05-22 16:44:02] info: Shutdown signal received, cleaning up...
+[2025-05-22 16:44:02] info: Destroying client connection...
+[2025-05-22 16:44:02] info: Shutdown complete

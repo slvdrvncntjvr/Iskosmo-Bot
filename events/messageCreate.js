@@ -191,11 +191,33 @@ module.exports = {
             });
         }
         
+        // Check permission levels
+        const isServerOwner = message.guild && message.author.id === message.guild.ownerId;
+        const isAdmin = message.member && message.member.permissions.has('Administrator');
+        
+        // Check if this command is restricted to bot owners only
         if (command.ownerOnly && !permissionManager.isOwner(message.author.id)) {
+            // Don't tell regular users that this command exists
+            return;
+        }
+        
+        // Check if this command is restricted to server owners only
+        if (command.serverOwnerOnly && !isServerOwner && !permissionManager.isOwner(message.author.id)) {
             return message.reply({ 
                 embeds: [createEmbed({
                     title: 'Permission Error',
-                    description: 'This command is restricted to bot owners only.',
+                    description: 'This command is restricted to server owners only.',
+                    type: 'error'
+                })]
+            });
+        }
+        
+        // Check if this command is restricted to server admins only
+        if (command.adminOnly && !isAdmin && !isServerOwner && !permissionManager.isOwner(message.author.id)) {
+            return message.reply({ 
+                embeds: [createEmbed({
+                    title: 'Permission Error',
+                    description: 'This command is restricted to server administrators only.',
                     type: 'error'
                 })]
             });

@@ -84,7 +84,7 @@ module.exports = {
                         .setRequired(true))
                 .addIntegerOption(option =>
                     option.setName('interval')
-                        .setDescription('Check interval in minutes (default: 30)')
+                        .setDescription('Check interval in minutes (default: 30, min: 5)')
                         .setMinValue(5)
                         .setRequired(false))),
 

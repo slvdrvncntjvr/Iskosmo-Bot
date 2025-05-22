@@ -6,7 +6,7 @@ const logger = require('../../utils/logger');
 module.exports = {
     name: 'auth',
     description: 'Manage authorized users for commands',
-    usage: '<add/remove/list> <command> [user mention or ID]',
+    usage: '<add/remove/list> <command> [user mention or ID] or <owner_add/owner_remove/owner_list> [user mention or ID]',
     category: 'utility',
     
     slashCommand: new SlashCommandBuilder()
@@ -46,21 +46,24 @@ module.exports = {
                         .setRequired(true)))
         .addSubcommand(subcommand =>
             subcommand
-                .setName('owner')
-                .setDescription('Add or remove a bot owner')
-                .addStringOption(option =>
-                    option.setName('action')
-                        .setDescription('Add or remove')
-                        .setRequired(true)
-                        .addChoices(
-                            { name: 'Add', value: 'add' },
-                            { name: 'Remove', value: 'remove' },
-                            { name: 'List', value: 'list' }
-                        ))
+                .setName('owner_add')
+                .setDescription('Add a bot owner')
                 .addUserOption(option =>
                     option.setName('user')
-                        .setDescription('The user to add/remove as owner')
-                        .setRequired(false))),
+                        .setDescription('The user to add as owner')
+                        .setRequired(true)))
+        .addSubcommand(subcommand =>
+            subcommand
+                .setName('owner_remove')
+                .setDescription('Remove a bot owner')
+                .addUserOption(option =>
+                    option.setName('user')
+                        .setDescription('The user to remove as owner')
+                        .setRequired(true)))
+        .addSubcommand(subcommand =>
+            subcommand
+                .setName('owner_list')
+                .setDescription('List all bot owners')),
     
     async execute(message, args, client) {
         if (!permissionManager.isOwner(message.author.id)) {
@@ -85,24 +88,39 @@ module.exports = {
         
         const action = args[0].toLowerCase();
 
-        if (action === 'owner') {
-            const ownerAction = args[1]?.toLowerCase();
-            
-            if (!ownerAction || !['add', 'remove', 'list'].includes(ownerAction)) {
+        if (action === 'owner_add' || action === 'owner') {
+            if (action === 'owner' && args.length < 2) {
                 return message.reply({
                     embeds: [createEmbed({
                         title: 'Error',
-                        description: 'Please specify `add`, `remove`, or `list` for owner management.',
+                        description: 'Please specify add/remove/list for owner management.',
                         type: 'error'
                     })]
                 });
             }
             
-            if (ownerAction === 'list') {
-                return this.listOwners(message);
+            // Handle legacy 'owner add' command format
+            let userIndex = 1;
+            if (action === 'owner') {
+                const subaction = args[1].toLowerCase();
+                if (subaction === 'list') {
+                    return this.listOwners(message);
+                } else if (subaction === 'add') {
+                    userIndex = 2;
+                } else if (subaction === 'remove') {
+                    userIndex = 2;
+                } else {
+                    return message.reply({
+                        embeds: [createEmbed({
+                            title: 'Error',
+                            description: 'Please specify add/remove/list for owner management.',
+                            type: 'error'
+                        })]
+                    });
+                }
             }
             
-            const user = message.mentions.users.first() || client.users.cache.get(args[2]);
+            const user = message.mentions.users.first() || client.users.cache.get(args[userIndex]);
             
             if (!user) {
                 return message.reply({
@@ -114,11 +132,27 @@ module.exports = {
                 });
             }
             
-            if (ownerAction === 'add') {
+            if (action === 'owner_add' || (action === 'owner' && args[1].toLowerCase() === 'add')) {
                 return this.addOwner(message, user);
-            } else if (ownerAction === 'remove') {
+            } else {
                 return this.removeOwner(message, user);
             }
+        } else if (action === 'owner_remove') {
+            const user = message.mentions.users.first() || client.users.cache.get(args[1]);
+            
+            if (!user) {
+                return message.reply({
+                    embeds: [createEmbed({
+                        title: 'Error',
+                        description: 'Please mention a user or provide a valid user ID.',
+                        type: 'error'
+                    })]
+                });
+            }
+            
+            return this.removeOwner(message, user);
+        } else if (action === 'owner_list') {
+            return this.listOwners(message);
         }
 
         if (!['add', 'remove', 'list'].includes(action)) {
@@ -190,33 +224,18 @@ module.exports = {
         
         const subcommand = interaction.options.getSubcommand();
 
-        if (subcommand === 'owner') {
-            const action = interaction.options.getString('action');
-            
-            if (action === 'list') {
-                return this.listOwnersSlash(interaction);
-            }
-            
+        // Handle owner subcommands
+        if (subcommand === 'owner_list') {
+            return this.listOwnersSlash(interaction);
+        } else if (subcommand === 'owner_add') {
             const user = interaction.options.getUser('user');
-            
-            if (!user && ['add', 'remove'].includes(action)) {
-                return interaction.reply({
-                    embeds: [createEmbed({
-                        title: 'Error',
-                        description: 'Please specify a user.',
-                        type: 'error'
-                    })],
-                    ephemeral: true
-                });
-            }
-            
-            if (action === 'add') {
-                return this.addOwnerSlash(interaction, user);
-            } else if (action === 'remove') {
-                return this.removeOwnerSlash(interaction, user);
-            }
+            return this.addOwnerSlash(interaction, user);
+        } else if (subcommand === 'owner_remove') {
+            const user = interaction.options.getUser('user');
+            return this.removeOwnerSlash(interaction, user);
         }
 
+        // Handle regular auth subcommands
         const commandName = interaction.options.getString('command').toLowerCase();
 
         if (!client.commands.has(commandName)) {

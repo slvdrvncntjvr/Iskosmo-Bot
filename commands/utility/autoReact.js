@@ -72,7 +72,7 @@ module.exports = {
                 .addStringOption(option => 
                     option.setName('emoji')
                         .setDescription('Specific emoji to get info about')
-                        .setRequired(true)))
+                        .setRequired(false)))
         .addSubcommand(subcommand =>
             subcommand
                 .setName('toggle')
@@ -84,7 +84,7 @@ module.exports = {
                 .addStringOption(option => 
                     option.setName('emoji')
                         .setDescription('Specific emoji to toggle')
-                        .setRequired(true))),
+                        .setRequired(false))),
     
     async execute(message, args, client) {
         if (!args.length) {
