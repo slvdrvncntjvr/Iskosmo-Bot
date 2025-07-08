@@ -3,6 +3,7 @@ const config = require('../../config');
 const { createEmbed } = require('../../utils/embedBuilder');
 const cooldownManager = require('../../utils/cooldownManager');
 const permissionManager = require('../../utils/permissionManager');
+const logger = require('../../utils/logger');
 
 module.exports = {
     name: 'help',
@@ -42,9 +43,16 @@ module.exports = {
                     return;
                 }
                 
-                // Check role requirements
-                if (message.guild && command.name && !this.hasRequiredRole(message, command.name)) {
-                    return;
+                // Check role requirements (with error handling)
+                if (message.guild && command.name) {
+                    try {
+                        if (!this.hasRequiredRole(message, command.name)) {
+                            return;
+                        }
+                    } catch (error) {
+                        // Log error but don't fail completely
+                        logger.error('Error checking role requirements:', error);
+                    }
                 }
                 
                 const category = command.category || 'Uncategorized';
@@ -62,17 +70,64 @@ module.exports = {
                 type: 'info'
             });
 
+            const maxFieldLength = 1024;
             for (const [category, cmds] of Object.entries(categories)) {
                 // Skip empty categories (might happen if all commands were hidden)
                 if (cmds.length === 0) continue;
                 
+                const categoryName = `📁 ${category.charAt(0).toUpperCase() + category.slice(1)}`;
+                let commandList = cmds.map(cmd => `\`${cmd.name}\`: ${cmd.description}`).join('\n');
+                
+                // If the command list is too long, split it into multiple fields
+                if (commandList.length > maxFieldLength) {
+                    const commands = cmds.map(cmd => `\`${cmd.name}\`: ${cmd.description}`);
+                    let currentField = '';
+                    let fieldIndex = 1;
+                    
+                    for (const command of commands) {
+                        if ((currentField + '\n' + command).length > maxFieldLength) {
+                            helpEmbed.addFields({
+                                name: fieldIndex === 1 ? categoryName : `${categoryName} (continued)`,
+                                value: currentField || 'No commands available'
+                            });
+                            currentField = command;
+                            fieldIndex++;
+                        } else {
+                            currentField = currentField ? currentField + '\n' + command : command;
+                        }
+                    }
+                    
+                    // Add the remaining commands
+                    if (currentField) {
+                        helpEmbed.addFields({
+                            name: fieldIndex === 1 ? categoryName : `${categoryName} (continued)`,
+                            value: currentField
+                        });
+                    }
+                } else {
+                    helpEmbed.addFields({
+                        name: categoryName,
+                        value: commandList || 'No commands available'
+                    });
+                }
+            }
+
+            // Ensure the embed doesn't exceed Discord's limits
+            if (helpEmbed.data.fields && helpEmbed.data.fields.length > 25) {
+                // Discord has a 25 field limit, so we need to truncate
+                helpEmbed.data.fields = helpEmbed.data.fields.slice(0, 24);
                 helpEmbed.addFields({
-                    name: `📁 ${category.charAt(0).toUpperCase() + category.slice(1)}`,
-                    value: cmds.map(cmd => `\`${cmd.name}\`: ${cmd.description}`).join('\n')
+                    name: '⚠️ Note',
+                    value: 'Some commands were hidden due to Discord embed limits. Use `!help [command]` for specific commands.'
                 });
             }
             
-            return message.reply({ embeds: [helpEmbed] });
+            try {
+                return message.reply({ embeds: [helpEmbed] });
+            } catch (error) {
+                logger.error('Error sending help embed:', error);
+                return message.reply('❌ Error displaying help. The command list might be too large. Try `!help [specific command]` instead.');
+            }
         }
         
         const commandName = args[0].toLowerCase();
@@ -88,18 +143,23 @@ module.exports = {
             });
         }
         
-        // Check if user has permission to see this command
-        if ((command.ownerOnly && !isOwner) || 
-            (command.serverOwnerOnly && !isServerOwner && !isOwner) ||
-            (command.adminOnly && !isAdmin && !isServerOwner && !isOwner) ||
-            (message.guild && !this.hasRequiredRole(message, command.name))) {
-            return message.reply({ 
-                embeds: [createEmbed({
-                    title: 'Command Not Found',
-                    description: `Could not find command \`${commandName}\`.`,
-                    type: 'error'
-                })]
-            });
+        // Check if user has permission to see this command (with error handling)
+        try {
+            if ((command.ownerOnly && !isOwner) || 
+                (command.serverOwnerOnly && !isServerOwner && !isOwner) ||
+                (command.adminOnly && !isAdmin && !isServerOwner && !isOwner) ||
+                (message.guild && !this.hasRequiredRole(message, command.name))) {
+                return message.reply({ 
+                    embeds: [createEmbed({
+                        title: 'Permission Denied',
+                        description: `You don't have permission to use the \`${commandName}\` command.`,
+                        type: 'error'
+                    })]
+                });
+            }
+        } catch (error) {
+            // If there's an error checking permissions, just show the command
+            logger.error('Error checking command permissions:', error);
         }
         
         const commandEmbed = createEmbed({
@@ -116,7 +176,12 @@ module.exports = {
             commandEmbed.addFields({ name: 'Usage', value: `${config.prefix}${command.name} ${command.usage}` });
         }
         
-        message.reply({ embeds: [commandEmbed] });
+        try {
+            message.reply({ embeds: [commandEmbed] });
+        } catch (error) {
+            logger.error('Error sending command help embed:', error);
+            message.reply(`❌ Error displaying help for \`${command.name}\`. Please try again later.`);
+        }
     },
     
     async executeSlash(interaction, client) {
@@ -145,9 +210,16 @@ module.exports = {
                     return;
                 }
                 
-                // Check role requirements
-                if (interaction.guild && command.name && !this.hasRequiredRoleSlash(interaction, command.name)) {
-                    return;
+                // Check role requirements (with error handling)
+                if (interaction.guild && command.name) {
+                    try {
+                        if (!this.hasRequiredRoleSlash(interaction, command.name)) {
+                            return;
+                        }
+                    } catch (error) {
+                        // Log error but don't fail completely
+                        logger.error('Error checking role requirements:', error);
+                    }
                 }
                 
                 const category = command.category || 'Uncategorized';
@@ -165,17 +237,67 @@ module.exports = {
                 type: 'info'
             });
 
+            const maxFieldLength = 1024;
             for (const [category, cmds] of Object.entries(categories)) {
                 // Skip empty categories (might happen if all commands were hidden)
                 if (cmds.length === 0) continue;
                 
+                const categoryName = `📁 ${category.charAt(0).toUpperCase() + category.slice(1)}`;
+                let commandList = cmds.map(cmd => `\`${cmd.name}\`: ${cmd.description}`).join('\n');
+                
+                // If the command list is too long, split it into multiple fields
+                if (commandList.length > maxFieldLength) {
+                    const commands = cmds.map(cmd => `\`${cmd.name}\`: ${cmd.description}`);
+                    let currentField = '';
+                    let fieldIndex = 1;
+                    
+                    for (const command of commands) {
+                        if ((currentField + '\n' + command).length > maxFieldLength) {
+                            helpEmbed.addFields({
+                                name: fieldIndex === 1 ? categoryName : `${categoryName} (continued)`,
+                                value: currentField || 'No commands available'
+                            });
+                            currentField = command;
+                            fieldIndex++;
+                        } else {
+                            currentField = currentField ? currentField + '\n' + command : command;
+                        }
+                    }
+                    
+                    // Add the remaining commands
+                    if (currentField) {
+                        helpEmbed.addFields({
+                            name: fieldIndex === 1 ? categoryName : `${categoryName} (continued)`,
+                            value: currentField
+                        });
+                    }
+                } else {
+                    helpEmbed.addFields({
+                        name: categoryName,
+                        value: commandList || 'No commands available'
+                    });
+                }
+            }
+
+            // Ensure the embed doesn't exceed Discord's limits
+            if (helpEmbed.data.fields && helpEmbed.data.fields.length > 25) {
+                // Discord has a 25 field limit, so we need to truncate
+                helpEmbed.data.fields = helpEmbed.data.fields.slice(0, 24);
                 helpEmbed.addFields({
-                    name: `📁 ${category.charAt(0).toUpperCase() + category.slice(1)}`,
-                    value: cmds.map(cmd => `\`${cmd.name}\`: ${cmd.description}`).join('\n')
+                    name: '⚠️ Note',
+                    value: 'Some commands were hidden due to Discord embed limits. Use `/help command:[name]` for specific commands.'
                 });
             }
             
-            return interaction.reply({ embeds: [helpEmbed] });
+            try {
+                return interaction.reply({ embeds: [helpEmbed] });
+            } catch (error) {
+                logger.error('Error sending help embed:', error);
+                return interaction.reply({ 
+                    content: '❌ Error displaying help. The command list might be too large. Try `/help command:[specific command]` instead.',
+                    ephemeral: true 
+                });
+            }
         }
         
         const command = commands.get(commandName.toLowerCase());
@@ -191,19 +313,24 @@ module.exports = {
             });
         }
         
-        // Check if user has permission to see this command
-        if ((command.ownerOnly && !isOwner) || 
-            (command.serverOwnerOnly && !isServerOwner && !isOwner) ||
-            (command.adminOnly && !isAdmin && !isServerOwner && !isOwner) ||
-            (interaction.guild && !this.hasRequiredRoleSlash(interaction, command.name))) {
-            return interaction.reply({ 
-                embeds: [createEmbed({
-                    title: 'Command Not Found',
-                    description: `Could not find command \`${commandName}\`.`,
-                    type: 'error'
-                })],
-                ephemeral: true
-            });
+        // Check if user has permission to see this command (with error handling)
+        try {
+            if ((command.ownerOnly && !isOwner) || 
+                (command.serverOwnerOnly && !isServerOwner && !isOwner) ||
+                (command.adminOnly && !isAdmin && !isServerOwner && !isOwner) ||
+                (interaction.guild && !this.hasRequiredRoleSlash(interaction, command.name))) {
+                return interaction.reply({ 
+                    embeds: [createEmbed({
+                        title: 'Command Not Found',
+                        description: `Could not find command \`${commandName}\`.`,
+                        type: 'error'
+                    })],
+                    ephemeral: true
+                });
+            }
+        } catch (error) {
+            // If there's an error checking permissions, just show the command
+            logger.error('Error checking command permissions:', error);
         }
         
         const commandEmbed = createEmbed({
@@ -220,74 +347,62 @@ module.exports = {
             commandEmbed.addFields({ name: 'Usage', value: `${config.prefix}${command.name} ${command.usage}` });
         }
         
-        interaction.reply({ embeds: [commandEmbed] });
+        try {
+            interaction.reply({ embeds: [commandEmbed] });
+        } catch (error) {
+            logger.error('Error sending command help embed:', error);
+            interaction.reply({ 
+                content: `❌ Error displaying help for \`${command.name}\`. Please try again later.`,
+                ephemeral: true 
+            });
+        }
     },
     
     // Helper method to check if a user has a required role for a command
     hasRequiredRole(message, commandName) {
-        // Bot owners bypass role checks
-        if (permissionManager.isOwner(message.author.id)) {
-            return true;
+        try {
+            // Bot owners bypass role checks
+            if (permissionManager.isOwner(message.author.id)) {
+                return true;
+            }
+            
+            // If not in a guild or no member, consider no role requirements
+            if (!message.guild || !message.member) {
+                return true;
+            }
+            
+            // Get user's roles
+            const memberRoles = message.member.roles.cache.map(role => role.id);
+            
+            // Use the existing isAuthorized method with role information
+            return permissionManager.isAuthorized(message.author.id, commandName, message.guild.id, memberRoles);
+        } catch (error) {
+            logger.error('Error in hasRequiredRole:', error);
+            return true; // Default to allowing access if there's an error
         }
-        
-        // If not in a guild or no member, consider no role requirements
-        if (!message.guild || !message.member) {
-            return true;
-        }
-        
-        // Get user's roles
-        const memberRoles = message.member.roles.cache.map(role => role.id);
-        
-        // Check if the command has role requirements
-        if (permissionManager.hasCommandRoleRequirements(commandName, message.guild.id)) {
-            const requiredRoles = permissionManager.getCommandRoles(commandName, message.guild.id);
-            // If the user has any of the required roles, they're authorized
-            return memberRoles.some(roleId => requiredRoles.includes(roleId));
-        }
-        
-        // Check if the command's category has role requirements
-        const category = permissionManager.getCommandCategory(commandName);
-        if (category && permissionManager.hasCategoryRoleRequirements(category, message.guild.id)) {
-            const requiredRoles = permissionManager.getCategoryRoles(category, message.guild.id);
-            // If the user has any of the required roles, they're authorized
-            return memberRoles.some(roleId => requiredRoles.includes(roleId));
-        }
-        
-        // If no role requirements, consider it allowed
-        return true;
     },
     
     // Helper method for slash commands
     hasRequiredRoleSlash(interaction, commandName) {
-        // Bot owners bypass role checks
-        if (permissionManager.isOwner(interaction.user.id)) {
-            return true;
+        try {
+            // Bot owners bypass role checks
+            if (permissionManager.isOwner(interaction.user.id)) {
+                return true;
+            }
+            
+            // If not in a guild or no member, consider no role requirements
+            if (!interaction.guild || !interaction.member) {
+                return true;
+            }
+            
+            // Get user's roles
+            const memberRoles = interaction.member.roles.cache.map(role => role.id);
+            
+            // Use the existing isAuthorized method with role information
+            return permissionManager.isAuthorized(interaction.user.id, commandName, interaction.guild.id, memberRoles);
+        } catch (error) {
+            logger.error('Error in hasRequiredRoleSlash:', error);
+            return true; // Default to allowing access if there's an error
         }
-        
-        // If not in a guild or no member, consider no role requirements
-        if (!interaction.guild || !interaction.member) {
-            return true;
-        }
-        
-        // Get user's roles
-        const memberRoles = interaction.member.roles.cache.map(role => role.id);
-        
-        // Check if the command has role requirements
-        if (permissionManager.hasCommandRoleRequirements(commandName, interaction.guild.id)) {
-            const requiredRoles = permissionManager.getCommandRoles(commandName, interaction.guild.id);
-            // If the user has any of the required roles, they're authorized
-            return memberRoles.some(roleId => requiredRoles.includes(roleId));
-        }
-        
-        // Check if the command's category has role requirements
-        const category = permissionManager.getCommandCategory(commandName);
-        if (category && permissionManager.hasCategoryRoleRequirements(category, interaction.guild.id)) {
-            const requiredRoles = permissionManager.getCategoryRoles(category, interaction.guild.id);
-            // If the user has any of the required roles, they're authorized
-            return memberRoles.some(roleId => requiredRoles.includes(roleId));
-        }
-        
-        // If no role requirements, consider it allowed
-        return true;
     }
 };
