@@ -1,3 +1,44 @@
 {
-  "1300639781364957266": []
+  "1300639781364957266": [],
+  "1249954563944087562": [
+    {
+      "trigger": "<@754986314251763733>",
+      "emoji": "<:shrug:1253588222013870193>",
+      "createdAt": "2025-04-02T11:32:33.292Z",
+      "createdBy": "592273861811241002",
+      "matchType": "contains",
+      "caseSensitive": false,
+      "allowedChannels": [],
+      "ignoredUsers": [],
+      "cooldown": 0,
+      "lastTriggered": "2025-07-08T06:09:31.410Z",
+      "enabled": true
+    },
+    {
+      "trigger": "<@1274098675500716126>",
+      "emoji": "<:catwhaaa:1253588226531393536>",
+      "createdAt": "2025-06-30T09:15:46.671Z",
+      "createdBy": "592273861811241002",
+      "matchType": "contains",
+      "caseSensitive": false,
+      "allowedChannels": [],
+      "ignoredUsers": [],
+      "cooldown": 0,
+      "lastTriggered": "2025-07-05T14:23:13.728Z",
+      "enabled": true
+    },
+    {
+      "trigger": "ichigo",
+      "emoji": "<:ichigo:1392010350223818763>",
+      "createdAt": "2025-07-08T10:05:27.950Z",
+      "createdBy": "592273861811241002",
+      "matchType": "contains",
+      "caseSensitive": false,
+      "allowedChannels": [],
+      "ignoredUsers": [],
+      "cooldown": 0,
+      "lastTriggered": null,
+      "enabled": true
+    }
+  ]
 }

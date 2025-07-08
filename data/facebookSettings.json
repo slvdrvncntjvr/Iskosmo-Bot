@@ -4,6 +4,10 @@
     "autopost": true,
     "interval": 30,
     "lastPostTime": 1747481920664,
+<<<<<<< HEAD
     "lastCheckTime": 1747569780339
+=======
+    "lastCheckTime": 1751969297571
+>>>>>>> ce14575 (latest emotes etc)
   }
 }
